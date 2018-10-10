@@ -1,0 +1,110 @@
+/* LOGIN FORM STYLES */
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+}
+hr{
+    width: 40%;
+    background-color: #00787a;
+    height: 1px;
+    border: 0;
+}
+.sign-in{
+    width: 300px;
+    height: 100px;
+    line-height: 100px;
+    margin: 0 auto;
+    background-color: #00787a ;
+    border-radius: 15px 15px 0 0;
+    text-align: center;
+    box-shadow: 5px 5px 5px #888888
+}
+.sign-in h4{
+    color: #fff;
+    font-size: 20px;
+}
+.login-form{
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: #003d34 ;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 5px 5px 5px #888888
+}
+.login-form form{
+    width: 300px;
+    padding-top: 30px;
+    text-align: center;
+}
+.login-form input{
+    display: block;
+    width: 60%;
+    height: 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-radius: 25px;
+    border-style: none;
+    transition: all 0.5s ease;
+
+}
+.login-form input:focus{
+    width:70%;
+}
+form button{
+    width: 80%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #00787a ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+}
+form button:hover{
+    color: #00787a;
+    background-color: #94ebd8;
+    
+}
+.no-account{
+    margin-top: 60px;
+    color: #fff;
+}
+.no-account a{
+    color: #fff;
+    text-decoration: none;
+}
+.forgot-user a{
+    text-decoration: none;
+    color: #fff;
+    
+    
+}
+.forgot-user a:hover{
+    color: #94ebd8;
+}
+.contact-admin a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #94ebd8;
+}
+.contact-admin a:hover{
+    color: #fff;
+}
+@media (min-width: 400px){
+    .sign-in{
+        width:500px;
+    }
+    .login-form{
+        width: 500px;
+    }
+    .login-form form{
+        width: 500px;
+    }
+}
+/* END OF LOGIN FORM STYLES */
