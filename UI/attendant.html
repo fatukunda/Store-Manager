@@ -3,14 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Attendant Profile</title>
+    <title>Store Attendant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./style/main.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="navigation">
@@ -23,7 +22,7 @@
         </ul>
     </nav>
     <div class="main">
-            <div class="attendant-sales">
+        <div class="attendant-sales">
                 <h4>Your Sales Report</h4>
                 <table>
                     <tr>
@@ -45,54 +44,33 @@
                         <td>UGX 20,000</td>
                     </tr>
                 </table>
-                
-            </div>
-            <div class="products">
+        </div>
+        <div class="products">
                 <div class="search-item">
                     <form>
                         <input type="text" id="search" placeholder="Search Product"/>
                     </form>
                 </div>
                 <div class="product-list">
-                    <h4>Product Inventory</h4>
-                    <table>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Sell</th>
-                            <th>Categorize</th> 
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Sugar</td>
-                            <td>100 Kgs</td>
-                            <td>UGX.4000</td>
-                            <td> <button class="sell">Sell</button></td>
-                            <td><button class="categorize">Categorize</button></td>
-                        </tr>
-                        <tr class="hide-tr">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <form>
-                                    <input type="number" placeholder="Quantity"/>
-                                    <button>Add to Cart</button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Milk</td>
-                            <td>50 Pcs</td>
-                            <td>UGX.1600</td>
-                            <td> <button class="sell">Add to Cart</button></td>
-                            <td><button class="categorize">Categorize</button></td>
-                        </tr>
-                        <tr class="hide-tr">
+                        <h4>Product Inventory</h4>
+                        <table>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Sell</th>
+                                <th>Categorize</th> 
+                            </tr>
+                            <tr id="product-row">
+                                <td>1</td>
+                                <td>Sugar</td>
+                                <td>100 Kgs</td>
+                                <td>UGX.4000</td>
+                                <td> <button class="sell">Sell</button></td>
+                                <td><button class="categorize">Categorize</button></td>
+                            </tr>
+                            <tr class="toggle-sell">
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -103,11 +81,104 @@
                                         <button>Add to Cart</button>
                                     </form>
                                 </td>
+                                <td></td>
                             </tr>
-                    </table>
-                </div>
-            </div>
+                            <tr class="toggle-categorize">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <form>
+                                            <input type="text" placeholder="Sugar" disabled/>
+                                            <select name="product-categories">
+                                                <option value="Foods">Foods</option>
+                                                <option value="Beverages">Beverages</option>
+                                                <option value="Electronics">Electronics</option>
+                                                <option value="Clothes">Clothes</option>
+                                            </select>
+                                            <button>Categorize</button>
+                                        </form>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Milk</td>
+                                <td>50 Pcs</td>
+                                <td>UGX.1600</td>
+                                <td> <button class="sell">Sell</button></td>
+                                <td><button class="categorize">Categorize</button></td>
+                            </tr>
+                            <tr class="toggle-sell">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <form>
+                                         <input type="number" placeholder="Quantity"/>
+                                        <button>Add to Cart</button>
+                                    </form>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr class="toggle-categorize">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <form>
+                                        <input type="text" placeholder="Milk" disabled/>
+                                        <select name="product-categories">
+                                            <option value="Beverages">Beverages</option>
+                                            <option value="Foods">Foods</option>
+                                            <option value="Electronics">Electronics</option>
+                                            <option value="Clothes">Clothes</option>
+                                        </select>
+                                        <button>Categorize</button>
+                                    </form>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
         </div>
-<script src="./js/main.js"></script>
+        <div class="shopping-cart">
+            <h4>Shopping Cart</h4>
+            <hr/>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sugar</td>
+                        <td>2 kgs</td>
+                        <td>6000</td>
+                    </tr>
+                    <tr>
+                        <td>Rice</td>
+                        <td>1 Kg</td>
+                        <td>5000</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <th></th>
+                        <th>UGX. 11,000</th>
+                    </tr>
+                </tfoot>
+            </table>
+            <button class="checkout">Checkout</button>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
 </body>
 </html>
