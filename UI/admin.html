@@ -23,9 +23,9 @@
     <div class="main">
         <div class="quick-nav">
             <ul>
-                <li><a href="#">Add products</a></li>
+                <li><a href="#" id="add-product-link">Add products</a></li>
                 <li><a href="#">Add product Category</a></li>
-                <li><a href="#">View Products</a></li>
+                <li><a href="#" id="view-products">View Products</a></li>
                 <li><a href="#">View Sales</a></li>
                 <li><a href="#">Add Sales Person</a></li>
             </ul>
@@ -86,6 +86,19 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div id="add-product">
+                <h4>Add Product</h4>
+                <form>
+                    <input type="text" placeholder="Product name" placeholder="Category"/>
+                    <select name="product-categories">
+                        <option>Electronics</option>
+                        <option>Food</option>
+                        <option>Plastics</option>
+                    </select>
+                    <input type="number" placeholder="Quantity"/>
+                    <button>Save</button>
+                </form>
             </div>
         </div>
     </div>

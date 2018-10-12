@@ -15,16 +15,29 @@ const toggle = (elem) => {
     }
     show(elem);
 }
-const sellBtn = document.getElementsByClassName('sell')[0];
+const sellBtns = document.getElementsByClassName('sell');
 const categorizeBtn = document.getElementsByClassName('categorize')[0];
 let categorizeRow = document.getElementsByClassName('toggle-categorize')[0];
 let quantityRow = document.getElementsByClassName('toggle-sell')[0];
-console.log(sellBtn, categorizeBtn);
+console.log(sellBtns, categorizeBtn);
 
-sellBtn.addEventListener('click', () => {
-    hide(categorizeRow);
-    toggle(quantityRow);
-});
+for(i =0; i<sellBtns.length; i++){
+    sellBtns[i].addEventListener('click', (event) => {
+        clickedBtn = event.target;
+        hide(clickedBtn.closest(categorizeRow));
+        toggle(clickedBtn.closest(quantityRow));
+    });
+}
+// sellBtns.forEach((btn) => {
+//     btn.addEventListener('click', () => {
+//         hide(categorizeRow);
+//         toggle(quantityRow);
+//     })
+// })
+// sellBtn.addEventListener('click', () => {
+//     hide(categorizeRow);
+//     toggle(quantityRow);
+// });
 
 categorizeBtn.addEventListener('click', () => {
     hide(quantityRow);

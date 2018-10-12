@@ -412,3 +412,57 @@ form button:hover{
     border-radius: 10px;
     border: 0;
 }
+/* Admin add product */
+#add-product{
+    width: 500px;
+}
+#add-product form{
+    max-width: 500px;
+    padding-top: 30px;
+    text-align: center;
+}
+#add-product form input{
+    display: block;
+    width: 60%;
+    height: 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+
+    border-style: none;
+    transition: all 0.5s ease;
+}
+#add-product form select{
+    display: block;
+    width: 60%;
+    height: 30px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+
+    border-style: none;
+    transition: all 0.5s ease;
+}
+#add-product form button{
+    width: 50%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #00787a ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+}
+#add-product form button:hover{
+    color: #00787a;
+    background-color: #94ebd8;
+    
+}
+#add-product h4{
+    margin-top: 30px;
+    color: #003d34;
+}
