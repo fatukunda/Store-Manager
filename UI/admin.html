@@ -48,7 +48,7 @@
                     <div class="main-description">Sales Info</div>
                     </div>
             </div>
-            <div class="card">
+            <div class="card" id="products-card">
                     <div class="card-header">Products</div>
                     <div class="card-main">
                         <i class="material-icons">shopping_basket</i>
@@ -57,9 +57,39 @@
             </div>
         </div>
         <div class="details">
-            <h2>Attendants Information</h2>
-            <p>Page Partials to be displayed here</p>
+            <div class="product-list admin-products-list">
+                <div class="search-item">
+                    <form>
+                        <input type="text" id="search" placeholder="Search Product"/>
+                    </form>
+                </div>
+                <h4>Product Inventory</h4>
+                <table>
+                    <thead>
+                        <th>#</th>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Sugar</td>
+                            <td>100 Kgs</td>
+                            <td>UGX.4000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Milk</td>
+                            <td>50 Pcs</td>
+                            <td>UGX.1600</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+    <script src="./js/admin.js"></script>
+
 </body>
 </html>
