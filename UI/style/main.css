@@ -113,44 +113,110 @@ form button:hover{
     color: #fff;
 }
 /* ADMINISTRATOR PANEL */
-.navigation{
-    width: 100%;
+
+.nav {
     height: 100px;
+    width: 100%;
+    position: relative;
     background-color: #003d34;
-}
-.navigation img{
+  }
+  .nav img{
     width: 90px;
     height: 90px;
     float: left;
-}
-.navigation ul{
-    list-style-type: none;
-    margin-right: 40px;
-
-}
-.navigation li {
-    float: right;
-    color: #fff;
-    padding: 10px;
-}
-.navigation li a{
-    color: #94ebd8;
-}
-.navigation li a:hover{
-    color: #fff;
-}
-.navigation li span{
-    color: #9ACD32;
-}
-.brand{
+  }
+  .brand{
+    display: inline-block;
     color: #fff;
     font-size: 20px;
     position: relative;
-    top: 40px;
+    top: 20px;
     text-transform: uppercase;
     margin: 0;
     padding: 0;
 }
+  
+  .nav > .nav-header {
+    display: inline;
+  }
+  
+  .nav > .nav-header > .nav-title {
+    display: inline-block;
+    font-size: 22px;
+    color: #fff;
+    padding: 10px 10px 10px 10px;
+  }
+  
+  .nav > .nav-btn {
+    display: none;
+  }
+  
+  .nav > .nav-links {
+    display: inline;
+    float: right;
+    font-size: 18px;
+  }
+  
+  .nav > .nav-links > a {
+    display: inline-block;
+    padding: 13px 10px 13px 10px;
+    text-decoration: none;
+    color: #efefef;
+  }
+  
+  .nav > .nav-links > a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav > #nav-check {
+    display: none;
+  }
+  
+  @media (max-width:600px) {
+    .nav > .nav-btn {
+      display: inline-block;
+      position: absolute;
+      right: 0px;
+      top: 20px;
+    }
+    .nav > .nav-btn > label {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      padding: 13px;
+    }
+    .nav > .nav-btn > label:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .nav > .nav-btn > label > span {
+      display: block;
+      width: 25px;
+      height: 10px;
+      border-top: 2px solid #eee;
+    }
+    .nav > .nav-links {
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-color:#003d34;
+      height: 10px;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 100px;
+      left: 0px;
+    }
+    .nav > .nav-links > a {
+      display: block;
+      width: 100%;
+    }
+    .nav > #nav-check:not(:checked) + .nav-links {
+      height: 0px;
+    }
+    .nav > #nav-check:checked + .nav-links {
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+    }
+  }
 
 /* QUICK NAVIGATION */
 .main{
@@ -465,4 +531,47 @@ form button:hover{
 #add-product h4{
     margin-top: 30px;
     color: #003d34;
+}
+#add-category{
+    width: 500px;
+}
+
+#add-category form{
+    max-width: 500px;
+    padding-top: 30px;
+    text-align: center;
+}
+#add-category input{
+    display: block;
+    width: 60%;
+    height: 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-style: none;
+    transition: all 0.5s ease;
+}
+#add-category form button{
+    width: 50%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #00787a ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+}
+
+.view-product-details-btn {
+    width: 150px;
+    height: 40px;
+    background-color: #003d34;
+    color: #fff;
+    border: 0;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
 }

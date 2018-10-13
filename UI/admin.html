@@ -5,26 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Administrator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="./style/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./style/main.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
 </head>
 <body>
-    <nav class="navigation">
-        <img src="./img/logo-admin.png"/>
-        <h3 class="brand">Store Manager</h3>
-        <ul>
-            <li><a href="#">Logout</a><span> | </span></li>
-            <li>Role: Admin <span> | </span></li>
-            <li>Logged In: Atukunda<span> | </span></li>
-        </ul>
-    </nav>
+        <div class="nav">
+                <div class="nav-header">
+                    <img src="./img/logo-admin.png"/>
+                    <div class="nav-title">
+                        <h3 class="brand">Store Manager</h3>
+                    </div>
+                </div>
+                <div class="nav-btn">
+                    <label for="nav-check">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                </div>
+                <input type="checkbox" id="nav-check">
+                <div class="nav-links">
+                    <a href="#">Role: Admin</a><span> | </span>
+                    <a href="./login.html">Logout</a>
+                </div>
+            </div>
     <div class="main">
         <div class="quick-nav">
             <ul>
                 <li><a href="#" id="add-product-link">Add products</a></li>
-                <li><a href="#">Add product Category</a></li>
+                <li><a href="#" id="add-category-link">Add product Category</a></li>
                 <li><a href="#" id="view-products">View Products</a></li>
                 <li><a href="#">View Sales</a></li>
                 <li><a href="#">Add Sales Person</a></li>
@@ -39,7 +50,7 @@
                     <h3>Attendants Info</h3>
                     <p>Attendants: <em>20</em></p>
                 </div>
-            </div>
+                </div>
             </div>
             <div class="card">
                     <div class="card-header">Sales</div>
@@ -70,6 +81,8 @@
                         <th>Item</th>
                         <th>Quantity</th>
                         <th>Price</th>
+                        <th>Category</th>
+                        <th>Details</th>
                     </thead>
                     <tbody>
                         <tr>
@@ -77,12 +90,32 @@
                             <td>Sugar</td>
                             <td>100 Kgs</td>
                             <td>UGX.4000</td>
+                            <td>Food</td>
+                            <td><button class="view-product-details-btn">View Product Details</button></td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>Milk</td>
                             <td>50 Pcs</td>
                             <td>UGX.1600</td>
+                            <td>Food</td>
+                            <td><button class="view-product-details-btn">View Product Details</button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Samsung 32 inch TV</td>
+                            <td>10 Pcs</td>
+                            <td>UGX.1,600,000</td>
+                            <td>Electronics</td>
+                            <td><button class="view-product-details-btn">View Product Details</button></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Samsung 24 inch TV</td>
+                            <td>5 Pcs</td>
+                            <td>UGX.1,100,000</td>
+                            <td>Electronics</td>
+                            <td><button class="view-product-details-btn">View Product Details</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -97,6 +130,13 @@
                         <option>Plastics</option>
                     </select>
                     <input type="number" placeholder="Quantity"/>
+                    <button>Save</button>
+                </form>
+            </div>
+            <div id="add-category">
+                <form>
+                    <h4>Add Category</h4>
+                    <input type="text" placeholder="Category"/>
                     <button>Save</button>
                 </form>
             </div>
