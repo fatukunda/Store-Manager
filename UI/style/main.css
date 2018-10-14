@@ -769,3 +769,38 @@ form button:hover{
     margin-top: 30px;
     color: #003d34;
 }
+/* Store attendants list view */
+#attendants-list{
+    margin-left: 50px;
+    float: left;
+    width: 95%;
+}
+#attendants-list h4{
+    color: #003d34;
+    margin: 30px;
+}
+#attendants-list table{
+    width: 80%;
+    border-collapse: collapse;
+}
+#attendants-list th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #003d34;
+    color: #003d34;
+}
+#attendants-list tr:hover{
+    background-color: #fff;
+}
+#attendants-list table button{
+    width: 120px;
+    height: 40px;
+    border: 0;
+    border-radius: 30px;
+    background-color: #003d34;
+    color: #fff;
+    cursor: pointer;
+}
+#attendants-list table button:hover{
+    background-color: #00787a;
+}

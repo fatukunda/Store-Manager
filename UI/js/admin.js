@@ -35,6 +35,8 @@ const editBtn = document.getElementById('edit');
 const editProductDetailsView = document.getElementById('edit-product-details-view');
 const saveEditBtn = document.getElementById('save-edited-product');
 const backProductDetailBtn = document.getElementById('back-product-detail');
+const attendantsList = document.getElementById('attendants-list');
+const attendantsCard = document.getElementById('attendants-card')
 //Hide admin products list when the page loads
 window.addEventListener('load', () => {
     show(adminProductsList);
@@ -45,6 +47,7 @@ window.addEventListener('load', () => {
     hide(productDetailsView);
     hide(editProductDetailsView);
     hide(editProductDetailsView);
+    hide(attendantsList);
 
 });
 //Toggle admin products when the products card is clicked on
@@ -55,6 +58,7 @@ productsCard.addEventListener('click', () => {
     hide(viewSales);
     hide(addSalesPerson);
     hide(editProductDetailsView);
+    hide(attendantsList);
 });
 salesCard.addEventListener('click', () => {
     show(viewSales);
@@ -63,6 +67,7 @@ salesCard.addEventListener('click', () => {
     hide(addProduct);
     hide(addSalesPerson);
     hide(editProductDetailsView);
+    hide(attendantsList);
 })
 addProductLink.addEventListener('click', () => {
     hide(adminProductsList);
@@ -72,6 +77,7 @@ addProductLink.addEventListener('click', () => {
     hide(addSalesPerson);
     hide(productDetailsView);
     hide(editProductDetailsView);
+    hide(attendantsList);
 });
 addCategoryLink.addEventListener('click', () => {
     show(addCategory);
@@ -81,6 +87,7 @@ addCategoryLink.addEventListener('click', () => {
     hide(addSalesPerson);
     hide(productDetailsView);
     hide(editProductDetailsView);
+    hide(attendantsList);
 })
 viewProducts.addEventListener('click', () => {
     hide(addProduct);
@@ -90,6 +97,7 @@ viewProducts.addEventListener('click', () => {
     hide(addSalesPerson);
     hide(productDetailsView);
     hide(editProductDetailsView);
+    hide(attendantsList);
 });
 viewSalesLink.addEventListener('click', () => {
     show(viewSales);
@@ -99,6 +107,7 @@ viewSalesLink.addEventListener('click', () => {
     hide(addSalesPerson);
     hide(productDetailsView);
     hide(editProductDetailsView);
+    hide(attendantsList);
 });
 addSalesPersonLink.addEventListener('click', () => {
     show(addSalesPerson);
@@ -108,6 +117,7 @@ addSalesPersonLink.addEventListener('click', () => {
     hide(addProduct);
     hide(productDetailsView);
     hide(editProductDetailsView);
+    hide(attendantsList);
 });
 showDetailsBtn.addEventListener('click', () => {
     show(productDetailsView);
@@ -117,6 +127,7 @@ showDetailsBtn.addEventListener('click', () => {
     hide(addCategory);
     hide(addProduct);
     hide(editProductDetailsView);
+    hide(attendantsList);
 });
 backBtn.addEventListener('click', () => {
     show(adminProductsList);
@@ -137,6 +148,7 @@ editBtn.addEventListener('click', () => {
     hide(addCategory);
     hide(addProduct);
     hide(productDetailsView);
+    hide(attendantsList);
 });
 saveEditBtn.addEventListener('click', (event) => {
     event.preventDefault();
@@ -147,6 +159,7 @@ saveEditBtn.addEventListener('click', (event) => {
     hide(adminProductsList);
     hide(addCategory);
     hide(addProduct);
+    hide(attendantsList);
 });
 backProductDetailBtn.addEventListener('click', () => {
     show(productDetailsView);
@@ -156,4 +169,16 @@ backProductDetailBtn.addEventListener('click', () => {
     hide(adminProductsList);
     hide(addCategory);
     hide(addProduct);
+    hide(attendantsList);
 });
+attendantsCard.addEventListener('click', () => {
+    show(attendantsList);
+    hide(productDetailsView);
+    hide(editProductDetailsView)
+    hide(adminProductsList);
+    hide(viewSales);
+    hide(adminProductsList);
+    hide(addCategory);
+    hide(addProduct);
+    hide(addSalesPerson);
+})
