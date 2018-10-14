@@ -37,7 +37,7 @@
                 <li><a href="#" id="add-product-link">Add products</a></li>
                 <li><a href="#" id="add-category-link">Add product Category</a></li>
                 <li><a href="#" id="view-products">View Products</a></li>
-                <li><a href="#">View Sales</a></li>
+                <li><a href="#" id="view-sales-link">View Sales</a></li>
                 <li><a href="#">Add Sales Person</a></li>
             </ul>
         </div>
@@ -52,7 +52,7 @@
                 </div>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" id="sales-card">
                     <div class="card-header">Sales</div>
                     <div class="card-main">
                         <i class="material-icons">euro_symbol</i>
@@ -121,8 +121,8 @@
                 </table>
             </div>
             <div id="add-product">
-                <h4>Add Product</h4>
                 <form>
+                    <h4>Add Product</h4>
                     <input type="text" placeholder="Product name" placeholder="Category"/>
                     <select name="product-categories">
                         <option>Electronics</option>
@@ -140,6 +140,48 @@
                     <button>Save</button>
                 </form>
             </div>
+            <div id="view-sales">
+                    <div class="sort-sales">
+                        <form>
+                            <h4>sort by sales attendant: </h5>
+                            <select name="sort-by-attendant">
+                                <option>Rita</option>
+                                <option>Simon</option>
+                                <option>Sara</option>
+                            </select>
+                            <button>Sort</button>
+                        </form>
+                    </div>
+                    <h4>All Store Sales</h4>
+                    <table>
+                        <thead>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Sales Person</th>
+                            <th>Item sold</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>30th. Oct.2018</td>
+                                <td>Sara</td>
+                                <td>Samsung 32 inch TV</td>
+                                <td>1</td>
+                                <td>UGX.1,600,000</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>30th. Oct.2018</td>
+                                <td>Simon</td>
+                                <td>Sugar</td>
+                                <td>2 Kgs</td>
+                                <td>UGX.8000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
         </div>
     </div>
     <script src="./js/admin.js"></script>

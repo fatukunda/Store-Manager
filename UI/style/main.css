@@ -326,7 +326,7 @@ form button:hover{
     flex: 50%;
 }
 #search{
-    width: 500px;
+    width: 50%;
     height: 30px;
     border-radius: 20px;
     border-bottom-style: none;
@@ -342,14 +342,16 @@ form button:hover{
     margin: 20px;
 }
 .product-list{
-    margin-left: 30px;
+    margin-left: 50px;
     float: left;
+    width: 100%;
 }
 .product-list h4{
     color: #003d34;
+    margin: 30px;
 }
 .product-list table{
-    width: 700px;
+    width: 80%;
     border-collapse: collapse;
 }
 .product-list th, td {
@@ -480,10 +482,10 @@ form button:hover{
 }
 /* Admin add product */
 #add-product{
-    width: 500px;
+    width: 100%;
 }
 #add-product form{
-    max-width: 500px;
+    max-width: 80%;
     padding-top: 30px;
     text-align: center;
 }
@@ -495,7 +497,6 @@ form button:hover{
     font-size: 15px;
     padding: 4px 4px;
     margin-top: 30px;
-
     border-style: none;
     transition: all 0.5s ease;
 }
@@ -533,11 +534,11 @@ form button:hover{
     color: #003d34;
 }
 #add-category{
-    width: 500px;
+    width: 100%;
 }
 
 #add-category form{
-    max-width: 500px;
+    max-width: 80%;
     padding-top: 30px;
     text-align: center;
 }
@@ -553,7 +554,7 @@ form button:hover{
     transition: all 0.5s ease;
 }
 #add-category form button{
-    width: 50%;
+    width: 60%;
     text-align: center;
     height: 30px;
     margin-top: 30px;
@@ -565,6 +566,7 @@ form button:hover{
     text-transform: uppercase;
 }
 
+
 .view-product-details-btn {
     width: 150px;
     height: 40px;
@@ -574,4 +576,54 @@ form button:hover{
     border-radius: 30px;
     font-weight: bold;
     cursor: pointer;
+}
+#view-sales{
+    width: 100%;
+}
+#view-sales form{
+    width: 100%;
+    padding-top: 30px;
+    text-align: center;
+}
+#view-sales select{
+    width: 50%;
+    height: 30px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-style: none;
+    border-radius: 25px;
+    transition: all 0.5s ease;
+}
+#view-sales form button{
+    width: 20%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #00787a ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+}
+#view-sales h4{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #003d34;
+}
+#view-sales table{
+    width: 90%;
+    border-collapse: collapse;
+    margin-left: 20px;
+}
+#view-sales th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #003d34;
+    color: #003d34;
+}
+#view-sales tr:hover{
+    background-color: #fff;
 }
