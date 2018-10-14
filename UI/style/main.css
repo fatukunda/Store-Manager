@@ -226,7 +226,6 @@ form button:hover{
 .quick-nav{
     flex: 10%;
     background-color: #94ebd8;
-    height: 500px;
 }
 .quick-nav ul{
     margin: 0;
@@ -344,7 +343,7 @@ form button:hover{
 .product-list{
     margin-left: 50px;
     float: left;
-    width: 100%;
+    width: 95%;
 }
 .product-list h4{
     color: #003d34;
@@ -533,6 +532,61 @@ form button:hover{
     margin-top: 30px;
     color: #003d34;
 }
+/* Add store attendant */
+#add-sales-person{
+    width: 100%;
+}
+#add-sales-person form{
+    max-width: 80%;
+    padding-top: 30px;
+    text-align: center;
+}
+#add-sales-person form input{
+    display: block;
+    width: 60%;
+    height: 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-style: none;
+    transition: all 0.5s ease;
+}
+#add-sales-person form select{
+    display: block;
+    width: 60%;
+    height: 30px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+
+    border-style: none;
+    transition: all 0.5s ease;
+}
+#add-sales-person form button{
+    width: 50%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #00787a ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+}
+#add-sales-person form button:hover{
+    color: #00787a;
+    background-color: #94ebd8;
+    
+}
+#add-sales-person h4{
+    margin-top: 30px;
+    color: #003d34;
+}
+
+/* end of add store attendant */
 #add-category{
     width: 100%;
 }
@@ -626,4 +680,92 @@ form button:hover{
 }
 #view-sales tr:hover{
     background-color: #fff;
+}
+/* PRODUCT DETAILS PAGE */
+#product-details-view{
+   width: 60%;
+}
+#product-details-view h4{
+    margin-top: 20px;
+ }
+.details-left-column img{
+    width: 200px;
+    height: 200px;
+}
+.details-right-column div{
+    margin: 10px;
+}
+.details-right-column h3{
+    margin: 10px;
+}
+.details-right-column button{
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 0;
+    color: #fff;
+    font-weight: bold;
+}
+ #edit{
+    background-color: #00787a;
+}
+#delete{
+    background-color: #ff0000;
+}
+#back{
+    background-color: #00787a;
+}
+/* Edit product details View */
+#edit-product-details-view{
+    width: 100%;
+}
+#edit-product-details-view form{
+    max-width: 80%;
+    padding-top: 30px;
+    text-align: center;
+}
+#edit-product-details-view form input{
+    display: block;
+    width: 60%;
+    height: 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-style: none;
+    transition: all 0.5s ease;
+}
+#edit-product-details-view form select{
+    display: block;
+    width: 60%;
+    height: 30px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+
+    border-style: none;
+    transition: all 0.5s ease;
+}
+#edit-product-details-view form button{
+    width: 25%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #00787a ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+}
+#edit-product-details-view form button:hover{
+    color: #00787a;
+    background-color: #94ebd8;
+    
+}
+#edit-product-details-view h4{
+    margin-top: 30px;
+    color: #003d34;
 }

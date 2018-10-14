@@ -25,12 +25,26 @@ const addCategoryLink = document.getElementById('add-category-link');
 const viewProducts = document.getElementById('view-products');
 const viewSales = document.getElementById('view-sales');
 const viewSalesLink = document.getElementById('view-sales-link')
+const addSalesPersonLink = document.getElementById('add-sales-person-link');
+const addSalesPerson = document.getElementById('add-sales-person');
+const productDetailsView = document.getElementById('product-details-view');
+const showDetailsBtn = document.getElementById('show-details-btn');
+const deleteBtn = document.getElementById('delete');
+const backBtn = document.getElementById('back');
+const editBtn = document.getElementById('edit');
+const editProductDetailsView = document.getElementById('edit-product-details-view');
+const saveEditBtn = document.getElementById('save-edited-product');
+const backProductDetailBtn = document.getElementById('back-product-detail');
 //Hide admin products list when the page loads
 window.addEventListener('load', () => {
     show(adminProductsList);
     hide(addProduct);
     hide(viewSales);
     hide(addCategory);
+    hide(addSalesPerson);
+    hide(productDetailsView);
+    hide(editProductDetailsView);
+    hide(editProductDetailsView);
 
 });
 //Toggle admin products when the products card is clicked on
@@ -39,34 +53,107 @@ productsCard.addEventListener('click', () => {
     hide(addCategory);
     hide(addProduct);
     hide(viewSales);
+    hide(addSalesPerson);
+    hide(editProductDetailsView);
 });
 salesCard.addEventListener('click', () => {
     show(viewSales);
     hide(adminProductsList);
     hide(addCategory);
     hide(addProduct);
+    hide(addSalesPerson);
+    hide(editProductDetailsView);
 })
 addProductLink.addEventListener('click', () => {
     hide(adminProductsList);
     hide(addCategory);
     show(addProduct);
     hide(viewSales);
+    hide(addSalesPerson);
+    hide(productDetailsView);
+    hide(editProductDetailsView);
 });
 addCategoryLink.addEventListener('click', () => {
     show(addCategory);
     hide(adminProductsList);
     hide(addProduct);
     hide(viewSales);
+    hide(addSalesPerson);
+    hide(productDetailsView);
+    hide(editProductDetailsView);
 })
 viewProducts.addEventListener('click', () => {
     hide(addProduct);
     show(adminProductsList);
     hide(addCategory);
     hide(viewSales);
+    hide(addSalesPerson);
+    hide(productDetailsView);
+    hide(editProductDetailsView);
 });
 viewSalesLink.addEventListener('click', () => {
     show(viewSales);
     hide(adminProductsList);
     hide(addCategory);
     hide(addProduct);
-})
+    hide(addSalesPerson);
+    hide(productDetailsView);
+    hide(editProductDetailsView);
+});
+addSalesPersonLink.addEventListener('click', () => {
+    show(addSalesPerson);
+    hide(viewSales);
+    hide(adminProductsList);
+    hide(addCategory);
+    hide(addProduct);
+    hide(productDetailsView);
+    hide(editProductDetailsView);
+});
+showDetailsBtn.addEventListener('click', () => {
+    show(productDetailsView);
+    hide(adminProductsList);
+    hide(viewSales);
+    hide(adminProductsList);
+    hide(addCategory);
+    hide(addProduct);
+    hide(editProductDetailsView);
+});
+backBtn.addEventListener('click', () => {
+    show(adminProductsList);
+    hide(productDetailsView);
+});
+deleteBtn.addEventListener('click', () => {
+    response = confirm('Are you sure you want to delete this Item?');
+    if (response){
+        hide(productDetailsView);
+        show(adminProductsList);
+    }
+});
+editBtn.addEventListener('click', () => {
+    show(editProductDetailsView)
+    hide(adminProductsList);
+    hide(viewSales);
+    hide(adminProductsList);
+    hide(addCategory);
+    hide(addProduct);
+    hide(productDetailsView);
+});
+saveEditBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    show(productDetailsView);
+    hide(editProductDetailsView)
+    hide(adminProductsList);
+    hide(viewSales);
+    hide(adminProductsList);
+    hide(addCategory);
+    hide(addProduct);
+});
+backProductDetailBtn.addEventListener('click', () => {
+    show(productDetailsView);
+    hide(editProductDetailsView)
+    hide(adminProductsList);
+    hide(viewSales);
+    hide(adminProductsList);
+    hide(addCategory);
+    hide(addProduct);
+});

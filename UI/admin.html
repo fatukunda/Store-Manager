@@ -38,7 +38,7 @@
                 <li><a href="#" id="add-category-link">Add product Category</a></li>
                 <li><a href="#" id="view-products">View Products</a></li>
                 <li><a href="#" id="view-sales-link">View Sales</a></li>
-                <li><a href="#">Add Sales Person</a></li>
+                <li><a href="#" id="add-sales-person-link">Add Sales Person</a></li>
             </ul>
         </div>
         <div class="summary">
@@ -86,12 +86,12 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Sugar</td>
-                            <td>100 Kgs</td>
-                            <td>UGX.4000</td>
-                            <td>Food</td>
-                            <td><button class="view-product-details-btn">View Product Details</button></td>
+                            <td>3</td>
+                            <td>Samsung 32 inch TV</td>
+                            <td>10 Pcs</td>
+                            <td>UGX.1,600,000</td>
+                            <td>Electronics</td>
+                            <td><button id="show-details-btn" class="view-product-details-btn">View Product Details</button></td>
                         </tr>
                         <tr>
                             <td>2</td>
@@ -103,9 +103,9 @@
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>Samsung 32 inch TV</td>
-                            <td>10 Pcs</td>
-                            <td>UGX.1,600,000</td>
+                            <td>Samsung Fridge</td>
+                            <td>5 Pcs</td>
+                            <td>UGX.1,800,000</td>
                             <td>Electronics</td>
                             <td><button class="view-product-details-btn">View Product Details</button></td>
                         </tr>
@@ -120,16 +120,52 @@
                     </tbody>
                 </table>
             </div>
+            <div id="product-details-view">
+                <h4> Sugar Details</h4>
+                <div class="details-left-column">
+                    <img src="./img/tv.png" alt="product image"/>
+                </div>
+                <div class="details-right-column">
+                    <h3>Category:</h3><span>Electronics</span>
+                    <h3>Quantity in stock:</h3><span>10</span> 
+                    <h3>Minimum stock allowed:</h3><span>4</span>
+                    <div>
+                        <p> A 32 inch LCD screen TV with bluetooth and wireless </p>
+                    </div>
+                    <div>
+                        <button id="back"><< Back</button>
+                        <button id="edit">Edit product</button>
+                        <button id="delete">Delete product</button>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="edit-product-details-view">
+                <form>
+                    <h4>Edit Product</h4>
+                    <input type="text" placeholder="Samsung 32 inch TV"/>
+                    <select name="product-categories">
+                        <option>Electronics</option>
+                        <option>Food</option>
+                        <option>Plastics</option>
+                    </select>
+                    <input type="number" placeholder="Quantity" value= 10/>
+                    <input type="number" placeholder="Price" value="1,600,000"/>
+                    <button id="back-product-detail"><< Back</button>
+                    <button id="save-edited-product">Save</button>
+                </form>
+            </div>
             <div id="add-product">
                 <form>
                     <h4>Add Product</h4>
-                    <input type="text" placeholder="Product name" placeholder="Category"/>
+                    <input type="text" placeholder="Product name"/>
                     <select name="product-categories">
                         <option>Electronics</option>
                         <option>Food</option>
                         <option>Plastics</option>
                     </select>
                     <input type="number" placeholder="Quantity"/>
+                    <input type="number" placeholder="Price"/>
                     <button>Save</button>
                 </form>
             </div>
@@ -137,6 +173,21 @@
                 <form>
                     <h4>Add Category</h4>
                     <input type="text" placeholder="Category"/>
+                    <button>Save</button>
+                </form>
+            </div>
+            <div id="add-sales-person">
+                <form>
+                    <h4>Add Sales Attendant</h4>
+                    <input type="text" placeholder="First name"/>
+                    <input type="text" placeholder="Last name"/>
+                    <input type="email" placeholder="user@store.com"/>
+                    <input type="text" placeholder="Username"/>
+                    <input type="password" placeholder="Password"/>
+                    <select name="permissions">
+                        <option>user</option>
+                        <option>admin</option>
+                    </select>
                     <button>Save</button>
                 </form>
             </div>
