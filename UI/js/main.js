@@ -16,32 +16,80 @@ const toggle = (elem) => {
     show(elem);
 }
 const sellBtns = document.getElementsByClassName('sell');
-const categorizeBtn = document.getElementsByClassName('categorize')[0];
-let categorizeRow = document.getElementsByClassName('toggle-categorize')[0];
-let quantityRow = document.getElementsByClassName('toggle-sell')[0];
-console.log(sellBtns, categorizeBtn);
+const categorizeBtn = document.getElementsByClassName('categorize');
+const cartBody = document.getElementById('cart-body');
+const categorizeProduct = document.getElementById('categorize-product');
+const addToCartButton = document.getElementById('add-to-cart-btn');
+const sellProductDiv = document.getElementById('sell-product');
+const shoppingCart = document.getElementById('shopping-cart');
 
-for(i =0; i<sellBtns.length; i++){
+//Fill the sell product form when the sell button is clicked
+
+for(i = 0; i<sellBtns.length; i++){
     sellBtns[i].addEventListener('click', (event) => {
-        clickedBtn = event.target;
-        hide(clickedBtn.closest(categorizeRow));
-        toggle(clickedBtn.closest(quantityRow));
-    });
-}
-// sellBtns.forEach((btn) => {
-//     btn.addEventListener('click', () => {
-//         hide(categorizeRow);
-//         toggle(quantityRow);
-//     })
-// })
-// sellBtn.addEventListener('click', () => {
-//     hide(categorizeRow);
-//     toggle(quantityRow);
-// });
+        let clickedBtn = event.target;
+        let priceElement = clickedBtn.parentElement.previousElementSibling;
+        let productNameElement = priceElement.previousElementSibling.previousElementSibling;
+        let unitPrice = document.getElementById('unit-price');
+        let productName = document.getElementById('product');
+        unitPrice.value = parseFloat(priceElement.innerText);
+        productName.value = productNameElement.innerText; 
+        show(sellProductDiv);
+        show(shoppingCart);
+        hide(categorizeProduct);
+    })
+};
+for(i = 0; i<categorizeBtn.length; i++){
+    categorizeBtn[i].addEventListener('click', (event) => {
+        event.preventDefault();
+        let clickedBtn = event.target;
+        show(categorizeProduct);
+        hide(sellProductDiv);
+        hide(shoppingCart);
+    })
+};
 
-categorizeBtn.addEventListener('click', () => {
-    hide(quantityRow);
-    toggle(categorizeRow);
+addToCartButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    const productTable = document.getElementById('product-table')
+    const item = document.getElementById('product').value;
+    const unitPrice = document.getElementById('unit-price').value;
+    const tableRow = document.createElement('tr');
+    const tableDataItem = document.createElement('td');
+    const tableDataPrice = document.createElement('td');
+    const tableDataQuantity = document.createElement('td');
+    const productQuantity = document.getElementById('product-quantity');
+
+    //Item table data
+    tableDataItem.innerText = item
+    tableRow.appendChild(tableDataItem);
+    //Quantity table data
+    tableDataQuantity.innerText = parseInt(productQuantity.value);
+    tableRow.appendChild(tableDataQuantity);
+    //Unit price table data
+    tableDataPrice.innerText = parseFloat(unitPrice) * tableDataQuantity.innerText;
+    tableDataPrice.className += 'priceTd';
+    tableRow.appendChild(tableDataPrice);
+    // Append the product row to the table
+
+    productTable.appendChild(tableRow);
+    calculateTotal()
+});
+
+const calculateTotal = () => {
+    const numberOfItems = document.getElementsByClassName('priceTd');
+    const totalTableData = document.getElementById('total');
+    let total = 0;
+    for(let i =0; i <numberOfItems.length; i++){
+        total += parseFloat(numberOfItems[i].innerText);
+    }
+    totalTableData.innerText = 'UGX. '+ total;
+}
+
+window.addEventListener('load', (event) => {
+    hide(categorizeProduct);
+    hide(shoppingCart);
 })
+
 
 

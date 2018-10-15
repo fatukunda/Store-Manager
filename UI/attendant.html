@@ -29,12 +29,17 @@
                 <div class="nav-links">
                     <a href="#">Role: Attendant</a><span> | </span>
                     <a href="#">Logged in: Kizito</a>
-                    <a href="./login.html">Logout</a>
+                    <a href="./index.html">Logout</a>
                 </div>
             </div>
     <div class="main">
         <div class="attendant-sales">
                 <h4>Your Sales Report</h4>
+                <div id="summary-report">
+                    <h5>Total sales: 2</h5>
+                    <h5>Total Products sold: 15</h5>
+                    <h5>Sold goods worth: UGX. 30,000</h5>
+                </div>
                 <table>
                     <tr>
                         <th>Date</th>
@@ -75,119 +80,69 @@
                             </tr>
                             <tr id="product-row">
                                 <td>1</td>
-                                <td>Sugar</td>
+                                <td class="product-name">Sugar</td>
                                 <td>100 Kgs</td>
-                                <td>UGX.4000</td>
-                                <td> <button class="sell">Sell</button></td>
+                                <td>4000</td>
+                                <td><button class="sell">Sell</button></td>
                                 <td><button class="categorize">Categorize</button></td>
-                            </tr>
-                            <tr class="toggle-sell">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <form>
-                                        <input type="number" placeholder="Quantity"/>
-                                        <button>Add to Cart</button>
-                                    </form>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr class="toggle-categorize">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <form>
-                                        <input type="text" placeholder="Sugar" disabled/>
-                                        <select name="product-categories">
-                                            <option value="Foods">Foods</option>
-                                            <option value="Beverages">Beverages</option>
-                                            <option value="Electronics">Electronics</option>
-                                            <option value="Clothes">Clothes</option>
-                                        </select>
-                                        <button>Categorize</button>
-                                    </form>
-                                </td>
-                                <td></td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Milk</td>
                                 <td>50 Pcs</td>
-                                <td>UGX.1600</td>
+                                <td>1600</td>
                                 <td> <button class="sell">Sell</button></td>
                                 <td><button class="categorize">Categorize</button></td>
-                            </tr>
-                            <tr class="toggle-sell">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <form>
-                                         <input type="number" placeholder="Quantity"/>
-                                        <button>Add to Cart</button>
-                                    </form>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr class="toggle-categorize">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <form>
-                                        <input type="text" placeholder="Milk" disabled/>
-                                        <select name="product-categories">
-                                            <option value="Beverages">Beverages</option>
-                                            <option value="Foods">Foods</option>
-                                            <option value="Electronics">Electronics</option>
-                                            <option value="Clothes">Clothes</option>
-                                        </select>
-                                        <button>Categorize</button>
-                                    </form>
-                                </td>
-                                <td></td>
                             </tr>
                         </table>
                     </div>
         </div>
-        <div class="shopping-cart">
-            <h4>Shopping Cart</h4>
-            <hr/>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Sugar</td>
-                        <td>2 kgs</td>
-                        <td>6000</td>
-                    </tr>
-                    <tr>
-                        <td>Rice</td>
-                        <td>1 Kg</td>
-                        <td>5000</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Total</th>
-                        <th></th>
-                        <th>UGX. 11,000</th>
-                    </tr>
-                </tfoot>
-            </table>
-            <button class="checkout">Checkout</button>
+        <div>
+            <div id="sell-product">
+                <form>
+                    <h4>Sell Product</h4>
+                    <input type="text" id="product" value="product" disabled/>
+                    <input type="number" id= "unit-price" value="0.00" disabled/>
+                    <input type="number" placeholder="quantity" id="product-quantity"/>
+                    <button id="add-to-cart-btn">Add to Cart</button>
+                </form>
+            </div>
+            <div id="categorize-product">
+                    <form>
+                        <h4>Categorize Product</h4>
+                        <input type="text" id="product" value="product" disabled/>
+                        <select name="product-categories">
+                            <option>Electronics</option>
+                            <option>Food</option>
+                        </select>
+                        <button id="save-to-category">Save</button>
+                    </form>
+                </div>
+            <div id="shopping-cart">
+                <h4>Shopping Cart</h4>
+                <hr/>
+                <table id="product-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-body">
+                        
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Total</th>
+                            <th></th>
+                            <th id="total"></th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <button class="checkout">Checkout</button>
+            </div>
+           
         </div>
     </div>
     <script src="./js/main.js"></script>

@@ -28,7 +28,6 @@ const viewSalesLink = document.getElementById('view-sales-link')
 const addSalesPersonLink = document.getElementById('add-sales-person-link');
 const addSalesPerson = document.getElementById('add-sales-person');
 const productDetailsView = document.getElementById('product-details-view');
-const showDetailsBtn = document.getElementById('show-details-btn');
 const deleteBtn = document.getElementById('delete');
 const backBtn = document.getElementById('back');
 const editBtn = document.getElementById('edit');
@@ -37,6 +36,7 @@ const saveEditBtn = document.getElementById('save-edited-product');
 const backProductDetailBtn = document.getElementById('back-product-detail');
 const attendantsList = document.getElementById('attendants-list');
 const attendantsCard = document.getElementById('attendants-card')
+const viewProductDetails = document.getElementsByClassName('view-product-details-btn');
 //Hide admin products list when the page loads
 window.addEventListener('load', () => {
     show(adminProductsList);
@@ -119,7 +119,8 @@ addSalesPersonLink.addEventListener('click', () => {
     hide(editProductDetailsView);
     hide(attendantsList);
 });
-showDetailsBtn.addEventListener('click', () => {
+for(let i=0; i<viewProductDetails.length; i++){
+    viewProductDetails[i].addEventListener('click', (event) => {
     show(productDetailsView);
     hide(adminProductsList);
     hide(viewSales);
@@ -128,7 +129,9 @@ showDetailsBtn.addEventListener('click', () => {
     hide(addProduct);
     hide(editProductDetailsView);
     hide(attendantsList);
-});
+    })
+}
+
 backBtn.addEventListener('click', () => {
     show(adminProductsList);
     hide(productDetailsView);
