@@ -16,12 +16,12 @@ const toggle = (elem) => {
     show(elem);
 }
 const sellBtns = document.getElementsByClassName('sell');
-const categorizeBtn = document.getElementsByClassName('categorize')[0];
-const categorizeRow = document.getElementsByClassName('toggle-categorize')[0];
-const quantityRow = document.getElementsByClassName('toggle-sell')[0];
-const sellProductDiv =document.getElementById('sell-product');
-const addToCartButton = document.getElementById('add-to-cart-btn');
+const categorizeBtn = document.getElementsByClassName('categorize');
 const cartBody = document.getElementById('cart-body');
+const categorizeProduct = document.getElementById('categorize-product');
+const addToCartButton = document.getElementById('add-to-cart-btn');
+const sellProductDiv = document.getElementById('sell-product');
+const shoppingCart = document.getElementById('shopping-cart');
 
 //Fill the sell product form when the sell button is clicked
 
@@ -34,8 +34,21 @@ for(i = 0; i<sellBtns.length; i++){
         let productName = document.getElementById('product');
         unitPrice.value = parseFloat(priceElement.innerText);
         productName.value = productNameElement.innerText; 
+        show(sellProductDiv);
+        show(shoppingCart);
+        hide(categorizeProduct);
     })
-}
+};
+for(i = 0; i<categorizeBtn.length; i++){
+    categorizeBtn[i].addEventListener('click', (event) => {
+        event.preventDefault();
+        let clickedBtn = event.target;
+        show(categorizeProduct);
+        hide(sellProductDiv);
+        hide(shoppingCart);
+    })
+};
+
 addToCartButton.addEventListener('click', (event) => {
     event.preventDefault();
     const productTable = document.getElementById('product-table')
@@ -73,13 +86,10 @@ const calculateTotal = () => {
     totalTableData.innerText = 'UGX. '+ total;
 }
 
-// for(i =0; i<sellBtns.length; i++){
-//     sellBtns[i].addEventListener('click', (event) => {
-//         clickedBtn = event.target;
-//         hide(categorizeRow);
-//         show(quantityRow);
-//     });
-// }
+window.addEventListener('load', (event) => {
+    hide(categorizeProduct);
+    hide(shoppingCart);
+})
 
 
 

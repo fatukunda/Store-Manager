@@ -35,6 +35,11 @@
     <div class="main">
         <div class="attendant-sales">
                 <h4>Your Sales Report</h4>
+                <div id="summary-report">
+                    <h5>Total sales: 2</h5>
+                    <h5>Total Products sold: 15</h5>
+                    <h5>Sold goods worth: UGX. 30,000</h5>
+                </div>
                 <table>
                     <tr>
                         <th>Date</th>
@@ -102,7 +107,18 @@
                     <button id="add-to-cart-btn">Add to Cart</button>
                 </form>
             </div>
-            <div class="shopping-cart">
+            <div id="categorize-product">
+                    <form>
+                        <h4>Categorize Product</h4>
+                        <input type="text" id="product" value="product" disabled/>
+                        <select name="product-categories">
+                            <option>Electronics</option>
+                            <option>Food</option>
+                        </select>
+                        <button id="save-to-category">Save</button>
+                    </form>
+                </div>
+            <div id="shopping-cart">
                 <h4>Shopping Cart</h4>
                 <hr/>
                 <table id="product-table">
