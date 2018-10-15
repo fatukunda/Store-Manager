@@ -24,8 +24,8 @@ console.log(sellBtns, categorizeBtn);
 for(i =0; i<sellBtns.length; i++){
     sellBtns[i].addEventListener('click', (event) => {
         clickedBtn = event.target;
-        hide(clickedBtn.closest(categorizeRow));
-        toggle(clickedBtn.closest(quantityRow));
+        hide(categorizeRow);
+        show(quantityRow);
     });
 }
 // sellBtns.forEach((btn) => {
