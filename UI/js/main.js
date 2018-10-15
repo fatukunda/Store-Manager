@@ -17,9 +17,23 @@ const toggle = (elem) => {
 }
 const sellBtns = document.getElementsByClassName('sell');
 const categorizeBtn = document.getElementsByClassName('categorize')[0];
-let categorizeRow = document.getElementsByClassName('toggle-categorize')[0];
-let quantityRow = document.getElementsByClassName('toggle-sell')[0];
-console.log(sellBtns, categorizeBtn);
+const categorizeRow = document.getElementsByClassName('toggle-categorize')[0];
+const quantityRow = document.getElementsByClassName('toggle-sell')[0];
+const sellProductDiv =document.getElementById('sell-product');
+
+//Fill the sell product form when the sell button is clicked
+
+for(i = 0; i<sellBtns.length; i++){
+    sellBtns[i].addEventListener('click', (event) => {
+        let clickedBtn = event.target;
+        let priceElement = clickedBtn.parentElement.previousElementSibling;
+        let productNameElement = priceElement.previousElementSibling.previousElementSibling;
+        let unitPrice = document.getElementById('unit-price');
+        let productName = document.getElementById('product')
+        unitPrice.value = parseFloat(priceElement.innerText);
+        productName.value = productNameElement.innerText; 
+    })
+}
 
 for(i =0; i<sellBtns.length; i++){
     sellBtns[i].addEventListener('click', (event) => {
@@ -28,20 +42,6 @@ for(i =0; i<sellBtns.length; i++){
         show(quantityRow);
     });
 }
-// sellBtns.forEach((btn) => {
-//     btn.addEventListener('click', () => {
-//         hide(categorizeRow);
-//         toggle(quantityRow);
-//     })
-// })
-// sellBtn.addEventListener('click', () => {
-//     hide(categorizeRow);
-//     toggle(quantityRow);
-// });
 
-categorizeBtn.addEventListener('click', () => {
-    hide(quantityRow);
-    toggle(categorizeRow);
-})
 
 

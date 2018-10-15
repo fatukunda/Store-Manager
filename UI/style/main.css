@@ -298,11 +298,13 @@ form button:hover{
 .attendant-sales h4{
     color: #fff;
     text-align: center;
+    margin-top: 30px;
 }
 .attendant-sales table{
     margin: 0 auto;
     width: 450px;
     border-collapse: collapse;
+    margin-top: 30px;
 }
 .attendant-sales th, td {
     padding: 8px;
@@ -325,7 +327,7 @@ form button:hover{
     flex: 50%;
 }
 #search{
-    width: 50%;
+    width: 70%;
     height: 30px;
     border-radius: 20px;
     border-bottom-style: none;
@@ -342,7 +344,6 @@ form button:hover{
 }
 .product-list{
     margin-left: 50px;
-    float: left;
     width: 95%;
 }
 .product-list h4{
@@ -350,7 +351,7 @@ form button:hover{
     margin: 30px;
 }
 .product-list table{
-    width: 80%;
+    width: 90%;
     border-collapse: collapse;
 }
 .product-list th, td {
@@ -362,28 +363,7 @@ form button:hover{
 .product-list tr:hover{
     background-color: #fff;
 }
-.toggle-sell{
-    display: none;
-}
-.toggle-sell input{
-    width: 100px;
-    height: 30px;
-    border: 1px solid #00787a;
-    padding-left: 15px;
-    font-size: 15px;
-}
-.toggle-sell button{
-    width: 100px;
-    height: 35px;
-    border: 0;
-    border-radius: 20px;
-    background-color: #00787a;
-    color: #fff;
-    cursor: pointer;
-}
-.toggle-categorize{
-    display: none;
-}
+
 .sell{
     width: 80px;
     height: 30px;
@@ -405,30 +385,50 @@ form button:hover{
     border: 0;
     font-weight: bold;
 }
-.toggle-categorize input{
-    width: 80px;
-    height: 30px;
-    border: 1px solid #00787a;
-    padding-left: 15px;
-    font-size: 15px;
-}
-.toggle-categorize select{
-    width: 120px;
-    height: 30px;
-    border: 1px solid #00787a;
-    padding-left: 15px;
-    font-size: 15px;
-}
-.toggle-categorize button{
-    width: 80px;
-    height: 30px;
-    border: 0;
-    border-radius: 20px;
+/* sell product form */
+#sell-product{
+    width: 100%;
     background-color: #00787a;
-    color: #fff;
+    margin: 0;
+}
+#sell-product form{
+    max-width: 80%;
+    padding-top: 30px;
+    text-align: center;
+}
+#sell-product form input{
+    display: block;
+    width: 60%;
+    height: 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-style: none;
+    transition: all 0.5s ease;
+}
+
+#sell-product form button{
+    width: 50%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
     cursor: pointer;
-    margin-top: 5px;
-    float: right;
+    border-radius: 25px;
+    background-color: #003d34 ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+#sell-product form button:hover{
+    color: #00787a;
+    background-color: #94ebd8;
+    
+}
+#sell-product h4{
+    margin-top: 30px;
+    color: #fff;
 }
 
 .shopping-cart{
