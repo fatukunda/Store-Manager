@@ -161,7 +161,8 @@ saveEditBtn.addEventListener('click', (event) => {
     hide(addProduct);
     hide(attendantsList);
 });
-backProductDetailBtn.addEventListener('click', () => {
+backProductDetailBtn.addEventListener('click', (event) => {
+    event.preventDefault();
     show(productDetailsView);
     hide(editProductDetailsView)
     hide(adminProductsList);
