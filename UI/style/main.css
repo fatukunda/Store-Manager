@@ -434,10 +434,12 @@ form button:hover{
 .shopping-cart{
     background-color: #fff;
     flex: 20%;
+    margin-top: 10px;
 }
 .shopping-cart h4{
     color: #00787a;
     text-align: center;
+    padding-top: 20px;
 }
 
 .shopping-cart table{

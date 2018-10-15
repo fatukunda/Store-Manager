@@ -92,21 +92,20 @@
                         </table>
                     </div>
         </div>
-        
-        <div class="shopping-cart">
+        <div>
             <div id="sell-product">
                 <form>
                     <h4>Sell Product</h4>
                     <input type="text" id="product" value="product" disabled/>
-                    <input type="number" placeholder="quantity"/>
                     <input type="number" id= "unit-price" value="0.00" disabled/>
-                    <button>Add to Cart</button>
+                    <input type="number" placeholder="quantity" id="product-quantity"/>
+                    <button id="add-to-cart-btn">Add to Cart</button>
                 </form>
             </div>
-            <div>
+            <div class="shopping-cart">
                 <h4>Shopping Cart</h4>
                 <hr/>
-                <table>
+                <table id="product-table">
                     <thead>
                         <tr>
                             <th>Item</th>
@@ -114,23 +113,14 @@
                             <th>Price</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Sugar</td>
-                            <td>2 kgs</td>
-                            <td>6000</td>
-                        </tr>
-                        <tr>
-                            <td>Rice</td>
-                            <td>1 Kg</td>
-                            <td>5000</td>
-                        </tr>
+                    <tbody id="cart-body">
+                        
                     </tbody>
                     <tfoot>
                         <tr>
                             <th>Total</th>
                             <th></th>
-                            <th>UGX. 11,000</th>
+                            <th id="total"></th>
                         </tr>
                     </tfoot>
                 </table>
