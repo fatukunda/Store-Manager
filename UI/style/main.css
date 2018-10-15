@@ -249,6 +249,7 @@ form button:hover{
 .details{
     flex: 60%;
     text-align: center;
+    overflow-x: auto;
 }
 .card{
     width: 200px;
@@ -294,7 +295,9 @@ form button:hover{
 .attendant-sales{
     background-color: #00787a;
     flex: 30%;
+    overflow-x: auto;
 }
+
 .attendant-sales h4{
     color: #fff;
     text-align: center;
@@ -356,6 +359,7 @@ form button:hover{
 .product-list{
     margin-left: 50px;
     width: 95%;
+    overflow-x: auto;
 }
 .product-list h4{
     color: #003d34;
@@ -374,7 +378,6 @@ form button:hover{
 .product-list tr:hover{
     background-color: #fff;
 }
-
 .sell{
     width: 80px;
     height: 30px;
@@ -502,6 +505,7 @@ form button:hover{
     background-color: #fff;
     flex: 20%;
     margin-top: 10px;
+    overflow-x: auto;
 }
 #shopping-cart h4{
     color: #00787a;
@@ -702,6 +706,7 @@ form button:hover{
 }
 #view-sales{
     width: 100%;
+    overflow-x: auto;
 }
 #view-sales form{
     width: 100%;
@@ -843,6 +848,7 @@ form button:hover{
     margin-left: 50px;
     float: left;
     width: 95%;
+    overflow-x: auto;
 }
 #attendants-list h4{
     color: #003d34;
