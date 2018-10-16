@@ -1,9 +1,9 @@
 # views.py
 
-from flask import Flask
-
+from flask import Flask, request, jsonify
+from  .products import products
 from app import app
 
-@app.route('/')
-def index():
-    return 'Hello Flask'
+@app.route('/api/v1/products')
+def get_products():
+    return jsonify(products)
