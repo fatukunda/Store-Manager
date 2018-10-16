@@ -1,5 +1,5 @@
 # views.py
-
+import uuid
 from flask import Flask, request, jsonify
 from  .products import products
 from app import app
@@ -17,3 +17,21 @@ def get_product(id):
             if product[key] == id:
                 product_list.append(product)
     return jsonify(product_list)
+
+# Add a product POST/api/v1/products
+@app.route("/api/v1/products", methods = ['POST'])
+def add_product():
+    name = request.form.get('name')
+    category = request.form.get('category')
+    quantity = request.form.get('quantity')
+    price = request.form.get('price')
+
+    product = {
+        'id': str(uuid.uuid4()),
+        'name': name,
+        'category': category,
+        'quantity': int(quantity),
+        'price': float(price)
+    }
+    products.append(product)
+    return 'Product %s created successfully' % product['name']
