@@ -1,7 +1,7 @@
 # views.py
 import uuid
 from flask import Flask, request, jsonify
-from  .products import products
+from app.products import products
 from app import app
 
 @app.route('/api/v1/products')
@@ -35,3 +35,4 @@ def add_product():
     }
     products.append(product)
     return 'Product %s created successfully' % product['name']
+    
