@@ -2,6 +2,19 @@ import uuid
 from time import ctime
 from app.models.attendant import Attendant
 
+
+class Sale:
+    def __init__(self, sales_person = '', sold_item='', quantity_sold= 0, total_price=0.00,unit_price=0.00, id = str(uuid.uuid4()), date =ctime()):
+        self.sales_person = sales_person
+        self.sold_item = sold_item
+        self.quantity_sold = quantity_sold
+        self.total_price = total_price
+        self.id = id
+        self.unit_price = unit_price
+        self.date = date
+
+
+
 # Create dummy attendants data
 # Attendant 1
 attendant1 = Attendant('Simon', 'Lee', 'lee@store.com', 'simonLee', 'user')
@@ -14,32 +27,25 @@ sales = [
     'sales_person': attendant1.username,
     'sold_item': 'Samsung 32 inch TV',
     'quantity_sold': 1,
+    'unit_price': 1600000.00,
     'total_price': 1600000.00
-},
-{
+    },
+    {
     'id': str(uuid.uuid4()),
     'date': ctime(),
     'sales_person': attendant1.username,
     'sold_item': 'Radio',
-    'quantity_sold': 1,
-    'total_price': 60000.00
-},
-{
+    'unit_price': 60000.00,
+    'quantity_sold': 2,
+    'total_price': 120000.00
+    },
+    {
     'id': str(uuid.uuid4()),
     'date': ctime(),
     'sales_person': attendant3.username,
     'sold_item': 'Sugar',
+    'unit_price': 10000.00,
     'quantity_sold': 4,
     'total_price': 50000.00
-}
+    }
 ]
-
-class Sale:
-    def __init__(self, sales_person, sold_item, quantity_sold, total_price, id = str(uuid.uuid4())):
-        self.sales_person = sales_person
-        self.sold_item = sold_item
-        self.quantity_sold = quantity_sold
-        self.total_price = total_price
-        self.id = id
-    def get_sales(self):
-        return sales
