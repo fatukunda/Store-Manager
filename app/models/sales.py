@@ -1,10 +1,17 @@
 import uuid
 from time import ctime
+from app.models.attendant import Attendant
+
+# Create dummy attendants data
+# Attendant 1
+attendant1 = Attendant('Simon', 'Lee', 'lee@store.com', 'simonLee', 'user')
+attendant2 = Attendant('Paul', 'Ryan', 'ryan@store.com', 'pRyan', 'user')
+attendant3 = Attendant('Jane', 'Logan', 'logan@store.com', 'jLogan', 'user')
 sales = [
     {
     'id': str(uuid.uuid4()),
     'date': ctime(),
-    'sales_person': 'Simon Lee',
+    'sales_person': attendant1.username,
     'sold_item': 'Samsung 32 inch TV',
     'quantity_sold': 1,
     'total_price': 1600000.00
@@ -12,7 +19,7 @@ sales = [
 {
     'id': str(uuid.uuid4()),
     'date': ctime(),
-    'sales_person': 'Paul Ryan',
+    'sales_person': attendant2.username,
     'sold_item': 'Radio',
     'quantity_sold': 1,
     'total_price': 60000.00
@@ -20,7 +27,7 @@ sales = [
 {
     'id': str(uuid.uuid4()),
     'date': ctime(),
-    'sales_person': 'Jane Logan',
+    'sales_person': attendant3.username,
     'sold_item': 'Sugar',
     'quantity_sold': 4,
     'total_price': 50000.00
