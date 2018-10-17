@@ -3,6 +3,7 @@ import os
 
 from flask import Flask
 from app.views import product_views
+from app.views import sales_views
 
 
 def create_app(test_config=None):
@@ -25,5 +26,7 @@ def create_app(test_config=None):
     
     # Register the products_view bluprint
     app.register_blueprint(product_views.bp)
+    #Register the sales_view blueprint
+    app.register_blueprint(sales_views.bp)
 
     return app
