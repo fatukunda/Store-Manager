@@ -21,18 +21,18 @@ attendants = [
     },
     {
     'id': str(uuid.uuid4()),
-    'first_name': 'Simon',
-    'last_name': 'Lee',
-    'email': 'lee@store.com',
-    'username': 'simonLee',
+    'first_name': 'Paul',
+    'last_name': 'Ryan',
+    'email': 'ryan@store.com',
+    'username': 'pRyan',
     'user_type': 'user'
     },
     {
     'id': str(uuid.uuid4()),
-    'first_name': 'Simon',
-    'last_name': 'Lee',
-    'email': 'lee@store.com',
-    'username': 'simonLee',
+    'first_name': 'Jane',
+    'last_name': 'Logan',
+    'email': 'logan@store.com',
+    'username': 'jLogan',
     'user_type': 'user'
     }
 ]

@@ -19,7 +19,7 @@ sales = [
 {
     'id': str(uuid.uuid4()),
     'date': ctime(),
-    'sales_person': attendant2.username,
+    'sales_person': attendant1.username,
     'sold_item': 'Radio',
     'quantity_sold': 1,
     'total_price': 60000.00

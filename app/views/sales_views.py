@@ -2,6 +2,7 @@ import uuid
 from flask import Flask, Blueprint, request, jsonify
 from app.models.products import products
 from app.models.sales import sales
+from app.models.attendant import attendants
 
 
 #  Set up a blueprint for the sales views
@@ -35,4 +36,12 @@ def attendant_get_sales(username):
 # Get a single sale made by a specific attendant
 @bp.route('attendants/<username>/sales/<id>')
 def attendant_get_single_sale(username, id):
-    pass
+    sale_list = []
+    for attendant in attendants:
+        for key in attendant:
+            if attendant[key] == username:
+                for sale in sales:
+                    for key in sale:
+                        if sale[key] == id:
+                            sale_list.append(sale)
+    return jsonify(sale_list)
