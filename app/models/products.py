@@ -1,4 +1,14 @@
 import uuid
+
+class Product:
+    def __init__(self, name, category, quantity, price, id= str (uuid.uuid4())):
+        self.name = name
+        self.category = category
+        self.quantity = quantity
+        self.price = price
+        self.id = id
+
+"""Dummy products list"""
 products = [
     {
     'id': str(uuid.uuid4()),

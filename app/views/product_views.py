@@ -10,6 +10,7 @@ bp = Blueprint('product_views', __name__, url_prefix='/api/v1')
 def get_products():
     return jsonify(products)
 
+
 #Get a single product details
 @bp.route('/products/<id>')
 def get_single_product(id):
@@ -19,3 +20,22 @@ def get_single_product(id):
             if product[key] == id:
                 product_list.append(product)
     return jsonify(product_list)
+=======
+# Add a new product
+@bp.route('admin/products', methods=['POST'])
+def add_product():
+    name = request.form.get('name')
+    category = request.form.get('category')
+    quantity = request.form.get('quantity')
+    price = request.form.get('price')
+
+    product = {
+        'id': str(uuid.uuid4()),
+        'name': name,
+        'category': category,
+        'quantity': int(quantity),
+        'price': float(price)
+    }
+    products.append(product)
+    return 'Product %s created successfully' % product['name']
+
