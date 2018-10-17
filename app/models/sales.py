@@ -13,13 +13,13 @@ class Sale:
         self.unit_price = unit_price
         self.date = date
 
-
-
 # Create dummy attendants data
-# Attendant 1
+# Attendants
 attendant1 = Attendant('Simon', 'Lee', 'lee@store.com', 'simonLee', 'user')
 attendant2 = Attendant('Paul', 'Ryan', 'ryan@store.com', 'pRyan', 'user')
 attendant3 = Attendant('Jane', 'Logan', 'logan@store.com', 'jLogan', 'user')
+
+# Create dummy sales data
 sales = [
     {
     'id': str(uuid.uuid4()),

@@ -53,13 +53,12 @@ def make_sale(username):
     for attendant in attendants:
         for key in attendant:
             if attendant[key] == username:
-            
                 sold_item = request.form.get('sold_item')
                 quantity_sold = request.form.get('quantity_sold')
                 unit_price = request.form.get('unit_price')
                 total_price = request.form.get('total_price')
                 sale = Sale(attendant['username'], sold_item, quantity_sold, total_price, unit_price)
-                mysale = {
+                saleInfo = {
                     'date':sale.date,
                     'id': sale.id,
                     'quantity_sold':int(sale.quantity_sold),
@@ -68,5 +67,5 @@ def make_sale(username):
                     'total_price':float(sale.total_price),
                     'unit_price':float(sale.unit_price)
                 }
-                sales.append(mysale)
+                sales.append(saleInfo)
     return 'Sale successfully made'
