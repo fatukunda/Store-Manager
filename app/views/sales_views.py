@@ -11,7 +11,10 @@ bp = Blueprint('sales_views', __name__, url_prefix='/api/v1')
 # Get all sales by the admin
 @bp.route('/admin/sales')
 def get_sales():
-    return jsonify(sales)
+    if len(sales) > 0:
+        return jsonify(sales)
+    else:
+        return 'No sales found'
 
 # Get a single sale by admin
 @bp.route('/admin/sales/<id>')
