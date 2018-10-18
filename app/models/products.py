@@ -10,7 +10,7 @@ class Product:
 
 """Dummy products list"""
 products = [
-    {
+{
     'id': str(uuid.uuid4()),
     'name': 'Samsung 32 inch Tv',
     'category': 'Electronics', 

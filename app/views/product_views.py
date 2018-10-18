@@ -1,7 +1,7 @@
 # product_views.py
 import uuid
 from flask import Flask, Blueprint, request, jsonify
-from app.models.products import products
+from app.models.products import products, Product
 
 bp = Blueprint('product_views', __name__, url_prefix='/api/v1')
 
@@ -10,8 +10,7 @@ bp = Blueprint('product_views', __name__, url_prefix='/api/v1')
 def get_products():
     return jsonify(products)
 
-
-#Get a single product details
+# Get a single product
 @bp.route('/products/<id>')
 def get_single_product(id):
     product_list = []
@@ -20,8 +19,8 @@ def get_single_product(id):
             if product[key] == id:
                 product_list.append(product)
     return jsonify(product_list)
-=======
-# Add a new product
+
+# Add a product to the inventory
 @bp.route('admin/products', methods=['POST'])
 def add_product():
     name = request.form.get('name')
@@ -29,13 +28,13 @@ def add_product():
     quantity = request.form.get('quantity')
     price = request.form.get('price')
 
-    product = {
-        'id': str(uuid.uuid4()),
-        'name': name,
-        'category': category,
-        'quantity': int(quantity),
-        'price': float(price)
+    product = Product(name, category, quantity, price)
+    product_details = {
+        'id': product.id,
+        'name': product.name,
+        'category': product.category,
+        'quantity': int(product.quantity),
+        'price': float(product.price)
     }
-    products.append(product)
-    return 'Product %s created successfully' % product['name']
-
+    products.append(product_details)
+    return 'Product %s created successfully' % product.name
