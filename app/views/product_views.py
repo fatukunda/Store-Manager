@@ -40,8 +40,8 @@ def add_product():
         'id': product.id,
         'name': product.name,
         'category': product.category,
-        'quantity': int(product.quantity),
-        'price': float(product.price)
+        'quantity': product.quantity,
+        'price': product.price
     }
     products.append(product_details)
     return 'Product %s created successfully' % product.name
