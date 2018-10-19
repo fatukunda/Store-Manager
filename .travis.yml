@@ -12,9 +12,7 @@ install:
 # command to run tests
 script:
   - pytest
-  - codeclimate-test-reporter --file .coverage
   
-
 after_success:
   - codecov
   - coveralls
