@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="./style/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+</head>
+<body>
+    <section class="login">
+        <div class="navbar">
+        <img src="./img/logo.png"/>
+        <hr/>
+        </div>
+        <div class="sign-in">
+            <h4>Sign In</h4>
+        </div>
+        <div class="login-form">
+            <form action="submit" id="form-login">
+                <input type="text" id="username" placeholder="Username" required/>
+                <input type="password" id="password" placeholder="Password" required/>
+                <p class="forgot-user"><a href="#">Forgot username/password?</a></p>
+                <button id="login-btn">Log In</button>
+                <p class="no-account">Don't have an account?</p>
+                <p class="contact-admin"><a href="#">Contact Admin</a></p>
+            </form>
+        </div>
+        <div>
+            <hr/>
+        </div>
+        
+    </section>
+    <script src="./js/login.js"></script>
+</body>
+</html>

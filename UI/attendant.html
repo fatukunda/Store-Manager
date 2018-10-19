@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Store Attendant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./style/main.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+</head>
+<body>
+        <div class="nav">
+                <div class="nav-header">
+                    <img src="./img/logo-admin.png"/>
+                    <div class="nav-title">
+                        <h3 class="brand">Store Manager</h3>
+                    </div>
+                </div>
+                <div class="nav-btn">
+                    <label for="nav-check">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                </div>
+                <input type="checkbox" id="nav-check">
+                <div class="nav-links">
+                    <a href="#">Role: Attendant</a><span> | </span>
+                    <a href="#">Logged in: Kizito</a>
+                    <a href="./index.html">Logout</a>
+                </div>
+            </div>
+    <div class="main">
+        <div class="attendant-sales">
+                <h4>Your Sales Report</h4>
+                <div id="summary-report">
+                    <h5>Total sales: 2</h5>
+                    <h5>Total Products sold: 15</h5>
+                    <h5>Sold goods worth: UGX. 30,000</h5>
+                </div>
+                <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr>
+                        <td>10. July. 2018</td>
+                        <td>Deodorant</td>
+                        <td>1</td>
+                        <td>UGX 10,000</td>
+                    </tr>
+                     <tr>
+                        <td>10. July. 2018</td>
+                        <td>Olive Oil</td>
+                        <td>1</td>
+                        <td>UGX 20,000</td>
+                    </tr>
+                </table>
+        </div>
+        <div class="products">
+                <div class="search-item">
+                    <form>
+                        <input type="text" id="search" placeholder="Search Product"/>
+                    </form>
+                </div>
+                <div class="product-list">
+                        <h4>Product Inventory</h4>
+                        <table>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Sell</th>
+                                <th>Categorize</th> 
+                            </tr>
+                            <tr id="product-row">
+                                <td>1</td>
+                                <td class="product-name">Sugar</td>
+                                <td>100 Kgs</td>
+                                <td>4000</td>
+                                <td><button class="sell">Sell</button></td>
+                                <td><button class="categorize">Categorize</button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Milk</td>
+                                <td>50 Pcs</td>
+                                <td>1600</td>
+                                <td> <button class="sell">Sell</button></td>
+                                <td><button class="categorize">Categorize</button></td>
+                            </tr>
+                        </table>
+                    </div>
+        </div>
+        <div>
+            <div id="sell-product">
+                <form>
+                    <h4>Sell Product</h4>
+                    <input type="text" id="product" value="product" disabled/>
+                    <input type="number" id= "unit-price" value="0.00" disabled/>
+                    <input type="number" placeholder="quantity" id="product-quantity"/>
+                    <button id="add-to-cart-btn">Add to Cart</button>
+                </form>
+            </div>
+            <div id="categorize-product">
+                    <form>
+                        <h4>Categorize Product</h4>
+                        <input type="text" id="product" value="product" disabled/>
+                        <select name="product-categories">
+                            <option>Electronics</option>
+                            <option>Food</option>
+                        </select>
+                        <button id="save-to-category">Save</button>
+                    </form>
+                </div>
+            <div id="shopping-cart">
+                <h4>Shopping Cart</h4>
+                <hr/>
+                <table id="product-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-body">
+                        
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Total</th>
+                            <th></th>
+                            <th id="total"></th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <button class="checkout">Checkout</button>
+            </div>
+           
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+</html>

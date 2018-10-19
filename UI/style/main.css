@@ -1,0 +1,881 @@
+/* GENERAL STYLES */
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #d2d6a8;
+}
+h1, h2, h3, h4, h5, h6, a {
+    margin:0; padding:0;
+  }
+
+/* LOGIN FORM STYLES */
+.login {
+    max-width: 500px;
+    margin: 0 auto;
+}
+.navbar img{
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    display: block;
+}
+.login hr{
+    width: 40%;
+    background-color: #00787a;
+    height: 1px;
+    border: 0;
+ 
+}
+.sign-in{
+    max-width: 500px;
+    height: 100px;
+    line-height: 100px;
+    margin: 0 auto;
+    background-color: #00787a ;
+    border-radius: 15px 15px 0 0;
+    text-align: center;
+    box-shadow: 5px 5px 5px #888888
+}
+.sign-in h4{
+    color: #fff;
+    font-size: 20px;
+}
+.login-form{
+    max-width: 500px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: #003d34 ;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 5px 5px 5px #888888;
+}
+.login-form form{
+    max-width: 500px;
+    padding-top: 30px;
+    text-align: center;
+}
+.login-form input{
+    display: block;
+    width: 60%;
+    height: 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-radius: 25px;
+    border-style: none;
+    transition: all 0.5s ease;
+
+}
+.login-form input:focus{
+    width:70%;
+}
+.login-form button{
+    width: 80%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #00787a ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+}
+form button:hover{
+    color: #00787a;
+    background-color: #94ebd8;
+    
+}
+.no-account{
+    margin-top: 60px;
+    color: #fff;
+}
+.no-account a{
+    color: #fff;
+    text-decoration: none;
+}
+.forgot-user a{
+    text-decoration: none;
+    color: #fff;
+    
+    
+}
+.forgot-user a:hover{
+    color: #94ebd8;
+}
+.contact-admin a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #94ebd8;
+}
+.contact-admin a:hover{
+    color: #fff;
+}
+/* ADMINISTRATOR PANEL */
+
+.nav {
+    height: 100px;
+    width: 100%;
+    position: relative;
+    background-color: #003d34;
+  }
+  .nav img{
+    width: 90px;
+    height: 90px;
+    float: left;
+  }
+  .brand{
+    display: inline-block;
+    color: #fff;
+    font-size: 20px;
+    position: relative;
+    top: 20px;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+}
+  
+  .nav > .nav-header {
+    display: inline;
+  }
+  
+  .nav > .nav-header > .nav-title {
+    display: inline-block;
+    font-size: 22px;
+    color: #fff;
+    padding: 10px 10px 10px 10px;
+  }
+  
+  .nav > .nav-btn {
+    display: none;
+  }
+  
+  .nav > .nav-links {
+    display: inline;
+    float: right;
+    font-size: 18px;
+  }
+  
+  .nav > .nav-links > a {
+    display: inline-block;
+    padding: 13px 10px 13px 10px;
+    text-decoration: none;
+    color: #efefef;
+  }
+  
+  .nav > .nav-links > a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav > #nav-check {
+    display: none;
+  }
+  
+  @media (max-width:600px) {
+    .nav > .nav-btn {
+      display: inline-block;
+      position: absolute;
+      right: 0px;
+      top: 20px;
+    }
+    .nav > .nav-btn > label {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      padding: 13px;
+    }
+    .nav > .nav-btn > label:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .nav > .nav-btn > label > span {
+      display: block;
+      width: 25px;
+      height: 10px;
+      border-top: 2px solid #eee;
+    }
+    .nav > .nav-links {
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-color:#003d34;
+      height: 10px;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 100px;
+      left: 0px;
+    }
+    .nav > .nav-links > a {
+      display: block;
+      width: 100%;
+    }
+    .nav > #nav-check:not(:checked) + .nav-links {
+      height: 0px;
+    }
+    .nav > #nav-check:checked + .nav-links {
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+    }
+  }
+
+/* QUICK NAVIGATION */
+.main{
+    display: flex;
+    flex-wrap: wrap;
+}
+.quick-nav{
+    flex: 10%;
+    background-color: #94ebd8;
+}
+.quick-nav ul{
+    margin: 0;
+    padding-top: 20px;
+    list-style-type: circle;
+}
+.quick-nav li{
+   padding: 12px;
+}
+.quick-nav li a{
+    color: #00787a;
+}
+.quick-nav li a:hover{
+    color: #003d34;
+}
+/* SUMMARY SECTION */
+.summary{
+    flex: 10%;
+    background-color: #00787a;
+}
+.details{
+    flex: 60%;
+    text-align: center;
+    overflow-x: auto;
+}
+.card{
+    width: 200px;
+    border: 1px solid #94ebd8;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin:10px;
+    transition: all 0.5s ease;
+}
+.card:hover{
+    width: 250px;
+}
+.card-header {
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    border-bottom: 1px solid #94ebd8;
+    background-color: #003d34;
+    padding: 5px 10px;
+  }
+  .card-main {
+    display: flex;              
+    flex-direction: column;     
+    justify-content: center;    
+    align-items: center;       
+    padding: 15px 0;           
+  }
+  .card i {
+    font-size: 36px;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+  .main-description {
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  /* Attendant Profile */
+.attendant-sales{
+    background-color: #00787a;
+    flex: 30%;
+    overflow-x: auto;
+}
+
+.attendant-sales h4{
+    color: #fff;
+    text-align: center;
+    margin-top: 30px;
+}
+.attendant-sales table{
+    margin: 0 auto;
+    width: 450px;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+.attendant-sales th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.attendant-sales tr:hover {
+    background-color:#f5f5f5;
+}
+.attendant-sales tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.attendant-sales th {
+    background-color: #4CAF50;
+    color: white;
+}
+#summary-report{
+    margin: 30px;
+    background-color: #94ebd8;
+    color: #003d34;
+    font-size: 18px;
+    height: 100px;
+}
+#summary-report h5{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+/* Products section */
+.products{
+    /* background-color: #d2d6a8; */
+    flex: 50%;
+}
+#search{
+    width: 70%;
+    height: 30px;
+    border-radius: 20px;
+    border-bottom-style: none;
+    border: 0;
+    padding-left: 30px;
+    color: #00787a;
+    transition: all 0.5s ease;
+}
+#search:focus{
+    width: 600px;
+}
+.search-item{
+    margin: 20px;
+}
+.product-list{
+    margin-left: 50px;
+    width: 95%;
+    overflow-x: auto;
+}
+.product-list h4{
+    color: #003d34;
+    margin: 30px;
+}
+.product-list table{
+    width: 90%;
+    border-collapse: collapse;
+}
+.product-list th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #003d34;
+    color: #003d34;
+}
+.product-list tr:hover{
+    background-color: #fff;
+}
+.sell{
+    width: 80px;
+    height: 30px;
+    background-color: #00787a;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 20px;
+    border: 0;
+    font-weight: bold;
+}
+.categorize{
+    width: 90px;
+    height: 30px;
+    background-color: #00787a;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 0;
+    font-weight: bold;
+}
+/* sell product form */
+#sell-product{
+    width: 100%;
+    background-color: #00787a;
+    margin: 0;
+}
+#sell-product form{
+    max-width: 80%;
+    padding-top: 30px;
+    text-align: center;
+}
+#sell-product form input{
+    display: block;
+    width: 60%;
+    height: 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-style: none;
+    transition: all 0.5s ease;
+}
+
+#sell-product form button{
+    width: 50%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #003d34 ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+#sell-product form button:hover{
+    color: #00787a;
+    background-color: #94ebd8;
+    
+}
+#sell-product h4{
+    margin-top: 30px;
+    color: #fff;
+}
+/* Categorize product */
+#categorize-product{
+    width: 100%;
+    background-color: #00787a;
+    margin: 0;
+}
+#categorize-product form{
+    max-width: 80%;
+    padding-top: 30px;
+    text-align: center;
+}
+#categorize-product form input{
+    display: block;
+    width: 60%;
+    height: 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-style: none;
+    transition: all 0.5s ease;
+}
+
+#categorize-product form button{
+    width: 50%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #003d34 ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+#categorize-product form button:hover{
+    color: #00787a;
+    background-color: #94ebd8;
+    
+}
+#categorize-product h4{
+    margin-top: 30px;
+    color: #fff;
+}
+#categorize-product select{
+    display: block;
+    width: 60%;
+    height: 30px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-style: none;
+    transition: all 0.5s ease;
+}
+
+#shopping-cart{
+    background-color: #fff;
+    flex: 20%;
+    margin-top: 10px;
+    overflow-x: auto;
+}
+#shopping-cart h4{
+    color: #00787a;
+    text-align: center;
+    padding-top: 20px;
+}
+
+#shopping-cart table{
+    margin: 0 auto;
+    width: 300px;
+    border-collapse: collapse;
+}
+#shopping-cart th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+#shopping-cart tr:hover {
+    background-color:#f5f5f5;
+}
+#shopping-cart tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+#shopping-cart th {
+    background-color: #00787a;
+    color: #fff;
+}
+#shopping-cart tfoot{
+    background-color: #00787a;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+}
+.checkout{
+    width: 100px;
+    height: 30px;
+    float: right;
+    margin: 30px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 0;
+}
+/* Admin add product */
+#add-product{
+    width: 100%;
+}
+#add-product form{
+    max-width: 80%;
+    padding-top: 30px;
+    text-align: center;
+}
+#add-product form input{
+    display: block;
+    width: 60%;
+    height: 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-style: none;
+    transition: all 0.5s ease;
+}
+#add-product form select{
+    display: block;
+    width: 60%;
+    height: 30px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+
+    border-style: none;
+    transition: all 0.5s ease;
+}
+#add-product form button{
+    width: 50%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #00787a ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+}
+#add-product form button:hover{
+    color: #00787a;
+    background-color: #94ebd8;
+    
+}
+#add-product h4{
+    margin-top: 30px;
+    color: #003d34;
+}
+/* Add store attendant */
+#add-sales-person{
+    width: 100%;
+}
+#add-sales-person form{
+    max-width: 80%;
+    padding-top: 30px;
+    text-align: center;
+}
+#add-sales-person form input{
+    display: block;
+    width: 60%;
+    height: 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-style: none;
+    transition: all 0.5s ease;
+}
+#add-sales-person form select{
+    display: block;
+    width: 60%;
+    height: 30px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+
+    border-style: none;
+    transition: all 0.5s ease;
+}
+#add-sales-person form button{
+    width: 50%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #00787a ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+}
+#add-sales-person form button:hover{
+    color: #00787a;
+    background-color: #94ebd8;
+    
+}
+#add-sales-person h4{
+    margin-top: 30px;
+    color: #003d34;
+}
+
+/* end of add store attendant */
+#add-category{
+    width: 100%;
+}
+
+#add-category form{
+    max-width: 80%;
+    padding-top: 30px;
+    text-align: center;
+}
+#add-category input{
+    display: block;
+    width: 60%;
+    height: 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-style: none;
+    transition: all 0.5s ease;
+}
+#add-category form button{
+    width: 60%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #00787a ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+}
+
+
+.view-product-details-btn {
+    width: 150px;
+    height: 40px;
+    background-color: #003d34;
+    color: #fff;
+    border: 0;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#view-sales{
+    width: 100%;
+    overflow-x: auto;
+}
+#view-sales form{
+    width: 100%;
+    padding-top: 30px;
+    text-align: center;
+}
+#view-sales select{
+    width: 50%;
+    height: 30px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-style: none;
+    border-radius: 25px;
+    transition: all 0.5s ease;
+}
+#view-sales form button{
+    width: 20%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #00787a ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+}
+#view-sales h4{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #003d34;
+}
+#view-sales table{
+    width: 90%;
+    border-collapse: collapse;
+    margin-left: 20px;
+}
+#view-sales th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #003d34;
+    color: #003d34;
+}
+#view-sales tr:hover{
+    background-color: #fff;
+}
+/* PRODUCT DETAILS PAGE */
+#product-details-view{
+   width: 60%;
+}
+#product-details-view h4{
+    margin-top: 20px;
+ }
+.details-left-column img{
+    width: 200px;
+    height: 200px;
+}
+.details-right-column div{
+    margin: 10px;
+}
+.details-right-column h3{
+    margin: 10px;
+}
+.details-right-column button{
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 0;
+    color: #fff;
+    font-weight: bold;
+}
+ #edit{
+    background-color: #00787a;
+}
+#delete{
+    background-color: #ff0000;
+}
+#back{
+    background-color: #00787a;
+}
+/* Edit product details View */
+#edit-product-details-view{
+    width: 100%;
+}
+#edit-product-details-view form{
+    max-width: 80%;
+    padding-top: 30px;
+    text-align: center;
+}
+#edit-product-details-view form input{
+    display: block;
+    width: 60%;
+    height: 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+    border-style: none;
+    transition: all 0.5s ease;
+}
+#edit-product-details-view form select{
+    display: block;
+    width: 60%;
+    height: 30px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 4px 4px;
+    margin-top: 30px;
+
+    border-style: none;
+    transition: all 0.5s ease;
+}
+#edit-product-details-view form button{
+    width: 25%;
+    text-align: center;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #00787a ;
+    color: #fff;
+    border-style: none;
+    text-transform: uppercase;
+}
+#edit-product-details-view form button:hover{
+    color: #00787a;
+    background-color: #94ebd8;
+    
+}
+#edit-product-details-view h4{
+    margin-top: 30px;
+    color: #003d34;
+}
+/* Store attendants list view */
+#attendants-list{
+    margin-left: 50px;
+    float: left;
+    width: 95%;
+    overflow-x: auto;
+}
+#attendants-list h4{
+    color: #003d34;
+    margin: 30px;
+}
+#attendants-list table{
+    width: 80%;
+    border-collapse: collapse;
+}
+#attendants-list th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #003d34;
+    color: #003d34;
+}
+#attendants-list tr:hover{
+    background-color: #fff;
+}
+#attendants-list table button{
+    width: 120px;
+    height: 40px;
+    border: 0;
+    border-radius: 30px;
+    background-color: #003d34;
+    color: #fff;
+    cursor: pointer;
+}
+#attendants-list table button:hover{
+    background-color: #00787a;
+}
