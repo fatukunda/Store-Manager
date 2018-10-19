@@ -11,7 +11,9 @@ def get_products():
     if len(products) > 0:
         return jsonify(products)
     else:
-        return 'No products found. Please add some products'
+        return jsonify({
+            'message': 'No products found. Please add some products'
+        })
 
 # Get a single product
 @bp.route('/products/<id>')

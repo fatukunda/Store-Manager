@@ -14,7 +14,7 @@ def get_sales():
     if len(sales) > 0:
         return jsonify(sales)
     else:
-        return 'No sales found'
+        return jsonify({'message': 'No sales found'})
 
 # Get a single sale by admin
 @bp.route('/admin/sales/<id>')

@@ -30,5 +30,5 @@ products = [
     'category': 'Computers', 
     'quantity': 7,
     'price': 2500000
-},
+}
 ]
