@@ -43,7 +43,8 @@ def test_get_single_product_returns_a_product(client):
         assert res.status_code == 200
         assert json_of_response(res)
         assert len(json_of_response(res)) == 1
-
+        
+# Test POST/api/v1/admin/products
 def test_add_product_adds_a_product(client):
     product = Product('17 inch Toshiba Laptop', 'Laptops', 10, 1600000.00)
     with client:

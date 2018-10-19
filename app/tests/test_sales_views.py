@@ -50,21 +50,22 @@ def test_get_single_sale_for_attendant(client):
         assert json_of_response(res)
         assert len(json_of_response(res)) == 1
 
-
-# def test_add_product_adds_a_product(client):
-#     product = Product('17 inch Toshiba Laptop', 'Laptops', 10, 1600000.00)
-#     with client:
-#         number_of_products = len(products)
-#         res = client.post('api/v1/admin/products', data = json.dumps(dict(
-#             id = product.id,
-#             name = product.name,
-#             category = product.category,
-#             quantity = product.quantity,
-#             price = product.quantity
-
-#         )) , content_type ='application/json')
-#         assert product.id in products[3]['id']
-#         assert res.status_code == 200
-#         assert len(products) > number_of_products
+# Test POST/api/v1/attendant/<username>/sales
+def test_add_sale_adds_a_sale(client):
+    sale = Sale('jjackson', '17 inch Toshiba Laptop', 1, 1600000.00, 1600000.00)
+    with client:
+        number_of_sales = len(sales)
+        res = client.post('api/v1/attendants/<username>/sales', data = json.dumps(dict(
+            date = sale.date,
+            id = sale.id,
+            quantity_sold = sale.quantity_sold,
+            sales_person = sale.sales_person,
+            sold_tem = sale.sold_item,
+            total_price = sale.total_price,
+            unit_price = sale.unit_price
+        )) , content_type ='application/json')
+        assert sale.id in sales[3]['id']
+        assert res.status_code == 200
+        assert len(sales) > number_of_sales
         
             
