@@ -26,3 +26,11 @@ def test_get_products_returns_all_products(client):
         res = client.get('/api/v1/products')
         assert res.status_code == 200
         assert json_of_response(res)
+        
+# test GET/api/v1/products/<id>    
+def test_get_single_product_returns_a_product(client):
+    with client:
+        res = client.get('/api/v1/products/<id>')
+        assert res.status_code == 200
+        assert json_of_response(res)
+        assert len(json_of_response(res)) == 1
