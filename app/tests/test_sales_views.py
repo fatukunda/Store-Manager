@@ -21,21 +21,27 @@ def json_of_response(response):
     res =  json.loads(response.data.decode('utf8'))
     return [res]
 
-# test GET/api/v1/admin/sales
+# Test GET/api/v1/admin/sales
 def test_get_sales_returns_all_sales(client):
     with client:
         res = client.get('/api/v1/admin/sales')
         assert res.status_code == 200
         assert json_of_response(res)
 
-# test GET/api/v1/admin/sales/<id>    
+# Test GET/api/v1/admin/sales/<id>    
 def test_get_single_sale_returns_a_sale(client):
     with client:
         res = client.get('/api/v1/admin/sales/<id>')
         assert res.status_code == 200
         assert json_of_response(res)
         assert len(json_of_response(res)) == 1
-        
+# Test GET/api/v1/attendants/<username>/sales
+def test_attendant_get_sales(client):
+    with client:
+        res = client.get('api/v1/attendants/<username>/sales')
+        assert res.status_code == 200
+        assert json_of_response(res)
+
 
 # def test_add_product_adds_a_product(client):
 #     product = Product('17 inch Toshiba Laptop', 'Laptops', 10, 1600000.00)
