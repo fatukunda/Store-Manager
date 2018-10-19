@@ -1,4 +1,4 @@
-from flask import request,jsonify, json
+from flask import request, json
 import pytest
 from app.models.products import products, Product
 from app import app
