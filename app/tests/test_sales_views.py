@@ -28,13 +28,14 @@ def test_get_sales_returns_all_sales(client):
         assert res.status_code == 200
         assert json_of_response(res)
 
-# # test GET/api/v1/products/<id>    
-# def test_get_single_product_returns_a_product(client):
-#     with client:
-#         res = client.get('/api/v1/products/<id>')
-#         assert res.status_code == 200
-#         assert json_of_response(res)
-#         assert len(json_of_response(res)) == 1
+# test GET/api/v1/admin/sales/<id>    
+def test_get_single_sale_returns_a_sale(client):
+    with client:
+        res = client.get('/api/v1/admin/sales/<id>')
+        assert res.status_code == 200
+        assert json_of_response(res)
+        assert len(json_of_response(res)) == 1
+        
 
 # def test_add_product_adds_a_product(client):
 #     product = Product('17 inch Toshiba Laptop', 'Laptops', 10, 1600000.00)
