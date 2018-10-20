@@ -14,6 +14,7 @@ install:
 # command to run tests
 script:
   - pytest --cov=./
+  - coverage run app/tests
   
 after_success:
   - codecov
