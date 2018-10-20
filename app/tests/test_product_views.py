@@ -46,7 +46,9 @@ def test_get_single_product_returns_a_product(client):
         
 # Test POST/api/v1/admin/products
 def test_add_product_adds_a_product(client):
-    product = Product('17 inch Toshiba Laptop', 'Laptops', 10, 1600000.00)
+    product = Product('Laptops', 10, 1600000.00)
+    product.name = '17 inch Toshiba Laptop'
+
     with client:
         number_of_products = len(products)
         res = client.post('api/v1/admin/products', data = json.dumps(dict(

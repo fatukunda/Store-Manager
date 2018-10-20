@@ -32,12 +32,11 @@ def get_single_product(id):
 # Add a product to the inventory
 @bp.route('admin/products', methods=['POST'])
 def add_product():
-    name = request.form.get('name')
-    category = request.form.get('category')
-    quantity = request.form.get('quantity')
-    price = request.form.get('price')
-
-    product = Product(name, category, quantity, price)
+    product = Product()
+    product.name = request.form.get('name')
+    product.category = request.form.get('category')
+    product.quantity = request.form.get('quantity')
+    product.price = request.form.get('price')
     product_details = {
         'id': product.id,
         'name': product.name,

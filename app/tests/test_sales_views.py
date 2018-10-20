@@ -52,7 +52,12 @@ def test_get_single_sale_for_attendant(client):
 
 # Test POST/api/v1/attendant/<username>/sales
 def test_add_sale_adds_a_sale(client):
-    sale = Sale('jjackson', '17 inch Toshiba Laptop', 1, 1600000.00, 1600000.00)
+    sale = Sale()
+    sale.sales_person = 'jjackson'
+    sale.sold_item = '17 inch Toshiba Laptop'   
+    sale.quantity_sold = 1
+    sale.unit_price = 1600000.00
+    sale.total_price = 1600000.00 
     with client:
         number_of_sales = len(sales)
         res = client.post('api/v1/attendants/<username>/sales', data = json.dumps(dict(

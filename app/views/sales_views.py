@@ -53,15 +53,16 @@ def attendant_get_single_sale(username, id):
 # Attendant make a sale
 @bp.route('/attendants/<username>/sales', methods=['POST'])
 def make_sale(username):
-    sold_item = request.form.get('sold_item')
-    quantity_sold = request.form.get('quantity_sold')
-    unit_price = request.form.get('unit_price')
-    total_price = request.form.get('total_price')
-    sale = Sale(username, sold_item, quantity_sold, total_price, unit_price)
+    sale = Sale()
+    sale.sales_person = username
+    sale.sold_item = request.form.get('sold_item')
+    sale.quantity_sold = request.form.get('quantity_sold')
+    sale.unit_price = request.form.get('unit_price')
+    sale.total_price = request.form.get('total_price')
     saleInfo = {
         'date':sale.date,
         'id': sale.id,
-        'quantity_sold':sale.quantity_sold,
+        'quantity_sold': sale.quantity_sold,
         'sales_person': sale.sales_person,
         'sold_item': sale.sold_item,
         'total_price': sale.total_price,

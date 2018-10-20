@@ -1,9 +1,9 @@
 import uuid
 class Attendant:
-    def __init__(self, first_name ='', last_name='', email='', username='',user_type='user', id = str(uuid.uuid4())):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.email = email
+    first_name = ''
+    last_name = ''
+    email = ''
+    def __init__(self, username='',user_type='user', id = str(uuid.uuid4())):
         self.username = username
         self.user_type = user_type
         self.id = id
