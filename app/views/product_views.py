@@ -5,6 +5,13 @@ from app.models.products import products, Product
 
 bp = Blueprint('product_views', __name__, url_prefix='/api/v1')
 
+# Helper methods
+def get_product_given_param(parameter):
+    product_list = []
+    for product in products:
+        [product_list.append(product) for key in product if product[key] == parameter]
+    return jsonify(product_list)
+
 # Get all products in the store
 @bp.route('/products', methods= ['GET'])
 def get_products():
@@ -18,13 +25,8 @@ def get_products():
 # Get a single product
 @bp.route('/products/<id>')
 def get_single_product(id):
-    product_list = []
     if len(products) > 0:
-        for product in products:
-            for key in product:
-                if product[key] == id:
-                    product_list.append(product)
-        return jsonify(product_list)
+        return get_product_given_param(id)
     else:
         return 'No products were found'
   
