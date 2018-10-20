@@ -12,7 +12,7 @@ install:
   - pip install coverage
 # command to run tests
 script:
-  - pytest --with-coverage
+  - nosetests --with-coverage
   
 after_success:
   - codecov
