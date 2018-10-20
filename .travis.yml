@@ -8,11 +8,11 @@ env:
 # command to install dependencies
 install:
   - pip install -r requirements.txt
-  - pip install python-coveralls
+  - pip install pytest pytest-cov
   - pip install coverage
 # command to run tests
 script:
-  - pytest
+  - pytest --cov=./
   
 after_success:
   - codecov
