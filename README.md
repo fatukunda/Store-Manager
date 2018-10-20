@@ -1,7 +1,7 @@
 
 
 [![Build Status](https://travis-ci.org/fatukunda/Store-Manager.svg?branch=api)](https://travis-ci.org/fatukunda/Store-Manager)
-[![Coverage Status](https://coveralls.io/repos/github/fatukunda/Store-Manager/badge.svg?branch=api)](https://coveralls.io/github/fatukunda/Store-Manager?branch=api)
+[![Coverage Status](https://coveralls.io/repos/github/fatukunda/Store-Manager/badge.svg?branch=refactor)](https://coveralls.io/github/fatukunda/Store-Manager?branch=api)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4e9097febebbc2747c2a/maintainability)](https://codeclimate.com/github/fatukunda/Store-Manager/maintainability)
 [![codecov](https://codecov.io/gh/fatukunda/Store-Manager/branch/refactor/graph/badge.svg)](https://codecov.io/gh/fatukunda/Store-Manager)
 # Store-Manager App
