@@ -53,7 +53,7 @@ def test_attendant_get_sales(client):
 # Test POST/api/v1/attendant/<username>/sales
 def test_add_sale_adds_a_sale(client):
     sale = Sale()
-    sale.sales_person = 'jjackson'
+    sale.sales_person = 'jJackson'
     sale.sold_item = '17 inch Toshiba Laptop'   
     sale.quantity_sold = 1
     sale.unit_price = 1600000.00
