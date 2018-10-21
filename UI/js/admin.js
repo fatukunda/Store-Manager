@@ -8,13 +8,13 @@ const hide = (elem) => {
     elem.style.display = 'none';
 }
 //Toggle element visibility
-const toggle = (elem) => {
-    if(window.getComputedStyle(elem).display === 'block'){
-        hide(elem);
-        return;
-    }
-    show(elem);
-}
+// const toggle = (elem) => {
+//     if(window.getComputedStyle(elem).display === 'block'){
+//         hide(elem);
+//         return;
+//     }
+//     show(elem);
+// }
 const productsCard = document.getElementById('products-card');
 const salesCard = document.getElementById('sales-card');
 const adminProductsList = document.getElementsByClassName('admin-products-list')[0];
@@ -37,98 +37,54 @@ const backProductDetailBtn = document.getElementById('back-product-detail');
 const attendantsList = document.getElementById('attendants-list');
 const attendantsCard = document.getElementById('attendants-card')
 const viewProductDetails = document.getElementsByClassName('view-product-details-btn');
+
+const elements = [adminProductsList, addCategory, addProduct,viewSales, addSalesPerson,
+     productDetailsView,editProductDetailsView, attendantsList, viewProductDetails ]
+// Helper methods
+const modifyDiv = (divToModify) => {
+    elements.forEach((element) => {
+        if (element === divToModify){
+            show(element)
+        }else{
+            hide(element)
+        }
+    })
+}
+
 //Hide admin products list when the page loads
 window.addEventListener('load', () => {
-    show(adminProductsList);
-    hide(addProduct);
-    hide(viewSales);
-    hide(addCategory);
-    hide(addSalesPerson);
-    hide(productDetailsView);
-    hide(editProductDetailsView);
-    hide(editProductDetailsView);
-    hide(attendantsList);
+    modifyDiv(adminProductsList)
 
 });
-//Toggle admin products when the products card is clicked on
+
 productsCard.addEventListener('click', () => {
-    show(adminProductsList);
-    hide(addCategory);
-    hide(addProduct);
-    hide(viewSales);
-    hide(addSalesPerson);
-    hide(editProductDetailsView);
-    hide(attendantsList);
+    modifyDiv(adminProductsList)
 });
 salesCard.addEventListener('click', () => {
-    show(viewSales);
-    hide(adminProductsList);
-    hide(addCategory);
-    hide(addProduct);
-    hide(addSalesPerson);
-    hide(editProductDetailsView);
-    hide(attendantsList);
+    modifyDiv(viewSales)
+
 })
 addProductLink.addEventListener('click', () => {
-    hide(adminProductsList);
-    hide(addCategory);
-    show(addProduct);
-    hide(viewSales);
-    hide(addSalesPerson);
-    hide(productDetailsView);
-    hide(editProductDetailsView);
-    hide(attendantsList);
+    modifyDiv(addProduct)
+
 });
 addCategoryLink.addEventListener('click', () => {
-    show(addCategory);
-    hide(adminProductsList);
-    hide(addProduct);
-    hide(viewSales);
-    hide(addSalesPerson);
-    hide(productDetailsView);
-    hide(editProductDetailsView);
-    hide(attendantsList);
+    modifyDiv(addCategory);
 })
 viewProducts.addEventListener('click', () => {
-    hide(addProduct);
-    show(adminProductsList);
-    hide(addCategory);
-    hide(viewSales);
-    hide(addSalesPerson);
-    hide(productDetailsView);
-    hide(editProductDetailsView);
-    hide(attendantsList);
+    modifyDiv(adminProductsList)
+
 });
 viewSalesLink.addEventListener('click', () => {
-    show(viewSales);
-    hide(adminProductsList);
-    hide(addCategory);
-    hide(addProduct);
-    hide(addSalesPerson);
-    hide(productDetailsView);
-    hide(editProductDetailsView);
-    hide(attendantsList);
+    modifyDiv(viewSales)
 });
 addSalesPersonLink.addEventListener('click', () => {
-    show(addSalesPerson);
-    hide(viewSales);
-    hide(adminProductsList);
-    hide(addCategory);
-    hide(addProduct);
-    hide(productDetailsView);
-    hide(editProductDetailsView);
-    hide(attendantsList);
+    modifyDiv(addSalesPerson)
 });
 for(let i=0; i<viewProductDetails.length; i++){
     viewProductDetails[i].addEventListener('click', (event) => {
-    show(productDetailsView);
-    hide(adminProductsList);
-    hide(viewSales);
-    hide(adminProductsList);
-    hide(addCategory);
-    hide(addProduct);
-    hide(editProductDetailsView);
-    hide(attendantsList);
+        modifyDiv(productDetailsView)
+   
     })
 }
 
@@ -144,45 +100,16 @@ deleteBtn.addEventListener('click', () => {
     }
 });
 editBtn.addEventListener('click', () => {
-    show(editProductDetailsView)
-    hide(adminProductsList);
-    hide(viewSales);
-    hide(adminProductsList);
-    hide(addCategory);
-    hide(addProduct);
-    hide(productDetailsView);
-    hide(attendantsList);
+    modifyDiv(editProductDetailsView)
 });
 saveEditBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    show(productDetailsView);
-    hide(editProductDetailsView)
-    hide(adminProductsList);
-    hide(viewSales);
-    hide(adminProductsList);
-    hide(addCategory);
-    hide(addProduct);
-    hide(attendantsList);
+    modifyDiv(productDetailsView)
 });
 backProductDetailBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    show(productDetailsView);
-    hide(editProductDetailsView)
-    hide(adminProductsList);
-    hide(viewSales);
-    hide(adminProductsList);
-    hide(addCategory);
-    hide(addProduct);
-    hide(attendantsList);
+    modifyDiv(productDetailsView)
 });
 attendantsCard.addEventListener('click', () => {
-    show(attendantsList);
-    hide(productDetailsView);
-    hide(editProductDetailsView)
-    hide(adminProductsList);
-    hide(viewSales);
-    hide(adminProductsList);
-    hide(addCategory);
-    hide(addProduct);
-    hide(addSalesPerson);
+    modifyDiv(attendantsList)
 })

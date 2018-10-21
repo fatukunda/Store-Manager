@@ -4,21 +4,33 @@ from app.models.attendant import Attendant
 
 
 class Sale:
-    def __init__(self, sales_person = '', sold_item='', quantity_sold= 0, total_price=0.00,unit_price=0.00, id = str(uuid.uuid4()), date =ctime()):
-        self.sales_person = sales_person
-        self.sold_item = sold_item
-        self.quantity_sold = quantity_sold
-        self.total_price = total_price
+    sales_person =''
+    sold_item = ''
+    quantity_sold = 0
+    total_price = 0.00
+    unit_price = 0.00
+
+    def __init__(self, id = str(uuid.uuid4()), date =ctime()):
+       
         self.id = id
-        self.unit_price = unit_price
         self.date = date
 
 # Create dummy attendants data
-# Attendants
-attendant1 = Attendant('Simon', 'Lee', 'lee@store.com', 'simonLee', 'user')
-attendant2 = Attendant('Paul', 'Ryan', 'ryan@store.com', 'pRyan', 'user')
-attendant3 = Attendant('Jane', 'Logan', 'logan@store.com', 'jLogan', 'user')
-
+# Attendant1
+attendant1 = Attendant('simonLee', 'user')
+attendant1.email = 'lee@store.com'
+attendant1.first_name = 'Simon'
+attendant1.last_name = 'Lee'
+# Attendant 2
+attendant2 = Attendant('pRyan', 'user')
+attendant2.email = 'ryan@store.com'
+attendant2.first_name = 'Paul'
+attendant2.last_name = 'Ryan'
+# Attendant 3
+attendant3 = Attendant('jLogan', 'user')
+attendant3.email = 'logan@store.com'
+attendant3.first_name = 'Jane'
+attendant3.last_name = 'Logan'
 # Create dummy sales data
 sales = [
     {

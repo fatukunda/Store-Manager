@@ -1,8 +1,9 @@
 
 
-[![Build Status](https://travis-ci.org/fatukunda/Store-Manager.svg?branch=api)](https://travis-ci.org/fatukunda/Store-Manager)
-[![Coverage Status](https://coveralls.io/repos/github/fatukunda/Store-Manager/badge.svg?branch=api)](https://coveralls.io/github/fatukunda/Store-Manager?branch=api)
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+[![Build Status](https://travis-ci.org/fatukunda/Store-Manager.svg?branch=refactor)](https://travis-ci.org/fatukunda/Store-Manager)
+[![codecov](https://codecov.io/gh/fatukunda/Store-Manager/branch/refactor/graph/badge.svg)](https://codecov.io/gh/fatukunda/Store-Manager)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4e9097febebbc2747c2a/maintainability)](https://codeclimate.com/github/fatukunda/Store-Manager/maintainability)
+
 # Store-Manager App
 
 Store Manager is a web application that helps store owners manage sales and product inventory records. This application is meant for use in a single store. View the application [here](https://fatukunda.github.io/Store-Manager/UI/)

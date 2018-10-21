@@ -8,14 +8,14 @@ const hide = (elem) => {
     elem.style.display = 'none';
 }
 //Toggle element visibility
-const toggle = (elem) => {
-    if(window.getComputedStyle(elem).display === 'block'){
-        hide(elem);
-        return;
-    }
-    show(elem);
-}
-const sellBtns = document.getElementsByClassName('sell');
+// const toggle = (elem) => {
+//     if(window.getComputedStyle(elem).display === 'block'){
+//         hide(elem);
+//         return;
+//     }
+//     show(elem);
+// }
+const sellBtnList = document.getElementsByClassName('sell');
 const categorizeBtn = document.getElementsByClassName('categorize');
 const cartBody = document.getElementById('cart-body');
 const categorizeProduct = document.getElementById('categorize-product');
@@ -25,8 +25,8 @@ const shoppingCart = document.getElementById('shopping-cart');
 
 //Fill the sell product form when the sell button is clicked
 
-for(i = 0; i<sellBtns.length; i++){
-    sellBtns[i].addEventListener('click', (event) => {
+for(i = 0; i<sellBtnList.length; i++){
+    sellBtnList[i].addEventListener('click', (event) => {
         let clickedBtn = event.target;
         let priceElement = clickedBtn.parentElement.previousElementSibling;
         let productNameElement = priceElement.previousElementSibling.previousElementSibling;
