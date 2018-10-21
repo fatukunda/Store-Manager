@@ -11,7 +11,7 @@ bp = Blueprint('sales_views', __name__, url_prefix='/api/v1')
 
 def get_attendant(username):
     for attendant in attendants:
-       return [attendant for key in attendant if attendant[key] == username]
+       [attendant for key in attendant if attendant[key] == username]
 
 # Get all sales by the admin
 @bp.route('/admin/sales')
@@ -32,8 +32,10 @@ def attendant_get_sales(username):
 # Get a single sale made by a specific attendant
 @bp.route('/attendants/<username>/sales/<id>')
 def attendant_get_single_sale(username, id):
-    if(get_attendant(username)):
-        return search(id, sales)
+    attendant = get_attendant(username)
+    if attendant:
+        return attendant
+    return search(id, sales)
 
 
 # Attendant make a sale

@@ -43,12 +43,12 @@ def test_attendant_get_sales(client):
         assert json_of_response(res)
 
 # Test GET/api/v1/attendants/<username>/sales/<id>
-# def test_get_single_sale_for_attendant(client):
-#     with client:
-#         res = client.get('/api/v1/attendants/<username>/sales/<id>')
-#         assert res.status_code == 200
-#         assert json_of_response(res)
-#         assert len(json_of_response(res)) == 1
+def test_get_single_sale_for_attendant(client):
+    with client:
+        res = client.get('/api/v1/attendants/<username>/sales/<id>')
+        assert res.status_code == 200
+        assert json_of_response(res)
+        assert len(json_of_response(res)) == 1
 
 # Test POST/api/v1/attendant/<username>/sales
 def test_add_sale_adds_a_sale(client):
