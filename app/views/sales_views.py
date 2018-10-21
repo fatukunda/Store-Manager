@@ -5,7 +5,6 @@ from app.models.sales import sales, Sale
 from app.models.attendant import attendants
 from app.utils import search, get_collection
 
-
 #  Set up a blueprint for the sales views
 bp = Blueprint('sales_views', __name__, url_prefix='/api/v1')
 
@@ -32,9 +31,7 @@ def attendant_get_sales(username):
 # Get a single sale made by a specific attendant
 @bp.route('/attendants/<username>/sales/<id>')
 def attendant_get_single_sale(username, id):
-    attendant = get_attendant(username)
-    if attendant:
-        return attendant
+    get_attendant(username)
     return search(id, sales)
 
 
