@@ -1,7 +1,7 @@
 
 
-[![Build Status](https://travis-ci.org/fatukunda/Store-Manager.svg?branch=refactor)](https://travis-ci.org/fatukunda/Store-Manager)
-[![codecov](https://codecov.io/gh/fatukunda/Store-Manager/branch/refactor/graph/badge.svg)](https://codecov.io/gh/fatukunda/Store-Manager)
+[![Build Status](https://travis-ci.org/fatukunda/Store-Manager.svg?branch=feature)](https://travis-ci.org/fatukunda/Store-Manager)
+[![codecov](https://codecov.io/gh/fatukunda/Store-Manager/branch/feature/graph/badge.svg)](https://codecov.io/gh/fatukunda/Store-Manager)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4e9097febebbc2747c2a/maintainability)](https://codeclimate.com/github/fatukunda/Store-Manager/maintainability)
 
 # Store-Manager App
