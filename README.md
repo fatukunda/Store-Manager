@@ -46,7 +46,7 @@ The API is hosted on [heroku](https://store-manager-api-heroku.herokuapp.com) an
 
 ### Installing
 
-Installation instructions coming soon
+ ```git clone https://github.com/fatukunda/Store-Manager.git```
 
 
 ## Running the tests
