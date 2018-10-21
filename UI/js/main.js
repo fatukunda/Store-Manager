@@ -8,13 +8,13 @@ const hide = (elem) => {
     elem.style.display = 'none';
 }
 //Toggle element visibility
-const toggle = (elem) => {
-    if(window.getComputedStyle(elem).display === 'block'){
-        hide(elem);
-        return;
-    }
-    show(elem);
-}
+// const toggle = (elem) => {
+//     if(window.getComputedStyle(elem).display === 'block'){
+//         hide(elem);
+//         return;
+//     }
+//     show(elem);
+// }
 const sellBtns = document.getElementsByClassName('sell');
 const categorizeBtn = document.getElementsByClassName('categorize');
 const cartBody = document.getElementById('cart-body');

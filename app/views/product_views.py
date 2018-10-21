@@ -2,31 +2,20 @@
 import uuid
 from flask import Flask, Blueprint, request, jsonify
 from app.models.products import products, Product
+from app.utils import search, get_collection
 
 bp = Blueprint('product_views', __name__, url_prefix='/api/v1')
-
-# Helper methods
-def get_product_given_param(parameter):
-    product_list = []
-    for product in products:
-        [product_list.append(product) for key in product if product[key] == parameter]
-    return jsonify(product_list)
 
 # Get all products in the store
 @bp.route('/products', methods= ['GET'])
 def get_products():
-    if len(products) > 0:
-        return jsonify(products)
-    else:
-        return jsonify({
-            'message': 'No products found. Please add some products'
-        })
+    return get_collection(products)
 
 # Get a single product
 @bp.route('/products/<id>')
 def get_single_product(id):
     if len(products) > 0:
-        return get_product_given_param(id)
+        return  search(id, products)
     else:
         return 'No products were found'
   

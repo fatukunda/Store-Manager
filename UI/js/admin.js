@@ -8,13 +8,13 @@ const hide = (elem) => {
     elem.style.display = 'none';
 }
 //Toggle element visibility
-const toggle = (elem) => {
-    if(window.getComputedStyle(elem).display === 'block'){
-        hide(elem);
-        return;
-    }
-    show(elem);
-}
+// const toggle = (elem) => {
+//     if(window.getComputedStyle(elem).display === 'block'){
+//         hide(elem);
+//         return;
+//     }
+//     show(elem);
+// }
 const productsCard = document.getElementById('products-card');
 const salesCard = document.getElementById('sales-card');
 const adminProductsList = document.getElementsByClassName('admin-products-list')[0];

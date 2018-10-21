@@ -3,16 +3,11 @@ from flask import Flask, Blueprint, request, jsonify, json
 from app.models.products import products
 from app.models.sales import sales, Sale
 from app.models.attendant import attendants
+from app.utils import search, get_collection
 
 
 #  Set up a blueprint for the sales views
 bp = Blueprint('sales_views', __name__, url_prefix='/api/v1')
-
-def get_sales_given_param(parameter):
-    sale_list = []
-    for sale in sales:
-        [sale_list.append(sale) for key in sale if sale[key] == parameter]
-    return jsonify(sale_list)
 
 def get_attendant(username):
     for attendant in attendants:
@@ -21,27 +16,24 @@ def get_attendant(username):
 # Get all sales by the admin
 @bp.route('/admin/sales')
 def get_sales():
-    if len(sales) > 0:
-        return jsonify(sales)
-    else:
-        return jsonify({'message': 'No sales found'})
+    return get_collection(sales)
 
 
 # Get a single sale by admin
 @bp.route('/admin/sales/<id>')
 def admin_get_single_sale(id):
-   return get_sales_given_param(id)
+   return search(id, sales)
 
 # Get all sales made by a particular store attendant
 @bp.route('attendants/<username>/sales')
 def attendant_get_sales(username):
-    return get_sales_given_param(username)
+    return search(username, sales)
 
 # Get a single sale made by a specific attendant
 @bp.route('/attendants/<username>/sales/<id>')
 def attendant_get_single_sale(username, id):
     if(get_attendant(username)):
-        return get_sales_given_param(id)
+        return search(id, sales)
 
 
 # Attendant make a sale
