@@ -23,7 +23,7 @@ Store Manager is a web application that helps store owners manage sales and prod
  - Can view sales made by him/her
  - Can view a single sale made by him/her
  
-The API is hosted on [heroku](https://store-manager-api-heroku.herokuapp.com) and below are the endpoints. Remember to include ```api/v1``` at the end of the heroku url otherwise you will get a page not found error
+The API is hosted on [heroku](https://store-manager-api-heroku.herokuapp.com) and below are the endpoints. Remember to include ```api/v1``` at the end of the heroku url otherwise you will get a page not found error. Follow this [link](https://warped-shuttle-6700.postman.co/collections/5654636-42809117-6522-4714-ae18-a6dc67d9c7f4?workspace=d5a80211-8d74-4fb0-8ae1-35060aaf072f) for the API documentation
 
 | Endpoint                        | Functionality       | Notes                           |
 | --------------------------------|---------------------|---------------------------------|
