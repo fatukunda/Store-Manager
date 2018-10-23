@@ -47,6 +47,12 @@ The API is hosted on [heroku](https://store-manager-api-heroku.herokuapp.com) an
 ### Installing
 
  ```git clone https://github.com/fatukunda/Store-Manager.git```
+ 
+ ### Running the API
+ 
+ ```set FLASK_APP=app```
+ 
+ ```flask run```
 
 
 ## Running the tests
@@ -63,8 +69,6 @@ The API is hosted on [heroku](https://store-manager-api-heroku.herokuapp.com) an
 ## Authors
 
 * **Frank Atukunda** - *Initial work* - [Linkedin](https://www.linkedin.com/in/frank-atukunda/)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## Acknowledgments
 
