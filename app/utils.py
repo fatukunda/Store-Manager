@@ -10,5 +10,3 @@ def search(search_item, collection):
 def get_collection(collection):
     if len(collection) > 0:
         return jsonify(collection)
-    else:
-        return jsonify({'message': 'No collection found'})

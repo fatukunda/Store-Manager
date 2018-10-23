@@ -21,14 +21,6 @@ def json_of_response(response):
     res =  json.loads(response.data.decode('utf8'))
     return [res]
 
-def get_id(product):
-    prod = None
-    for item in products:
-        for key in item:
-            if item[key] == product.id:
-                prod = item
-    return prod.get('id')
-
 # test GET/api/v1/products
 def test_get_products_returns_all_products(client):
     with client:
