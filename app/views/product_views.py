@@ -16,8 +16,6 @@ def get_products():
 def get_single_product(id):
     if len(products) > 0:
         return  search(id, products)
-    else:
-        return 'No products were found'
   
 
 # Add a product to the inventory
