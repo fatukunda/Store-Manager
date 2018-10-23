@@ -12,8 +12,9 @@ form.addEventListener('submit', (event) => {
     }else if(username.value === 'user' && password.value === 'user'){
         window.location = './attendant.html';
     }else{
-        alert('Invalid username or password');
-        username.value ='';
-        password.value ='';
+        window.location = './admin.html';
+        // alert('Invalid username or password');
+        // username.value ='';
+        // password.value ='';
     }
 });
