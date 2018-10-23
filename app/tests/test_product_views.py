@@ -13,8 +13,8 @@ def client(request):
 
 # Helper methods
 
-def json_of_response(response):
-    """Decode json from response"""
+def json_response(response):
+    """Covert response to json"""
     res =  json.loads(response.data.decode('utf8'))
     return [res]
 
@@ -23,15 +23,15 @@ def test_get_products_returns_all_products(client):
     with client:
         res = client.get('/api/v1/products')
         assert res.status_code == 200
-        assert json_of_response(res)
+        assert json_response(res)
 
 # test GET/api/v1/products/<id>    
 def test_get_single_product_returns_a_product(client):
     with client:
         res = client.get('/api/v1/products/<id>')
         assert res.status_code == 200
-        assert json_of_response(res)
-        assert len(json_of_response(res)) == 1
+        assert json_response(res)
+        assert len(json_response(res)) == 1
         
 # Test POST/api/v1/admin/products
 def test_add_product_adds_a_product(client):

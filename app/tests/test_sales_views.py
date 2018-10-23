@@ -12,7 +12,7 @@ def client(request):
 
 
 # Helper methods
-def json_of_response(response):
+def json_response(response):
     """Decode json from response"""
     res =  json.loads(response.data.decode('utf8'))
     return [res]
@@ -22,29 +22,29 @@ def test_get_sales_returns_all_sales(client):
     with client:
         res = client.get('/api/v1/admin/sales')
         assert res.status_code == 200
-        assert json_of_response(res)
+        assert json_response(res)
 
 # Test GET/api/v1/admin/sales/<id>    
 def test_get_single_sale_returns_a_sale(client):
     with client:
         res = client.get('/api/v1/admin/sales/<id>')
         assert res.status_code == 200
-        assert json_of_response(res)
-        assert len(json_of_response(res)) == 1
+        assert json_response(res)
+        assert len(json_response(res)) == 1
 # Test GET/api/v1/attendants/<username>/sales
 def test_attendant_get_sales(client):
     with client:
         res = client.get('/api/v1/attendants/<username>/sales')
         assert res.status_code == 200
-        assert json_of_response(res)
+        assert json_response(res)
 
 # Test GET/api/v1/attendants/<username>/sales/<id>
 def test_get_single_sale_for_attendant(client):
     with client:
         res = client.get('/api/v1/attendants/<username>/sales/<id>')
         assert res.status_code == 200
-        assert json_of_response(res)
-        assert len(json_of_response(res)) == 1
+        assert json_response(res)
+        assert len(json_response(res)) == 1
 
 # Test POST/api/v1/attendant/<username>/sales
 def test_add_sale_adds_a_sale(client):
