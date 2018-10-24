@@ -1,5 +1,5 @@
 import uuid
-from flask import Flask, Blueprint, request, Response
+from flask import Blueprint, request, Response
 from app.models.sales import sales, Sale
 from app.models.attendant import attendants
 from app.utils import search, get_collection

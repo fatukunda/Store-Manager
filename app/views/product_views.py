@@ -1,6 +1,5 @@
 # product_views.py
-import uuid
-from flask import Flask, Blueprint, request, Response
+from flask import Blueprint, request, Response
 from app.models.products import products, Product
 from app.utils import search, get_collection
 
