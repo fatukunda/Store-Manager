@@ -1,8 +1,7 @@
-from flask import request, json
+from flask import json
 import pytest
 from app.models.sales import sales, Sale
 from app import app
-import uuid
 
 @pytest.fixture
 def client(request):
@@ -61,12 +60,12 @@ def test_add_sale_adds_a_sale(client):
             id = sale.id,
             quantity_sold = sale.quantity_sold,
             sales_person = sale.sales_person,
-            sold_tem = sale.sold_item,
+            sold_item = sale.sold_item,
             total_price = sale.total_price,
             unit_price = sale.unit_price
         )) , content_type ='application/json')
         assert sale.id in sales[3]['id']
-        assert res.status_code == 200
+        assert res.status_code == 201
         assert len(sales) > number_of_sales
         
             

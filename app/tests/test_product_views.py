@@ -1,8 +1,7 @@
-from flask import request, json
+from flask import json
 import pytest
 from app.models.products import products, Product
 from app import app
-import uuid
 
 @pytest.fixture
 def client(request):
@@ -49,7 +48,7 @@ def test_add_product_adds_a_product(client):
 
         )) , content_type ='application/json')
         assert product.id in products[3]['id']
-        assert res.status_code == 200
+        assert res.status_code == 201
         assert len(products) > number_of_products
         
             

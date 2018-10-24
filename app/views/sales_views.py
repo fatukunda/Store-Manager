@@ -1,6 +1,5 @@
 import uuid
-from flask import Flask, Blueprint, request, jsonify, json
-from app.models.products import products
+from flask import Flask, Blueprint, request, Response
 from app.models.sales import sales, Sale
 from app.models.attendant import attendants
 from app.utils import search, get_collection
@@ -39,11 +38,12 @@ def attendant_get_single_sale(username, id):
 @bp.route('/attendants/<username>/sales', methods=['POST'])
 def make_sale(username):
     sale = Sale()
+    request_data = request.get_json()
     sale.sales_person = username
-    sale.sold_item = request.form.get('sold_item')
-    sale.quantity_sold = request.form.get('quantity_sold')
-    sale.unit_price = request.form.get('unit_price')
-    sale.total_price = request.form.get('total_price')
+    sale.sold_item = request_data['sold_item']
+    sale.quantity_sold = request_data['quantity_sold']
+    sale.unit_price = request_data['unit_price']
+    sale.total_price = request_data['total_price']
     saleInfo = {
         'date':sale.date,
         'id': sale.id,
@@ -54,4 +54,4 @@ def make_sale(username):
         'unit_price':sale.unit_price
     }
     sales.append(saleInfo)
-    return 'Sale %s made successfully' % sale.sold_item
+    return Response('Sale %s made successfully' % sale.sold_item, status=201) 

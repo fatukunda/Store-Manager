@@ -1,6 +1,6 @@
 # product_views.py
 import uuid
-from flask import Flask, Blueprint, request, jsonify
+from flask import Flask, Blueprint, request, Response
 from app.models.products import products, Product
 from app.utils import search, get_collection
 
@@ -22,10 +22,11 @@ def get_single_product(id):
 @bp.route('admin/products', methods=['POST'])
 def add_product():
     product = Product()
-    product.name = request.form.get('name')
-    product.category = request.form.get('category')
-    product.quantity = request.form.get('quantity')
-    product.price = request.form.get('price')
+    request_data = request.get_json()
+    product.name = request_data['name']
+    product.category = request_data['category']
+    product.quantity = request_data['quantity']
+    product.price = request_data['price']
     product_details = {
         'id': product.id,
         'name': product.name,
@@ -34,4 +35,4 @@ def add_product():
         'price': product.price
     }
     products.append(product_details)
-    return 'Product %s created successfully' % product.name
+    return Response('Product %s created successfully' % product.name, status=201)

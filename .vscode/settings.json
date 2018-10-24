@@ -10,5 +10,7 @@
         "ctime",
         "jsonify",
         "pytest"
-    ]
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
