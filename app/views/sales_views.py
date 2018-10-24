@@ -3,6 +3,7 @@ from flask import Blueprint, request, Response
 from app.models.sales import sales, Sale
 from app.models.attendant import attendants
 from app.utils import search, get_collection
+from app.authenticate.authenticate import requires_auth
 
 #  Set up a blueprint for the sales views
 bp = Blueprint('sales_views', __name__, url_prefix='/api/v1')
@@ -13,12 +14,14 @@ def get_attendant(username):
 
 # Get all sales by the admin
 @bp.route('/admin/sales')
+@requires_auth
 def get_sales():
     return get_collection(sales)
 
 
 # Get a single sale by admin
 @bp.route('/admin/sales/<id>')
+@requires_auth
 def admin_get_single_sale(id):
    return search(id, sales)
 

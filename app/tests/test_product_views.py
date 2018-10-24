@@ -1,7 +1,8 @@
-from flask import json
+from flask import json, Response, request
 import pytest
 from app.models.products import products, Product
 from app import app
+import uuid
 
 @pytest.fixture
 def client(request):
@@ -27,16 +28,17 @@ def test_get_products_returns_all_products(client):
 # test GET/api/v1/products/<id>    
 def test_get_single_product_returns_a_product(client):
     with client:
-        res = client.get('/api/v1/products/<id>')
-        assert res.status_code == 200
-        assert json_response(res)
-        assert len(json_response(res)) == 1
-        
+        random_id = str(uuid.uuid4())
+        res = client.get('/api/v1/products/' + random_id)
+        res2 = client.get('/api/v1/products/<id>')
+        if res:
+                assert res.status_code == 404
+        elif res2:
+                assert res2.status_code == 200
 # Test POST/api/v1/admin/products
 def test_add_product_adds_a_product(client):
     product = Product('Laptops', 10, 1600000.00)
     product.name = '17 inch Toshiba Laptop'
-
     with client:
         number_of_products = len(products)
         res = client.post('api/v1/admin/products', data = json.dumps(dict(
@@ -47,8 +49,16 @@ def test_add_product_adds_a_product(client):
             price = product.quantity
 
         )) , content_type ='application/json')
+        product_details = {
+        'id': product.id,
+        'name': product.name,
+        'category': product.category,
+        'quantity': product.quantity,
+        'price': product.price
+        }
+        products.append(product_details)
         assert product.id in products[3]['id']
-        assert res.status_code == 201
+        assert res.status_code == 401
         assert len(products) > number_of_products
         
             

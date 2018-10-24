@@ -8,6 +8,7 @@
     "python.unitTest.pyTestEnabled": true,
     "cSpell.words": [
         "ctime",
+        "functools",
         "jsonify",
         "pytest"
     ],
