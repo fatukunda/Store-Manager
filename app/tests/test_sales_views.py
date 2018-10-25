@@ -27,40 +27,25 @@ def test_get_sales_returns_all_sales(client):
 # Test GET/api/v1/admin/sales/<id>    
 def test_get_single_sale_returns_a_sale(client):
     with client:
-        random_id = str(uuid.uuid4())
-        res = client.get('/api/v1/admin/sales/' + random_id)
-        res2 = client.get('api/v1/admin/sales/<id>')
-        if res:
-                assert res.status_code == 404
-        elif res2:
-                assert res2.status_code == 200
-                assert json_response(res2)
-                assert len(json_response(res2)) == 1
+        res = client.get('/api/v1/admin/sales/<id>')
+        assert res.status_code == 200
+        assert json_response(res)
+        assert len(json_response(res)) == 1
+
 # Test GET/api/v1/attendants/<username>/sales
 def test_attendant_get_sales(client):
     with client:
-        username = 'never-be-a-username'
-        res = client.get('/api/v1/attendants/' + username + '/sales')
-        res2 = client.get('/api/v1/attendants/<username>/sales')
-        if res:
-                assert res.status_code == 404
-        elif res2:
-                assert res2.status_code == 200
-                assert json_response(res2)
+        res = client.get('/api/v1/attendants/<username>/sales')
+        assert res.status_code == 200
+        assert json_response(res)
 
 # Test GET/api/v1/attendants/<username>/sales/<id>
 def test_get_single_sale_for_attendant(client):
     with client:
-        username = 'never-be-a-username'
-        random_id = str(uuid.uuid4())
-        res = client.get('/api/v1/attendants/'+ username + '/sales/' + random_id)
-        res2 = client.get('api/v1/attendants/<username>/sales/<id>')
-        if res:
-                assert res.status_code == 404
-        elif res2:
-                assert res2.status_code == 200
-                assert json_response(res2)
-                assert len(json_response(res2)) == 1
+        res = client.get('api/v1/attendants/<username>/sales/<id>')
+        assert res.status_code == 200
+        assert json_response(res)
+        assert len(json_response(res)) == 1
 
 # Test POST/api/v1/attendant/<username>/sales
 def test_add_sale_adds_a_sale(client):
