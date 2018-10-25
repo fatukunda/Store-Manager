@@ -2,7 +2,6 @@ from flask import json
 import pytest
 from app.models.products import products, Product
 from app import app
-import uuid
 
 @pytest.fixture
 def client(request):

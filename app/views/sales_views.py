@@ -16,7 +16,6 @@ def get_attendant(username):
 def get_sales():
     return get_collection(sales)
 
-
 # Get a single sale by admin
 @bp.route('/admin/sales/<id>')
 def admin_get_single_sale(id):

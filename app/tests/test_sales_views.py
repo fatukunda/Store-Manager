@@ -1,6 +1,5 @@
 from flask import json
 import pytest
-import uuid
 from app.models.sales import sales, Sale
 from app import app
 

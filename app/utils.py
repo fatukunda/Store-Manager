@@ -1,4 +1,4 @@
-from flask import jsonify, Response
+from flask import jsonify
 # Shared methods
 """ Search for a product or sale given an id"""
 def search(search_item, collection):
@@ -9,8 +9,5 @@ def search(search_item, collection):
 
 """ Get a collection of products or sales"""
 def get_collection(collection):
-    if not collection:
-        return Response('No such collection found', status=404)
-    else:
-        return jsonify(collection)
+    return jsonify(collection)
 
