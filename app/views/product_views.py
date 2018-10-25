@@ -2,7 +2,6 @@
 from flask import Blueprint, request, Response
 from app.models.products import products, Product
 from app.utils import search, get_collection
-from app.authenticate.authenticate import requires_auth
 
 bp = Blueprint('product_views', __name__, url_prefix='/api/v1')
 
@@ -19,8 +18,8 @@ def get_single_product(id):
   
 
 # Add a product to the inventory
+
 @bp.route('admin/products', methods=['POST'])
-@requires_auth
 def add_product():
     product = Product()
     request_data = request.get_json()

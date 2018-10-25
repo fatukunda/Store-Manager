@@ -1,4 +1,4 @@
-from flask import json, Response, request
+from flask import json
 import pytest
 from app.models.products import products, Product
 from app import app
@@ -58,7 +58,7 @@ def test_add_product_adds_a_product(client):
         }
         products.append(product_details)
         assert product.id in products[3]['id']
-        assert res.status_code == 401
+        assert res.status_code == 201
         assert len(products) > number_of_products
         
             

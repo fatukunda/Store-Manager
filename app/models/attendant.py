@@ -1,4 +1,5 @@
 import uuid
+
 class Attendant:
     first_name = ''
     last_name = ''

@@ -21,7 +21,7 @@ def json_response(response):
 def test_get_sales_returns_all_sales(client):
     with client:
         res = client.get('/api/v1/admin/sales')
-        assert res.status_code == 401
+        assert res.status_code == 200
         assert json_response(res)
 
 # Test GET/api/v1/admin/sales/<id>    
@@ -31,9 +31,9 @@ def test_get_single_sale_returns_a_sale(client):
         res = client.get('/api/v1/admin/sales/' + random_id)
         res2 = client.get('api/v1/admin/sales/<id>')
         if res:
-                assert res.status_code == 401
+                assert res.status_code == 404
         elif res2:
-                assert res2.status_code == 401
+                assert res2.status_code == 200
                 assert json_response(res2)
                 assert len(json_response(res2)) == 1
 # Test GET/api/v1/attendants/<username>/sales
