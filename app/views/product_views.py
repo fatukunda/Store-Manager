@@ -1,20 +1,24 @@
 # product_views.py
-from flask import Blueprint, request, Response
-from app.models.products import products, Product
-from app.utils import search, get_collection
+from flask import Blueprint, request, Response, jsonify
+from app.models.products import Product
+from app.views import create_store
 
 bp = Blueprint('product_views', __name__, url_prefix='/api/v1')
 
+store = create_store()
 # Get all products in the store
 @bp.route('/products', methods= ['GET'])
 def get_products():
-    return get_collection(products)
+        return jsonify(store.get_all_products())
 
 # Get a single product
-@bp.route('/products/<id>')
-def get_single_product(id):
-    if len(products) > 0:
-        return  search(id, products)
+@bp.route('/products/<product_id>')
+def get_single_product(product_id):
+        product = store.search_single_product(product_id)
+        if product:
+                return jsonify(product)
+        else:
+                Response('Product with an Id of '+ product_id + 'was not found', status=404)
   
 
 # Add a product to the inventory
@@ -27,12 +31,7 @@ def add_product():
     product.category = request_data['category']
     product.quantity = request_data['quantity']
     product.price = request_data['price']
-    product_details = {
-        'id': product.id,
-        'name': product.name,
-        'category': product.category,
-        'quantity': product.quantity,
-        'price': product.price
-    }
-    products.append(product_details)
+    product.in_stock = request_data['in_stock']
+    
+    store.create_product(product.name, product.category, product.quantity, product.price, product.in_stock)
     return Response('Product %s created successfully' % product.name, status=201)

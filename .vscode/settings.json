@@ -11,7 +11,8 @@
         "functools",
         "jsonify",
         "psycopg",
-        "pytest"
+        "pytest",
+        "werkzeug"
     ],
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true

@@ -1,4 +1,5 @@
 from flask import jsonify
+from app.db.config_db import connect, commit_to_db
 # Shared methods
 """ Search for a product or sale given an id"""
 def search(search_item, collection):
@@ -10,4 +11,5 @@ def search(search_item, collection):
 """ Get a collection of products or sales"""
 def get_collection(collection):
     return jsonify(collection)
+
 
