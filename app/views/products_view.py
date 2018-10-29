@@ -20,7 +20,6 @@ def add_product():
     product.price = request_data['price']
     product.in_stock = request_data['in_stock']
     product.create_product()
-    # store.create_product(product.name, product.category, product.quantity, product.price, product.in_stock)
     return Response('Product %s created successfully' % product.name, status=201)
 
 """ Delete a specific product"""
