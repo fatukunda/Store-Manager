@@ -1,6 +1,6 @@
 from flask import json
 import pytest
-from app.models.products import Product
+from app.models.product import Product
 from app import app
 from app.models.sale import Sale
 

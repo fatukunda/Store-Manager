@@ -1,6 +1,6 @@
 # product_views.py
 from flask import Blueprint, request, Response, jsonify
-from app.models.products import Product
+from app.models.product import Product
 from app.models.sale import Sale
 from app.views import create_store
 
