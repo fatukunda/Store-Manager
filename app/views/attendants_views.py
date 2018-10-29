@@ -1,9 +1,10 @@
 # product_views.py
 from flask import Blueprint, request, Response, jsonify
 from app.models.products import Product
+from app.models.sale import Sale
 from app.views import create_store
 
-bp = Blueprint('product_views', __name__, url_prefix='/api/v1')
+bp = Blueprint('product_views', __name__, url_prefix='/api/v1/store')
 
 store = create_store()
 # Get all products in the store
@@ -19,19 +20,20 @@ def get_single_product(product_id):
                 return jsonify(product)
         else:
                 Response('Product with an Id of '+ product_id + 'was not found', status=404)
-  
 
-# Add a product to the inventory
-
-@bp.route('admin/products', methods=['POST'])
-def add_product():
-    product = Product()
+# Attendant make a sale
+@bp.route('/<attendant_id>/sales', methods=['POST'])
+def make_sale(attendant_id):
+    sale = Sale()
     request_data = request.get_json()
-    product.name = request_data['name']
-    product.category = request_data['category']
-    product.quantity = request_data['quantity']
-    product.price = request_data['price']
-    product.in_stock = request_data['in_stock']
-    
-    store.create_product(product.name, product.category, product.quantity, product.price, product.in_stock)
-    return Response('Product %s created successfully' % product.name, status=201)
+    sale.sales_person = attendant_id
+    sale.sold_item = request_data['sold_item']
+    sale.quantity_sold = request_data['quantity_sold']
+
+    store.create_sale(attendant_id, sale.date, sale.quantity_sold, sale.sold_item, sale.total_price)
+    return Response('Sale %s made successfully' % sale.sold_item, status=201) 
+
+""" Get sale details"""
+@bp.route('/<attendant_id>/sales/<sale_id>')
+def get_a_single_sale(sale_id):
+        pass
