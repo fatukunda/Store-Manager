@@ -1,25 +1,34 @@
-# product_views.py
 from flask import Blueprint, request, Response, jsonify
 from app.models.product import Product
-from app.models.sale import Sale
 from app.views import create_store
+from app.models.sale import Sale
 
-bp = Blueprint('product_views', __name__, url_prefix='/api/v1/store')
+bp = Blueprint('sales_view', __name__, url_prefix='/api/v1/sales')
+
 
 store = create_store()
-# Get all products in the store
-@bp.route('/products', methods= ['GET'])
-def get_products():
-        return jsonify(store.get_all_products())
 
-# Get a single product
-@bp.route('/products/<product_id>')
-def get_single_product(product_id):
-        product = store.search_single_product(product_id)
-        if product:
-                return jsonify(product)
-        else:
-                Response('Product with an Id of '+ product_id + 'was not found', status=404)
+""" SALE ROUTES"""
+# Get all sales by the admin
+@bp.route('/')
+def get_sales():
+    return jsonify(store.get_all_sales())
+
+# Get a single sale by admin
+@bp.route('/<id>')
+def admin_get_single_sale(id):
+   pass
+
+# Get all sales made by a particular store attendant
+@bp.route('/<attendant_id>/sales')
+def attendant_get_sales(attendant_id):
+    pass
+
+# Get a single sale made by a specific attendant
+@bp.route('/<attendant_id>/sales/<sale_id>')
+def get_single_sale(attendant_id, sale_id):
+    pass
+
 
 # Attendant make a sale
 @bp.route('/<attendant_id>/sales', methods=['POST'])

@@ -22,7 +22,7 @@ def create_tables():
     commands = (
         """
         CREATE TABLE IF NOT EXISTS products (
-            product_id uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+            product_id SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
             category VARCHAR(255) NOT NULL,
             quantity INTEGER NOT NULL,
@@ -32,7 +32,7 @@ def create_tables():
         """,
         """ 
         CREATE TABLE IF NOT EXISTS users (
-                user_id uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+                user_id SERIAL PRIMARY KEY,
                 first_name VARCHAR(255) NOT NULL,
                 last_name VARCHAR(255) NOT NULL,
                 username VARCHAR(255) UNIQUE NOT NULL,
@@ -43,11 +43,11 @@ def create_tables():
         """,
         """
         CREATE TABLE IF NOT EXISTS sales (
-                sale_id uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
-                sales_person_id uuid NOT NULL,
+                sale_id SERIAL PRIMARY KEY,
+                sales_person_id INTEGER NOT NULL,
                 sale_date DATE NOT NULL,
                 quantity_sold INTEGER NOT NULL,
-                product_sold_id uuid NOT NULL,
+                product_sold_id INTEGER NOT NULL,
                 total_price FLOAT NOT NULL,
                 FOREIGN KEY (sales_person_id)
                     REFERENCES users (user_id)

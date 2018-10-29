@@ -7,55 +7,17 @@ class Store:
         self.attendants=attendants
         self.sales=sales
         self.admins=admins
-    """ Create json-like output from the database data"""
-    def make_json(self, products):
-        for product in products:
-            product_details = {
-                'product_id': product[0],
-                'name': product[1],
-                'category': product[2],
-                'quantity': product[3],
-                'in_stock': product[4]
-            }
-        return product_details
 
-
-    """ Create a new product"""
-    def create_product(self, name, category, quantity, price, in_stock):
-        """ insert a new product into the products table """
-        sql = """INSERT INTO products(name, category, quantity, unit_price, in_stock)
-                 VALUES(%s, %s, %s, %s, %s) RETURNING product_id, name, quantity, unit_price, in_stock;"""
-        conn = None
-        product = None
-        conn = connect()
-        cursor = conn.cursor()
-        cursor.execute(sql, (name, category, quantity, price, in_stock))
-        product = cursor.fetchone()
-        commit_to_db(conn, cursor)
-        return product
-
-    """ Get all products in the store """
-    def get_all_products(self):
-        sql = """ SELECT * FROM products;"""
-        conn = None
+    """ Execute a given command""" 
+    def execute(self, sql):
         conn = connect()
         cursor = conn.cursor()
         cursor.execute(sql)
-        self.products = []
-        products = cursor.fetchall()
-        for product in products:
-            product_details = {
-                'id': product[0],
-                'name': product[1],
-                'category': product[2],
-                'quantity': product[3],
-                'unit_price': product[4],
-                'in_stock': product[5]
-            }
-            self.products.append(product_details)
-        commit_to_db(conn, cursor)
-        return self.products
+        return cursor
 
+    
+
+    
     """ Get all sales made """
     def get_all_sales(self):
         sql = """ SELECT * FROM sales;"""
@@ -78,19 +40,7 @@ class Store:
         commit_to_db(conn, cursor)
         return self.sales
 
-    """ Search for a single product given the id"""
-    def search_single_product(self, product_id):
-        sql =  "SELECT * FROM products WHERE product_id = '{0}'".format(product_id)
-        conn = connect()
-        try:
-            cursor = conn.cursor()
-            cursor.execute(sql)
-            searched_product = cursor.fetchall()
-        except(Exception, psycopg2.DatabaseError) as error:
-            print(error)
-        product_details =  self.make_json(searched_product)
-        commit_to_db(conn, cursor)
-        return product_details
+
 
     """ Create a store attendant"""
     def create_attendant(self, first_name, last_name, username, email, password, usertype):
@@ -125,6 +75,13 @@ class Store:
         """ Reduce the quantity of the products in the store"""
         product[3] -= quantity_sold
         """ commit changes and close the database connection"""
-        commit_to_db(conn, cursor)
+        (conn, cursor)
         return sale
 
+    # """ Delete a product from the store"""
+    # def delete_product(self, product_id):
+    #     sql = "DELETE FROM products WHERE product_id = {0}".format(product_id)
+    #     rows_deleted = 0
+    #     cursor = self.execute(sql)
+    #     rows_deleted = cursor.rowcount
+    #     commit_to_db(conn)
