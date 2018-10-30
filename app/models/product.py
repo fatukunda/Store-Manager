@@ -9,12 +9,11 @@ class Product:
         self.price = price
         self.name = name
 
-    """ Create a new product"""
     def create_product(self):
         """ insert a new product into the products table """
         sql = """INSERT INTO products(name, category, quantity, unit_price, in_stock)
                  VALUES(%s, %s, %s, %s, %s) RETURNING product_id, name, quantity, unit_price, in_stock;"""
-        conn = connect()
+        conn = connect('store-manager-db')
         cursor = conn.cursor()
         cursor.execute(sql, (self.name, self.category, self.quantity, self.price, self.in_stock))
         product = cursor.fetchone()
@@ -26,7 +25,7 @@ class Product:
     def get_all_products():
         sql = """ SELECT * FROM products;"""
         conn = None
-        conn = connect()
+        conn = connect('store-manager-db')
         cursor = conn.cursor()
         cursor.execute(sql)
         products = cursor.fetchall()
@@ -78,7 +77,7 @@ class Product:
         in_stock = {4} WHERE product_id = {5}
         """.format(name, category, quantity, unit_price, in_stock, product_id)
         rows_edited = 0
-        conn = connect()
+        conn = connect('store-manager-db')
         cursor = conn.cursor()
         cursor.execute(sql)
         rows_edited = cursor.rowcount

@@ -1,7 +1,6 @@
 import psycopg2
 from app.db.config_db import connect, commit_to_db
 
-
 """ Create json-like output from the database data"""
 def make_json(products):
     for product in products:
@@ -22,8 +21,13 @@ def search_single_product(product_id):
         return searched_product
 
 def execute(sql):
-        conn = connect()
+        conn = connect('store-manager-db')
         cursor = conn.cursor()
         cursor.execute(sql)
         conn.commit()
         return cursor
+def search_sales_person(sales_person_id):
+    sql = "SELECT * FROM users WHERE user_id = {}".format(sales_person_id)
+    cursor = execute(sql)
+    sales_person = cursor.fetchone()
+    return sales_person

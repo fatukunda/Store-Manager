@@ -10,9 +10,9 @@ store = create_store()
 
 """ SALE ROUTES"""
 # Get all sales by the admin
-@bp.route('/')
+@bp.route('')
 def get_sales():
-    return jsonify(store.get_all_sales())
+    return jsonify(Sale.get_all_sales())
 
 # Get a single sale by admin
 @bp.route('/<id>')
@@ -20,9 +20,9 @@ def admin_get_single_sale(id):
    pass
 
 # Get all sales made by a particular store attendant
-@bp.route('/<attendant_id>/sales')
+@bp.route('/<attendant_id>')
 def attendant_get_sales(attendant_id):
-    pass
+    return jsonify(Sale.get_all_sales(attendant_id))
 
 # Get a single sale made by a specific attendant
 @bp.route('/<attendant_id>/sales/<sale_id>')
@@ -31,16 +31,15 @@ def get_single_sale(attendant_id, sale_id):
 
 
 # Attendant make a sale
-@bp.route('/<attendant_id>/sales', methods=['POST'])
-def make_sale(attendant_id):
+@bp.route('', methods=['POST'])
+def make_sale():
     sale = Sale()
     request_data = request.get_json()
-    sale.sales_person = attendant_id
-    sale.sold_item = request_data['sold_item']
+    sale.sold_item = request_data['product_id']
     sale.quantity_sold = request_data['quantity_sold']
-
-    store.create_sale(attendant_id, sale.date, sale.quantity_sold, sale.sold_item, sale.total_price)
-    return Response('Sale %s made successfully' % sale.sold_item, status=201) 
+    sale.sales_person = request_data['sales_person']
+    sale.make_a_sale()
+    return jsonify({"message" : "Sale successfully completed"}), 201
 
 """ Get sale details"""
 @bp.route('/<attendant_id>/sales/<sale_id>')

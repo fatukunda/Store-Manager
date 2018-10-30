@@ -17,7 +17,7 @@ def login():
     if not password:
         return jsonify({"message": "Specify the Password"}), 400
     auth = Auth(username, password)
-    auth.pw_hash
+    # auth.pw_hash
     user = auth.login(password)
     if not user:
         return jsonify({"message": "User not found"}), 404  

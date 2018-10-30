@@ -14,7 +14,7 @@ class User:
         """ insert a new user into the user table """
         sql = """INSERT INTO users(first_name, last_name, username, email, password, user_type)
                  VALUES(%s, %s, %s, %s, %s, %s) RETURNING user_id, first_name, last_name, username, email, password, user_type;"""
-        conn = connect()
+        conn = connect('store-manager-db')
         cursor = conn.cursor()
         cursor.execute(sql, (self.first_name, self.last_name, self.username, self.email, generate_password_hash(self.password), self.role))
         user = cursor.fetchone()
@@ -25,7 +25,7 @@ class User:
     def get_all_users():
         """ Get all the users in the users table"""
         sql = """ SELECT * FROM users;"""
-        conn = connect()
+        conn = connect('store-manager-db')
         cursor = conn.cursor()
         cursor.execute(sql)
         users = cursor.fetchall()
@@ -46,7 +46,7 @@ class User:
     @staticmethod
     def get_user_details(user_id):
         sql =  "SELECT * FROM users WHERE user_id = '{0}'".format(user_id)
-        conn = connect()
+        conn = connect('store-manager-db')
         cursor = conn.cursor()
         cursor.execute(sql)
         user = cursor.fetchone()
@@ -65,7 +65,7 @@ class User:
     def give_admin_rights(user_id, role):
         sql = "SELECT * FROM users WHERE user_id = '{}'".format(user_id)
         sql2 = "UPDATE users SET user_type = '{}'".format(role)
-        conn = connect()
+        conn = connect('store-manager-db')
         cursor = conn.cursor()
         cursor.execute(sql)
         user = cursor.fetchone()

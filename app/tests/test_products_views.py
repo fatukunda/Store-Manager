@@ -1,4 +1,5 @@
 from flask import json
+from flask_jwt_extended import create_access_token
 import pytest
 from app.models.product import Product
 from app import app
@@ -19,19 +20,28 @@ def json_response(response):
     return [res]
 
 # test GET/api/v1/products
-def test_get_products_returns_all_products(client):
+def test_get_products_returns_all_products_not_authorized(client):
     with client:
-            pass
-        # res = client.get('/api/v1/products')
-        # assert res.status_code == 200
-        # assert json_response(res)
+        res = client.get('/api/v1/products')
+        assert res.status_code == 401
+        assert json_response(res)
+
+# # test GET/api/v1/products
+# def test_get_products_returns_all_products_authorized(client):
+#     with client:
+#         access_token = create_access_token('admin')
+#         headers = {
+#                 'Authorization': 'Bearer {}'.format(access_token)
+#         }
+#         res = client.get('/api/v1/products', headers = headers)
+#         assert res.status_code == 200
 
 # test GET/api/v1/products/<id>    
 def test_get_single_product_returns_a_product(client):
     with client:
-            pass
-        # res = client.get('/api/v1/products/<id>')
-        # assert res.status_code == 200
+        res = client.get('/api/v1/products/<id>')
+        assert res.status_code == 200
+        
 # Test POST/api/v1/admin/products
 def test_add_product_adds_a_product(client):    
     product = Product('Laptops', '17 inch Toshiba Laptop', 10, 1600000.00)
