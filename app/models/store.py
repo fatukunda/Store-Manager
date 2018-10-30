@@ -78,10 +78,3 @@ class Store:
         (conn, cursor)
         return sale
 
-    # """ Delete a product from the store"""
-    # def delete_product(self, product_id):
-    #     sql = "DELETE FROM products WHERE product_id = {0}".format(product_id)
-    #     rows_deleted = 0
-    #     cursor = self.execute(sql)
-    #     rows_deleted = cursor.rowcount
-    #     commit_to_db(conn)

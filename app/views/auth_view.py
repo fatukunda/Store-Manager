@@ -13,15 +13,16 @@ def login():
     username = request.json.get('username', None)
     password = request.json.get('password', None)
     if not username:
-        return jsonify({"message": "Missing username parameter"}), 400
+        return jsonify({"message": "Specify the Username"}), 400
     if not password:
-        return jsonify({"message": "Missing password parameter"}), 400
+        return jsonify({"message": "Specify the Password"}), 400
     auth = Auth(username, password)
-    user = auth.login()
+    auth.pw_hash
+    user = auth.login(password)
     if not user:
         return jsonify({"message": "User not found"}), 404  
     access_token = ''
-    if user['role'] == 'admin':
+    if user[6] == 'admin':
         access_token = create_access_token(identity='admin')
     else:
         access_token = create_access_token(identity= username)

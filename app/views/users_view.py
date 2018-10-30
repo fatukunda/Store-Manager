@@ -1,9 +1,9 @@
-# attendants_views.py
+# User_views.py
 
 from flask import Blueprint, request, jsonify
 from app.models.user import User
 
-bp = Blueprint('attendants_view', __name__, url_prefix='/api/v1/attendants')
+bp = Blueprint('users_view', __name__, url_prefix='/api/v1/attendants')
 
 """ ATTENDANT ROUTES"""
 
@@ -49,7 +49,9 @@ def make_attendant_admin(attendant_id):
 """ Delete an attendant given the Id"""
 @bp.route('<attendant_id>', methods=['DELETE'])
 def delete_attendant(attendant_id):
-    pass
+    rows_deleted = User.delete_attendant(attendant_id)
+    if rows_deleted:
+        return 'User deleted successfully'
 
 """ Edit an attendant given the Id"""
 @bp.route('<attendant_id>', methods=['PUT'])

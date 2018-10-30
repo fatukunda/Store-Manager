@@ -77,18 +77,13 @@ class Product:
         unit_price = {3}
         in_stock = {4} WHERE product_id = {5}
         """.format(name, category, quantity, unit_price, in_stock, product_id)
-        cursor = execute(sql)
-        product = cursor.fetchone()
-        product_details = {
-            'id': product[0],
-            'name': product[1],
-            'category': product[2],
-            'quantity': product[3],
-            'unit_price': product[4],
-            'in_stock': product[5]
-            }
-        
-        return product_details
+        rows_edited = 0
+        conn = connect()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        rows_edited = cursor.rowcount
+        commit_to_db(conn, cursor)
+        return rows_edited
 
 
 

@@ -38,8 +38,9 @@ def edit_product(product_id):
     quantity = request_data['quantity']
     price = request_data['unit_price']
     in_stock = request_data['in_stock']
-    product = Product.edit_product(product_id, name, category, quantity, price, in_stock)
-    return product
+    rows_edited = Product.edit_product(product_id, name, category, quantity, price, in_stock)
+    if rows_edited:
+            return jsonify({"message": rows_edited + ' have been updated'})
 
 # Get all products in the store
 @bp.route('/', methods= ['GET'])

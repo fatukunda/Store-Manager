@@ -1,5 +1,6 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.db.config_db import connect, commit_to_db
+from app.models import execute
 class User:
     first_name = '',
     last_name = ''
@@ -74,4 +75,12 @@ class User:
             return user
         else:
             return 'User already Administrator'
+
+    @staticmethod
+    def delete_attendant(attendant_id):
+        sql = "DELETE FROM users WHERE user_id = {0};".format(attendant_id)
+        rows_deleted = 0
+        cursor = execute(sql)
+        rows_deleted = cursor.rowcount
+        return rows_deleted
         
