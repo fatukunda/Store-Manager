@@ -1,8 +1,6 @@
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask import Blueprint, request, Response, jsonify
 from app.models.product import Product
-from app.views import create_store
-from app.models.sale import Sale
 
 
 bp = Blueprint('products_view', __name__, url_prefix='/api/v1/products')
@@ -47,9 +45,9 @@ def edit_product(product_id):
 @bp.route('/', methods= ['GET'])
 @jwt_required
 def get_products():
-        current_user = get_jwt_identity()
-        return jsonify(logged_in_as=current_user), 200
-        # return jsonify(Product.get_all_products())
+        # current_user = get_jwt_identity()
+        # return jsonify(logged_in_as=current_user), 200
+        return jsonify(Product.get_all_products())
 
 # Get a single product
 @bp.route('/<product_id>')
