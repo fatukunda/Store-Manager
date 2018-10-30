@@ -25,8 +25,8 @@ def register_attendant():
 
 """ Get a list of attendants in the store"""
 @bp.route('/', methods=['GET'])
-def get_attendant():
-    pass
+def get_attendants():
+   return jsonify(User.get_all_users())
 
 """ Get details of a single attendant"""
 @bp.route('/<attendant_id>', methods=['GET'])
