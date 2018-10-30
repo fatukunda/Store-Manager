@@ -1,9 +1,7 @@
-# product_views.py
-from flask import Blueprint, request, Response, jsonify
-from app.models.product import Product
-from app.models.sale import Sale
+# attendants_views.py
+
+from flask import Blueprint, request, jsonify
 from app.models.user import User
-from app.views import create_store
 
 bp = Blueprint('attendants_view', __name__, url_prefix='/api/v1/attendants')
 
@@ -30,8 +28,23 @@ def get_attendants():
 
 """ Get details of a single attendant"""
 @bp.route('/<attendant_id>', methods=['GET'])
-def get_attendant_details():
-    pass
+def get_attendant_details(attendant_id):
+    user = User.get_user_details(attendant_id)
+    if user:
+        return jsonify(User.get_user_details(attendant_id)), 200
+    else:
+        return jsonify({"message": "No such user was found"}), 404
+
+@bp.route('/<attendant_id>', methods=['PUT'])
+def make_attendant_admin(attendant_id):
+    if not request.is_json:
+        return jsonify({"message": "Missing JSON in request"}), 400
+    role = request.json.get('role')
+    if not role:
+        return jsonify({"message": "Missing role parameter"}), 400
+    user = User.give_admin_rights(attendant_id, role)
+    if user:
+        return 'Admin rights successfully assigned to user'
 
 """ Delete an attendant given the Id"""
 @bp.route('<attendant_id>', methods=['DELETE'])
