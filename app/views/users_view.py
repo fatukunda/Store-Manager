@@ -2,6 +2,7 @@
 
 from flask import Blueprint, request, jsonify
 from app.models.user import User
+from app.controllers import user_controller
 
 bp = Blueprint('users_view', __name__, url_prefix='/api/v1/attendants')
 
@@ -10,28 +11,27 @@ bp = Blueprint('users_view', __name__, url_prefix='/api/v1/attendants')
 """ Register an attendant"""
 @bp.route('', methods=['POST'])
 def register_attendant():
-    attendant = User()
     request_data = request.get_json()
-    attendant.first_name = request_data['first_name']
-    attendant.last_name = request_data['last_name']
-    attendant.email = request_data['email']
-    attendant.username = request_data['username']
-    attendant.set_password = request_data['password']
-    attendant.role = request_data['role']
-    attendant.create_user()
-    return jsonify('User %s created successfully' % attendant.first_name), 201
+    first_name = request_data['first_name']
+    last_name = request_data['last_name']
+    email = request_data['email']
+    username = request_data['username']
+    password = request_data['password']
+    role = request_data['role']
+    user_controller.create_user(first_name, last_name, username, email, password, role)
+    return jsonify('User %s created successfully' % first_name), 201
 
 """ Get a list of attendants in the store"""
 @bp.route('/', methods=['GET'])
 def get_attendants():
-   return jsonify(User.get_all_users())
+   return jsonify(user_controller.get_all_users())
 
 """ Get details of a single attendant"""
 @bp.route('/<attendant_id>', methods=['GET'])
 def get_attendant_details(attendant_id):
-    user = User.get_user_details(attendant_id)
+    user = user_controller.get_user_details(attendant_id)
     if user:
-        return jsonify(User.get_user_details(attendant_id)), 200
+        return jsonify(user_controller.get_user_details(attendant_id)), 200
     else:
         return jsonify({"message": "No such user was found"}), 404
 
@@ -42,14 +42,14 @@ def make_attendant_admin(attendant_id):
     role = request.json.get('role')
     if not role:
         return jsonify({"message": "Missing role parameter"}), 400
-    user = User.give_admin_rights(attendant_id, role)
+    user = user_controller.give_admin_rights(attendant_id, role)
     if user:
         return 'Admin rights successfully assigned to user'
 
 """ Delete an attendant given the Id"""
 @bp.route('<attendant_id>', methods=['DELETE'])
 def delete_attendant(attendant_id):
-    rows_deleted = User.delete_attendant(attendant_id)
+    rows_deleted = user_controller.delete_attendant(attendant_id)
     if rows_deleted:
         return 'User deleted successfully'
 

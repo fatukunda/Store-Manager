@@ -1,6 +1,6 @@
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask import Blueprint, request, Response, jsonify
-from app.models.product import Product
+from app.controllers import product_controller
 
 
 bp = Blueprint('products_view', __name__, url_prefix='/api/v1/products')
@@ -21,13 +21,13 @@ def add_product():
                 return jsonify({"message": "Quantity should be a number"})
         if not isinstance(request_data['in_stock'], bool):
                 return jsonify({"message": "in_stock should be a true or false"})
-        product = Product()
-        product.name = request_data['name']
-        product.category = request_data['category']
-        product.quantity = request_data['quantity']
-        product.price = request_data['unit_price']
-        product.in_stock = request_data['in_stock']
-        product.create_product()
+        
+        name = request_data['name']
+        category = request_data['category']
+        quantity = request_data['quantity']
+        price = request_data['unit_price']
+        in_stock = request_data['in_stock']
+        product_controller.create_product(name, category, quantity, price, in_stock)
         return jsonify("Product created successfully")
        
 
@@ -35,7 +35,7 @@ def add_product():
 @bp.route('/<product_id>', methods =['DELETE'])
 # @jwt_required
 def delete_product(product_id):
-    rows_deleted = Product.delete_product(product_id)
+    rows_deleted = product_controller.delete_product(product_id)    
     if rows_deleted != -1:
         return 'Product deleted successfully'
 
@@ -49,23 +49,23 @@ def edit_product(product_id):
     quantity = request_data['quantity']
     price = request_data['unit_price']
     in_stock = request_data['in_stock']
-    rows_edited = Product.edit_product(product_id, name, category, quantity, price, in_stock)
+    rows_edited = product_controller.edit_product(product_id, name, category, quantity, price, in_stock)
     if rows_edited != -1:
             return jsonify({"message": rows_edited + ' have been updated'})
 
 # Get all products in the store
 @bp.route('', methods= ['GET'])
-# @jwt_required
+@jwt_required
 def get_products():
         # current_user = get_jwt_identity()
         # return jsonify(logged_in_as=current_user), 200
-        return jsonify(Product.get_all_products()), 200
+        return jsonify(product_controller.get_all_products()), 200
 
 # Get a single product
 @bp.route('/<product_id>', methods=['GET'])
 @jwt_required
 def get_single_product(product_id):
-        product = Product.search_single_product(product_id)
+        product = product_controller.search_single_product(product_id)
         if product:
                 return jsonify(product)
         else:
