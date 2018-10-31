@@ -16,36 +16,26 @@ def create_product(name, category, quantity, price, in_stock):
 def get_all_products():
     """ Get all products in the store """
     sql = """SELECT * FROM products;"""
-    conn = connect('store-manager-db')
-    cursor = conn.cursor()
-    cursor.execute(sql)
+    
+    cursor =execute(sql)
     products = cursor.fetchall()
     products_list = []
     for product in products:
         product_details = {
-            'id': product[0],
-            'name': product[1],
-            'category': product[2],
-            'quantity': product[3],
-            'unit_price': product[4],
-            'in_stock': product[5]
+            'id': product['product_id'],
+            'name': product['name'],
+            'category': product['category'],
+            'quantity': product['quantity'],
+            'unit_price': product['unit_price'],
+            'in_stock': product['in_stock']
         }
         products_list.append(product_details)
-    commit_to_db(conn, cursor)
     return products_list
 
 def search_a_product(product_id):
     """ Get a single product"""
-    searched_product = search_single_product(product_id)
-    product_details = {
-        'id': searched_product[0],
-        'name': searched_product[1],
-        'category': searched_product[2],
-        'quantity': searched_product[3],
-        'unit_price': searched_product[4],
-        'in_stock': searched_product[5]
-    }
-    return product_details
+    return search_single_product(product_id)
+    
 
 """ Delete a product from the store"""
 def delete_product(product_id):

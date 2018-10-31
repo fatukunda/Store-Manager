@@ -2,6 +2,7 @@ from app.models import search_single_product, search_sales_person
 from app.db.config_db import commit_to_db, connect
 from app.models.sale import Sale
 from app.models import execute
+import psycopg2.extras
 
 
 def make_a_sale(sale_item_id, sales_person_id, quantity_sold):
@@ -35,20 +36,21 @@ def get_all_sales(user_id = None):
     else:
         sql = """SELECT * FROM sales;"""
     conn = connect('store-manager-db')
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
     cursor.execute(sql)
     sales = cursor.fetchall()
+    print(sales)
     sale_list = []
     for sale in sales:
-        product = search_single_product(sale[4])
-        attendant = search_sales_person(sale[1])
+        product = search_single_product(sale['product_sold_id'])
+        attendant = search_sales_person(sale['sales_person_id'])
         sale_details = {
-            'sales_person': attendant[1],
-            'sale_date': sale[2],
-            'quantity_sold': sale[3],
-            'product_sold': product[1],
-            'unit_price': product[4],
-            'total_price': sale[5]
+            'sales_person': attendant['user_id'],
+            'sale_date': sale['sale_date'],
+            'quantity_sold': sale['quantity_sold'],
+            'product_sold': product['product_id'],
+            'unit_price': product['unit_price'],
+            'total_price': sale['total_price']
         }
         sale_list.append(sale_details)
     commit_to_db(conn, cursor)
@@ -58,11 +60,4 @@ def get_sale_details(sale_id):
     sql ="SELECT * FROM sales WHERE sale_id = {};".format(sale_id)
     cursor = execute(sql)
     sale = cursor.fetchone()
-    sale_details = {
-        'sales_person': sale[1],
-        'sale_date': sale[2],
-        'quantity_sold': sale[3],
-        'product_sold': sale[4],
-        'total_price': sale[5]
-    }
-    return sale_details
+    return sale

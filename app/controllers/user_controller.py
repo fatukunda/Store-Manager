@@ -21,12 +21,12 @@ def get_all_users():
     user_list = []
     for user in users:
         user_details = {
-            'user_id': user[0],
-            'first_name': user[1],
-            'last_name': user[2],
-            'username': user[3],
-            'email': user[4],
-            'user_type': user[6]
+            'user_id': user['user_id'],
+            'first_name': user['first_name'],
+            'last_name': user['last_name'],
+            'username': user['username'],
+            'email': user['email'],
+            'role': user['user_type']
         }
         user_list.append(user_details)
     commit_to_db(conn, cursor)
@@ -38,16 +38,8 @@ def get_user_details(user_id):
     conn = connect('store-manager-db')
     cursor = execute(sql)
     user = cursor.fetchone()
-    user_details = {
-        'user_id': user[0],
-        'first_name': user[1],
-        'last_name': user[2],
-        'username': user[3],
-        'email': user[4],
-        'user_type': user[6]
-        }
     commit_to_db(conn, cursor)
-    return user_details
+    return user
 
 def give_admin_rights(user_id, role):
     sql = "SELECT * FROM users WHERE user_id = '{}'".format(user_id)

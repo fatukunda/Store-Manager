@@ -26,15 +26,15 @@ def test_get_products_returns_all_products_not_authorized(client):
         assert res.status_code == 401
         assert json_response(res)
 
-# # test GET/api/v1/products
-# def test_get_products_returns_all_products_authorized(client):
-#     with client:
-#         access_token = create_access_token('admin')
-#         headers = {
-#                 'Authorization': 'Bearer {}'.format(access_token)
-#         }
-#         res = client.get('/api/v1/products', headers = headers)
-#         assert res.status_code == 200
+# test GET/api/v1/products
+def test_get_products_returns_all_products_authorized(client):
+    with client:
+        access_token = create_access_token('admin')
+        headers = {
+                'Authorization': 'Bearer Token = {}'.format(access_token)
+        }
+        res = client.get('/api/v1/products', headers = headers)
+        assert res.status_code == 200
 
 # test GET/api/v1/products/<id>    
 def test_get_single_product_returns_a_product(client):
