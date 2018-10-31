@@ -5,7 +5,7 @@ def create_user(first_name, last_name, username, email, password, role):
         """ insert a new user into the user table """
         sql = """INSERT INTO users(first_name, last_name, username, email, password, user_type)
                  VALUES(%s, %s, %s, %s, %s, %s) RETURNING user_id, first_name, last_name, username, email, password, user_type;"""
-        conn = connect('store-manager-db')
+        conn = connect('store_manager_db')
         cursor = conn.cursor()
         cursor.execute(sql, (first_name, last_name, username, email, password, role))
         user = cursor.fetchone()
@@ -15,7 +15,7 @@ def create_user(first_name, last_name, username, email, password, role):
 def get_all_users():
     """ Get all the users in the users table"""
     sql = """ SELECT * FROM users;"""
-    conn = connect('store-manager-db')
+    conn = connect('store_manager_db')
     cursor = execute(sql)
     users = cursor.fetchall()
     user_list = []
@@ -35,7 +35,7 @@ def get_all_users():
 
 def get_user_details(user_id):
     sql =  "SELECT * FROM users WHERE user_id = '{0}'".format(user_id)
-    conn = connect('store-manager-db')
+    conn = connect('store_manager_db')
     cursor = execute(sql)
     user = cursor.fetchone()
     commit_to_db(conn, cursor)
@@ -44,7 +44,7 @@ def get_user_details(user_id):
 def give_admin_rights(user_id, role):
     sql = "SELECT * FROM users WHERE user_id = '{}'".format(user_id)
     sql2 = "UPDATE users SET user_type = '{}'".format(role)
-    conn = connect('store-manager-db')
+    conn = connect('store_manager_db')
     cursor = execute(sql)
     user = cursor.fetchone()
     if user[6] != role:

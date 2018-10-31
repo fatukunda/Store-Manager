@@ -37,7 +37,7 @@ def test_get_single_attendant_returns_an_attendant(client):
         headers = {
                 'Authorization': 'Bearer {}'.format(access_token)
         }
-        attendant_id = 5
+        attendant_id = 1
         res = client.get('/api/v1/attendants/{}'.format(attendant_id), headers = headers)
         assert res.status_code == 200
         assert json_response(res)
@@ -49,9 +49,9 @@ def test_add_attendant_adds_an_attendant(client):
             headers = {
                     'Authorization': 'Bearer {}'.format(access_token)
             }
-            attendant = User('matty', 'samatm@app.com', 'my_pass123')
-            attendant.first_name = 'Martin'
-            attendant.last_name = "Mikes"
+            attendant = User('mak', 'samatm@app.com', 'my_pass123')
+            attendant.first_name = 'Miller'
+            attendant.last_name = "Moll"
             attendant.role = 'user'
             number_of_attendants_before = len(user_controller.get_all_users())
             res = client.post('/api/v1/attendants', data =json.dumps(dict(

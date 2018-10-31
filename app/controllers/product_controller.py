@@ -6,7 +6,7 @@ def create_product(name, category, quantity, price, in_stock):
     """ insert a new product into the products table """
     sql = """INSERT INTO products(name, category, quantity, unit_price, in_stock)
                  VALUES(%s, %s, %s, %s, %s) RETURNING product_id, name, quantity, unit_price, in_stock;"""
-    conn = connect('store-manager-db')
+    conn = connect('store_manager_db')
     cursor = conn.cursor()
     cursor.execute(sql, (name, category, quantity, price, in_stock))
     product = cursor.fetchone()
@@ -43,7 +43,7 @@ def edit_product(product_id, name, category, quantity, unit_price, in_stock):
     in_stock = {4} WHERE product_id = {5}
     """.format(name, category, quantity, unit_price, in_stock, product_id)
     rows_edited = 0
-    conn = connect('store-manager-db')
+    conn = connect('store_manager_db')
     cursor = conn.cursor()
     cursor.execute(sql)
     rows_edited = cursor.rowcount

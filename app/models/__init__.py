@@ -22,7 +22,7 @@ def search_single_product(product_id):
         return searched_product
 
 def execute(sql):
-        conn = connect('store-manager-db')
+        conn = connect('store_manager_db')
         cursor = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
         cursor.execute(sql)
         conn.commit()

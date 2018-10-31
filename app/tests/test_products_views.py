@@ -39,7 +39,7 @@ def test_get_single_product_returns_a_product(client):
         headers = {
                 'Authorization': 'Bearer {}'.format(access_token)
         }
-        product_id = 3
+        product_id = 1
         res = client.get('/api/v1/products/{}'.format(product_id), headers = headers)
         assert res.status_code == 200
         assert json_response(res)

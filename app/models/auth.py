@@ -15,7 +15,7 @@ class Auth:
 
     def login(self, password):
         sql =  "SELECT * FROM users WHERE username = '{0}' and password = '{1}'".format(self.username, self.password)
-        conn = connect('store-manager-db')
+        conn = connect('store_manager_db')
         cursor = conn.cursor()
         cursor.execute(sql)
         user = cursor.fetchone()

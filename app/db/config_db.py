@@ -2,14 +2,14 @@ import psycopg2
 
 TEST_DATABASE_CONFIG = {
     'host': 'localhost',
-    'db_name': 'store-manager-test-db',
+    'db_name': 'store_manager_test_db',
     'user': 'postgres',
     'password': 'admin',
     'port': 5432
 }
 DATABASE_CONFIG = {
     'host': 'localhost',
-    'db_name': 'store-manager-db',
+    'db_name': 'store_manager_db',
     'user': 'postgres',
     'password': 'admin',
     'port': 5432
@@ -32,7 +32,7 @@ def commit_to_db(conn, cursor):
         conn.close()
 
 def create_tables():
-    """ create tables in the store-manager-db"""
+    """ create tables in the store_manager_db"""
     
     commands = (
         """
@@ -72,7 +72,7 @@ def create_tables():
                     ON UPDATE CASCADE ON DELETE CASCADE
         )
         """)
-    connection = connect('store-manager-db')
+    connection = connect('store_manager_db')
     cursor = connection.cursor()
     for command in commands:
         cursor.execute(command)
