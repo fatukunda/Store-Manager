@@ -30,8 +30,9 @@ def json_response(response):
 #         assert res.status_code == 200
 #         assert json_response(res)
 
-# Test GET/api/v1/attendants/<id>    
+   
 def test_get_single_attendant_returns_an_attendant(client):
+    # Test GET/api/v1/attendants/<id> 
     with app.app_context():
         access_token = create_access_token('admin')
         headers = {
@@ -42,8 +43,9 @@ def test_get_single_attendant_returns_an_attendant(client):
         assert res.status_code == 200
         assert json_response(res)
         
-# Test POST/api/v1/attendants
-def test_add_attendant_adds_an_attendant(client):    
+
+def test_add_attendant_adds_an_attendant(client): 
+    # Test POST/api/v1/attendants   
     with app.app_context():
             access_token = create_access_token('admin')
             headers = {
@@ -67,5 +69,3 @@ def test_add_attendant_adds_an_attendant(client):
             assert res.status_code ==201
             assert number_of_attendants_after > number_of_attendants_before
             assert user_controller.get_all_users()[-1] in user_controller.get_all_users()
-
-            

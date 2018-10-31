@@ -33,19 +33,14 @@ def delete_product(product_id):
     rows_deleted = cursor.rowcount
     return rows_deleted
 
-def edit_product(product_id, name, category, quantity, unit_price, in_stock):
+def edit_product(product_id, quantity, unit_price):
     """ Edit a specific product"""
     sql = """UPDATE products SET
-    name = {0}
-    category = {1}
-    quantity = {2}
-    unit_price = {3}
-    in_stock = {4} WHERE product_id = {5}
-    """.format(name, category, quantity, unit_price, in_stock, product_id)
+    quantity = {0},
+    unit_price = {1}
+    WHERE product_id = {2}
+    """.format(quantity, unit_price, product_id)
     rows_edited = 0
-    conn = connect('store_manager_db')
-    cursor = conn.cursor()
-    cursor.execute(sql)
+    cursor = execute(sql)
     rows_edited = cursor.rowcount
-    commit_to_db(conn, cursor)
     return rows_edited
