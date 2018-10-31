@@ -1,0 +1,19 @@
+{
+    "python.pythonPath": "C:\\Users\\Frank Atukunda\\envs\\store-manager-env\\Scripts\\python.exe",
+    "python.unitTest.pyTestArgs": [
+        "app"
+    ],
+    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.pyTestEnabled": true,
+    "cSpell.words": [
+        "ctime",
+        "functools",
+        "jsonify",
+        "psycopg",
+        "pytest",
+        "werkzeug"
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
+}

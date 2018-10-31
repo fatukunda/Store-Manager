@@ -1,0 +1,16 @@
+COMMON: &common
+  DEBUG: False
+  TESTING: False
+
+DEVELOPMENT: &development
+  <<: *common
+  DEBUG: True
+  DATABASE: 'store-manager-db'
+
+PRODUCTION: &production
+  <<: *common
+  DATABASE: 'store-manager-db'
+
+TESTING: &testing
+  DATABASE: 'store-manager-test-db'
+  TESTING: True

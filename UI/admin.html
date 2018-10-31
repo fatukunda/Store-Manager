@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Administrator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./style/main.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+</head>
+<body>
+        <div class="nav">
+                <div class="nav-header">
+                    <img src="./img/logo-admin.png"/>
+                    <div class="nav-title">
+                        <h3 class="brand">Store Manager</h3>
+                    </div>
+                </div>
+                <div class="nav-btn">
+                    <label for="nav-check">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                </div>
+                <input type="checkbox" id="nav-check">
+                <div class="nav-links">
+                    <a href="#">Role: Admin</a><span> | </span>
+                    <a href="./index.html">Logout</a>
+                </div>
+            </div>
+    <div class="main">
+        <div class="quick-nav">
+            <ul>
+                <li><a href="#" id="add-product-link">Add products</a></li>
+                <li><a href="#" id="add-category-link">Add product Category</a></li>
+                <li><a href="#" id="view-products">View Products</a></li>
+                <li><a href="#" id="view-sales-link">View Sales</a></li>
+                <li><a href="#" id="add-sales-person-link">Add Sales Person</a></li>
+            </ul>
+        </div>
+        <div class="summary">
+            <div class="card" id="attendants-card">
+                <div class="card-header">Store Attendants</div>
+                <div class="card-main">
+                    <i class="material-icons">group</i>
+                <div class="main-description">
+                    <h3>Attendants Info</h3>
+                    <p>Attendants: <em>20</em></p>
+                </div>
+                </div>
+            </div>
+            <div class="card" id="sales-card">
+                    <div class="card-header">Sales</div>
+                    <div class="card-main">
+                        <i class="material-icons">euro_symbol</i>
+                    <div class="main-description">Sales Info</div>
+                    </div>
+            </div>
+            <div class="card" id="products-card">
+                    <div class="card-header">Products</div>
+                    <div class="card-main">
+                        <i class="material-icons">shopping_basket</i>
+                    <div class="main-description">Products Info</div>
+                    </div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="product-list admin-products-list">
+                <div class="search-item">
+                    <form>
+                        <input type="text" id="search" placeholder="Search Product"/>
+                    </form>
+                </div>
+                <h4>Product Inventory</h4>
+                <table>
+                    <thead>
+                        <th>#</th>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Details</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Samsung 32 inch TV</td>
+                            <td>10 Pcs</td>
+                            <td>UGX.1,600,000</td>
+                            <td>Electronics</td>
+                            <td><button class="view-product-details-btn">View Product Details</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Milk</td>
+                            <td>50 Pcs</td>
+                            <td>UGX.1600</td>
+                            <td>Food</td>
+                            <td><button class="view-product-details-btn">View Product Details</button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Samsung Fridge</td>
+                            <td>5 Pcs</td>
+                            <td>UGX.1,800,000</td>
+                            <td>Electronics</td>
+                            <td><button class="view-product-details-btn">View Product Details</button></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Samsung 24 inch TV</td>
+                            <td>5 Pcs</td>
+                            <td>UGX.1,100,000</td>
+                            <td>Electronics</td>
+                            <td><button class="view-product-details-btn">View Product Details</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="attendants-list">
+                    <h4>Store Attendants</h4>
+                    <table>
+                        <thead>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Username</th>
+                            <th>Permissions</th>
+                            <th>Status</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Rita</td>
+                                <td>Ora</td>
+                                <td>Orar@store.com</td>
+                                <td>orarita</td>
+                                <td>user</td>
+                                <td><button id="make-admin">Make Admin</button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Simon</td>
+                                <td>Leon</td>
+                                <td>simonl@store.com</td>
+                                <td>simonlee</td>
+                                <td>user</td>
+                                <td><button id="make-admin">Make Admin</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            <div id="product-details-view">
+                <h4> Sugar Details</h4>
+                <div class="details-left-column">
+                    <img src="./img/tv.png" alt="product image"/>
+                </div>
+                <div class="details-right-column">
+                    <h3>Category:</h3><span>Electronics</span>
+                    <h3>Quantity in stock:</h3><span>10</span> 
+                    <h3>Minimum stock allowed:</h3><span>4</span>
+                    <div>
+                        <p> A 32 inch LCD screen TV with bluetooth and wireless </p>
+                    </div>
+                    <div>
+                        <button id="back"><< Back</button>
+                        <button id="edit">Edit product</button>
+                        <button id="delete">Delete product</button>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="edit-product-details-view">
+                <form>
+                    <h4>Edit Product</h4>
+                    <input type="text" placeholder="Samsung 32 inch TV"/>
+                    <select name="product-categories">
+                        <option>Electronics</option>
+                        <option>Food</option>
+                        <option>Plastics</option>
+                    </select>
+                    <input type="number" placeholder="Quantity" value= 10/>
+                    <input type="number" placeholder="Price" value="1,600,000"/>
+                    <button id="back-product-detail"><< Back</button>
+                    <button id="save-edited-product">Save</button>
+                </form>
+            </div>
+            <div id="add-product">
+                <form>
+                    <h4>Add Product</h4>
+                    <input type="text" placeholder="Product name"/>
+                    <select name="product-categories">
+                        <option>Electronics</option>
+                        <option>Food</option>
+                        <option>Plastics</option>
+                    </select>
+                    <input type="number" placeholder="Quantity"/>
+                    <input type="number" placeholder="Price"/>
+                    <button>Save</button>
+                </form>
+            </div>
+            <div id="add-category">
+                <form>
+                    <h4>Add Category</h4>
+                    <input type="text" placeholder="Category"/>
+                    <button>Save</button>
+                </form>
+            </div>
+            <div id="add-sales-person">
+                <form>
+                    <h4>Add Sales Attendant</h4>
+                    <input type="text" placeholder="First name"/>
+                    <input type="text" placeholder="Last name"/>
+                    <input type="email" placeholder="user@store.com"/>
+                    <input type="text" placeholder="Username"/>
+                    <input type="password" placeholder="Password"/>
+                    <select name="permissions">
+                        <option>user</option>
+                        <option>admin</option>
+                    </select>
+                    <button>Save</button>
+                </form>
+            </div>
+            <div id="view-sales">
+                    <div class="sort-sales">
+                        <form>
+                            <h4>sort by sales attendant: </h5>
+                            <select name="sort-by-attendant">
+                                <option>Rita</option>
+                                <option>Simon</option>
+                                <option>Sara</option>
+                            </select>
+                            <button>Sort</button>
+                        </form>
+                    </div>
+                    <h4>All Store Sales</h4>
+                    <table>
+                        <thead>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Sales Person</th>
+                            <th>Item sold</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>30th. Oct.2018</td>
+                                <td>Sara</td>
+                                <td>Samsung 32 inch TV</td>
+                                <td>1</td>
+                                <td>UGX.1,600,000</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>30th. Oct.2018</td>
+                                <td>Simon</td>
+                                <td>Sugar</td>
+                                <td>2 Kgs</td>
+                                <td>UGX.8000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+    <script src="./js/admin.js"></script>
+
+</body>
+</html>

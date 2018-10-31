@@ -1,0 +1,21 @@
+language: python
+python:
+  - "3.6"
+env:
+  global:
+    - APP_SETTINGS=testing
+    - CODECOV_TOKEN="2ccb6e69-f7d4-4275-bdce-04097997ff1d"
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+  - pip install pytest pytest-cov
+  - pip install coverage
+  - pip install codecov
+  - pip install coveralls
+# command to run tests
+script:
+  - pytest --cov=./
+  
+after_success:
+  - codecov
+  - coveralls
