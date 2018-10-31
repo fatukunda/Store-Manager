@@ -39,7 +39,6 @@ def get_all_sales(user_id = None):
     cursor = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
     cursor.execute(sql)
     sales = cursor.fetchall()
-    print(sales)
     sale_list = []
     for sale in sales:
         product = search_single_product(sale['product_sold_id'])

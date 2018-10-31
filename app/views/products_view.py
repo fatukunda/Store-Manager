@@ -28,7 +28,7 @@ def add_product():
         price = request_data['unit_price']
         in_stock = request_data['in_stock']
         product_controller.create_product(name, category, quantity, price, in_stock)
-        return jsonify("Product created successfully")
+        return jsonify("Product created successfully"), 201
        
 
 """ Delete a specific product"""
@@ -54,7 +54,7 @@ def edit_product(product_id):
             return jsonify({"message": rows_edited + ' have been updated'})
 
 # Get all products in the store
-@bp.route('', methods= ['GET'])
+@bp.route('/', methods= ['GET'])
 @jwt_required
 def get_products():
         # current_user = get_jwt_identity()
@@ -69,5 +69,5 @@ def get_single_product(product_id):
         if product:
                 return jsonify(product)
         else:
-                jsonify({"message": "Product with an Id of "+ product_id + " was not found"}), 404
+                return jsonify({"message": "Product with an Id of "+ product_id + " was not found"}), 404
 

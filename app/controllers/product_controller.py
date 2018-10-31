@@ -16,21 +16,9 @@ def create_product(name, category, quantity, price, in_stock):
 def get_all_products():
     """ Get all products in the store """
     sql = """SELECT * FROM products;"""
-    
     cursor =execute(sql)
     products = cursor.fetchall()
-    products_list = []
-    for product in products:
-        product_details = {
-            'id': product['product_id'],
-            'name': product['name'],
-            'category': product['category'],
-            'quantity': product['quantity'],
-            'unit_price': product['unit_price'],
-            'in_stock': product['in_stock']
-        }
-        products_list.append(product_details)
-    return products_list
+    return products
 
 def search_a_product(product_id):
     """ Get a single product"""

@@ -23,6 +23,7 @@ app.register_blueprint(auth_view.bp)
 app.config['JWT_SECRET_KEY'] = 'Code-Benders'
 jwt = JWTManager(app)
 
+
 # filename = os.path.join('app' , 'config.yml')
 # with open(filename) as f:
 #     config = f.read()

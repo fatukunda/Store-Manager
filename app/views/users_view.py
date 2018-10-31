@@ -1,8 +1,8 @@
 # User_views.py
-
 from flask import Blueprint, request, jsonify
 from app.models.user import User
 from app.controllers import user_controller
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 bp = Blueprint('users_view', __name__, url_prefix='/api/v1/attendants')
 
@@ -10,6 +10,7 @@ bp = Blueprint('users_view', __name__, url_prefix='/api/v1/attendants')
 
 """ Register an attendant"""
 @bp.route('', methods=['POST'])
+@jwt_required
 def register_attendant():
     request_data = request.get_json()
     first_name = request_data['first_name']
@@ -23,11 +24,13 @@ def register_attendant():
 
 """ Get a list of attendants in the store"""
 @bp.route('/', methods=['GET'])
+@jwt_required
 def get_attendants():
    return jsonify(user_controller.get_all_users())
 
 """ Get details of a single attendant"""
 @bp.route('/<attendant_id>', methods=['GET'])
+@jwt_required
 def get_attendant_details(attendant_id):
     user = user_controller.get_user_details(attendant_id)
     if user:
@@ -36,6 +39,7 @@ def get_attendant_details(attendant_id):
         return jsonify({"message": "No such user was found"}), 404
 
 @bp.route('/<attendant_id>', methods=['PUT'])
+@jwt_required
 def make_attendant_admin(attendant_id):
     if not request.is_json:
         return jsonify({"message": "Missing JSON in request"}), 400
@@ -48,6 +52,7 @@ def make_attendant_admin(attendant_id):
 
 """ Delete an attendant given the Id"""
 @bp.route('<attendant_id>', methods=['DELETE'])
+@jwt_required
 def delete_attendant(attendant_id):
     rows_deleted = user_controller.delete_attendant(attendant_id)
     if rows_deleted:
