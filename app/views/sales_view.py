@@ -37,7 +37,7 @@ def get_single_sale(attendant_id, sale_id):
 @bp.route('/sales', methods=['POST'])
 def make_sale():
     request_data = request.get_json()
-    sold_item = request_data['product_sold_id']
+    sold_item = request_data['sold_item']
     quantity_sold = request_data['quantity_sold']
     sales_person = request_data['sales_person_id']
     if sale_controller.make_a_sale(sold_item, sales_person, quantity_sold):

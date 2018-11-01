@@ -30,10 +30,10 @@ class TestingConfig(Config):
     DEBUG = False
     TESTING = True
     ENV = 'testing'
+    DATABASE = 'store_manager_test_db'
 
 app_config = {
     'development': DevelopmentConfig,
     'production': ProductionConfig,
     'testing': TestingConfig,
-    'default':DevelopmentConfig
 }
