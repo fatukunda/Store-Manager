@@ -19,80 +19,80 @@ def json_response(response):
     res =  json.loads(response.data.decode('utf8'))
     return [res]
 
-# test GET/api/v1/attendants
-# def test_get_attendants_returns_all_attendants(client):
-#     with app.app_context():
-#         access_token = create_access_token('admin')
-#         headers = {
-#                 'Authorization': 'Bearer {}'.format(access_token)
-#         }
-#         res = client.get('/api/v1/attendants', headers = headers)
-#         assert res.status_code == 200
-#         assert json_response(res)
+def test_get_attendants_returns_all_attendants(client):
+# Test GET/api/v1/attendants
+    with app.app_context():
+        access_token = create_access_token('admin')
+        headers = {
+                'Authorization': 'Bearer {}'.format(access_token)
+        }
+        res = client.get('/api/v1/attendants', headers = headers)
+        assert res.status_code == 200
+        assert json_response(res)
 
    
-# def test_get_single_attendant_returns_an_attendant(client):
-#     # Test GET/api/v1/attendants/<id> 
-#     with app.app_context():
-#         access_token = create_access_token('admin')
-#         headers = {
-#                 'Authorization': 'Bearer {}'.format(access_token)
-#         }
-#         attendant_id = 1
-#         res = client.get('/api/v1/attendants/{}'.format(attendant_id), headers = headers)
-#         assert res.status_code == 200
-#         assert json_response(res)
+def test_get_single_attendant_returns_an_attendant(client):
+    # Test GET/api/v1/attendants/<id> 
+    with app.app_context():
+        access_token = create_access_token('admin')
+        headers = {
+                'Authorization': 'Bearer {}'.format(access_token)
+        }
+        attendant_id = 1
+        res = client.get('/api/v1/attendants/{}'.format(attendant_id), headers = headers)
+        assert res.status_code == 200
+        assert json_response(res)
         
 
-# def test_add_attendant_adds_an_attendant(client): 
-#     # Test POST/api/v1/attendants   
-#     with app.app_context():
-#             access_token = create_access_token('admin')
-#             headers = {
-#                     'Authorization': 'Bearer {}'.format(access_token)
-#             }
-#             attendant = User('mak', 'samatm@app.com', 'my_pass123')
-#             attendant.first_name = 'Miller'
-#             attendant.last_name = "Moll"
-#             attendant.role = 'user'
-#             number_of_attendants_before = len(user_controller.get_all_users())
-#             res = client.post('/api/v1/attendants', data =json.dumps(dict(
-#                     first_name = attendant.first_name,
-#                     last_name = attendant.last_name,
-#                     username = attendant.username,
-#                     password = attendant.password,
-#                     email = attendant.email,
-#                     role = attendant.role
+def test_add_attendant_adds_an_attendant(client): 
+    # Test POST/api/v1/attendants   
+    with app.app_context():
+            access_token = create_access_token('admin')
+            headers = {
+                    'Authorization': 'Bearer {}'.format(access_token)
+            }
+            attendant = User('mak', 'samatm@app.com', 'my_pass123')
+            attendant.first_name = 'Miller'
+            attendant.last_name = "Moll"
+            attendant.role = 'user'
+            number_of_attendants_before = len(user_controller.get_all_users())
+            res = client.post('/api/v1/attendants', data =json.dumps(dict(
+                    first_name = attendant.first_name,
+                    last_name = attendant.last_name,
+                    username = attendant.username,
+                    password = attendant.password,
+                    email = attendant.email,
+                    role = attendant.role
                     
-#             )), content_type='application/json', headers = headers)
-#             number_of_attendants_after = len(user_controller.get_all_users())
-#             assert res.status_code ==201
-#             assert number_of_attendants_after > number_of_attendants_before
-#             assert user_controller.get_all_users()[-1] in user_controller.get_all_users()
+            )), content_type='application/json', headers = headers)
+            number_of_attendants_after = len(user_controller.get_all_users())
+            assert res.status_code ==201
+            assert number_of_attendants_after > number_of_attendants_before
+            assert user_controller.get_all_users()[-1] in user_controller.get_all_users()
 
-# def test_delete_attendant_deletes_an_attendant(client):
-#         with app.app_context():
-#                 access_token = create_access_token('admin')
-#                 headers = {
-#                     'Authorization': 'Bearer {}'.format(access_token)
-#                 }
-#         attendant_id = 2
-#         res = client.delete('/api/v1/attendants/{}'.format(attendant_id), headers = headers)
-#         assert res.status_code == 200
-#         attendant = user_controller.get_user_details(attendant_id)
-#         assert not attendant
+def test_delete_attendant_deletes_an_attendant(client):
+        with app.app_context():
+                access_token = create_access_token('admin')
+                headers = {
+                    'Authorization': 'Bearer {}'.format(access_token)
+                }
+        attendant_id = 2
+        res = client.delete('/api/v1/attendants/{}'.format(attendant_id), headers = headers)
+        assert res.status_code == 200
+        attendant = user_controller.get_user_details(attendant_id)
+        assert not attendant
 
-# def test_admin_can_grant_attendant_admin_rights(client):
-#         with app.app_context():
-#                 access_token = create_access_token('admin')
-#                 headers = {
-#                     'Authorization': 'Bearer {}'.format(access_token)
-#                 }
-#                 attendant_id = 1
-#                 role = 'admin'
-#                 res = client.put('/api/v1/attendants/{}'.format(attendant_id), data = json.dumps (dict(
-#                         role = role
-#                 )), content_type ='application/json', headers = headers)
-#                 assert res.status_code == 200
-#                 attendant = user_controller.get_user_details(attendant_id)
-#                 assert attendant['user_type'] == role
+def test_admin_can_grant_attendant_admin_rights(client):
+        with app.app_context():
+                access_token = create_access_token('admin')
+                headers = {
+                    'Authorization': 'Bearer {}'.format(access_token)
+                }
+                attendant_id = 1
+                role = 'admin'
+                res = client.put('/api/v1/attendants/{}'.format(attendant_id), data = json.dumps (dict(
+                        role = role
+                )), content_type ='application/json', headers = headers)
+                assert res.status_code == 200
+                attendant = user_controller.get_user_details(attendant_id)
+                assert attendant['user_type'] == role
