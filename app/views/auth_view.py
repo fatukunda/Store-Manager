@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token
 from app.models.auth import Auth
 from app.controllers import auth_controller
+from datetime import timedelta
 
 bp = Blueprint('auth_view', __name__, url_prefix='/api/v1/auth')
 
@@ -25,9 +26,9 @@ def login():
         return jsonify({"message": "User not found"}), 404  
     access_token = ''
     if user['user_type'] == 'admin':
-        access_token = create_access_token(identity='admin')
+        access_token = create_access_token(identity='admin', expires_delta= timedelta(hours=2))
     else:
-        access_token = create_access_token(identity= username)
+        access_token = create_access_token(identity= username, expires_delta=timedelta(hours=2))
         
     return jsonify(access_token=access_token), 200
 

@@ -21,15 +21,12 @@ def add_product():
                         return jsonify({"message": "Product name should be a string"})
                 if not isinstance(request_data['quantity'], int):
                         return jsonify({"message": "Quantity should be a number"})
-                if not isinstance(request_data['in_stock'], bool):
-                        return jsonify({"message": "in_stock should be a true or false"})
         
                 name = request_data['name']
                 category = request_data['category']
                 quantity = request_data['quantity']
                 price = request_data['unit_price']
-                in_stock = request_data['in_stock']
-                product_controller.create_product(name, category, quantity, price, in_stock)
+                product_controller.create_product(name, category, quantity, price)
                 return jsonify("Product created successfully"), 201
         else:
                 return jsonify({"message": "Not authorized to access this route"}), 401

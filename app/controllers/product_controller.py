@@ -2,13 +2,14 @@ from app.models.product import Product
 from app.db.config_db import commit_to_db, connect
 from app.models import search_single_product, execute
 
-def create_product(name, category, quantity, price, in_stock):
+def create_product(name, category, quantity, price):
     """ insert a new product into the products table """
+    product = Product(category, name, quantity, price)
     sql = """INSERT INTO products(name, category, quantity, unit_price, in_stock)
                  VALUES(%s, %s, %s, %s, %s) RETURNING product_id, name, quantity, unit_price, in_stock;"""
     conn = connect('store_manager_db')
     cursor = conn.cursor()
-    cursor.execute(sql, (name, category, quantity, price, in_stock))
+    cursor.execute(sql, (product.name, product.category, product.quantity, product.price, product.in_stock))
     product = cursor.fetchone()
     commit_to_db(conn, cursor)
     return product
