@@ -1,4 +1,5 @@
 import psycopg2
+from config import app_config
 
 TEST_DATABASE_CONFIG = {
     'host': 'localhost',
@@ -24,8 +25,8 @@ def connect(db_name):
   
     return conn
 
-"""commit changes to the database and close connection"""
 def commit_to_db(conn, cursor):
+    """commit changes to the database and close connection"""
     conn.commit()
     cursor.close()
     if conn is not None:
@@ -38,7 +39,7 @@ def create_tables():
         """
         CREATE TABLE IF NOT EXISTS products (
             product_id SERIAL PRIMARY KEY,
-            name VARCHAR(255) NOT NULL,
+            name VARCHAR(255) UNIQUE NOT NULL,
             category VARCHAR(255) NOT NULL,
             quantity INTEGER NOT NULL,
             unit_price FLOAT NOT NULL,
