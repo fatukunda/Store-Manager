@@ -3,7 +3,7 @@ from app.db.config_db import commit_to_db, connect
 from app.models.sale import Sale
 from app.models import execute
 import psycopg2.extras
-
+from flask import abort, Response, jsonify
 
 def make_a_sale(sale_item_id, sales_person_id, quantity_sold):
     product = search_single_product(sale_item_id)
@@ -15,18 +15,17 @@ def make_a_sale(sale_item_id, sales_person_id, quantity_sold):
     quantity_in_stock = product['quantity']
         
     if quantity_sold > quantity_in_stock:
-        return "Not enough products in the store. Sale cannot be made"
-    
-        
-    conn = connect('store_manager_db')
-    cursor = conn.cursor()
+        abort(jsonify({"message": "Not enough products to make"}))
+    else:
+        conn = connect('store_manager_db')
+        cursor = conn.cursor()
 
-    cursor.execute(sql, (sale.sales_person,sale.date, sale.quantity_sold, sale.sold_item, total_price))
-    product = cursor.fetchone()
-    sql_update_product = "UPDATE products SET quantity = {}".format(quantity_in_stock - sale.quantity_sold)
-    cursor.execute(sql_update_product)
-    commit_to_db(conn, cursor)
-    return product
+        cursor.execute(sql, (sale.sales_person,sale.date, sale.quantity_sold, sale.sold_item, total_price))
+        product = cursor.fetchone()
+        sql_update_product = "UPDATE products SET quantity = {}".format(quantity_in_stock - sale.quantity_sold)
+        cursor.execute(sql_update_product)
+        commit_to_db(conn, cursor)
+        return product
 
  
 def get_all_sales(user_id = None):
