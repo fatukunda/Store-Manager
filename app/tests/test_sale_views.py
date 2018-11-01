@@ -1,4 +1,16 @@
-# """ SALES TESTS"""
+from flask import json
+from flask_jwt_extended import create_access_token
+import pytest
+from app.controllers import sale_controller
+from app import app
+from app.models.sale import Sale
+""" SALES TESTS"""
+
+@pytest.fixture
+def client(request):
+    app.config['TESTING'] = True
+    client = app.test_client()
+    yield client
 
 # # Test GET/api/v1/admin/sales
 # def test_get_sales_returns_all_sales(client):

@@ -32,12 +32,13 @@ def register_attendant():
 @jwt_required
 def get_attendants():
     """ Get a list of attendants in the store"""
+ 
     current_user = get_jwt_identity()
     if current_user == 'admin':
-        return jsonify(user_controller.get_all_users())
+       return jsonify(user_controller.get_all_users())
     else:
-        jsonify({"message": "Not allowed to access this page"}), 401
-
+       return jsonify({"message": "Not allowed to access this page"}), 401
+    
 @bp.route('/<attendant_id>', methods=['GET'])
 @jwt_required
 def get_attendant_details(attendant_id):
@@ -65,7 +66,7 @@ def make_attendant_admin(attendant_id):
             return jsonify({"message": "Missing role parameter"}), 400
         user = user_controller.give_admin_rights(attendant_id, role)
         if user:
-            return 'Admin rights successfully assigned to user'
+            return jsonify({"message": "Admin rights successfully assigned to user"})
     else:
         return jsonify({"message": "Not allowed to access this page"})
 
@@ -73,15 +74,11 @@ def make_attendant_admin(attendant_id):
 @jwt_required
 def delete_attendant(attendant_id):
     """ Delete an attendant given the Id"""
-    current_user =get_jwt_identity()
+    current_user = get_jwt_identity()
     if current_user == 'admin':
         rows_deleted = user_controller.delete_attendant(attendant_id)
-        if rows_deleted:
-            return 'User deleted successfully'
+        if not rows_deleted:
+            return  jsonify({"message": "Unable to find user"})
+        return jsonify({"message": "User deleted successfully"})
     else:
         return jsonify({"message": "Not authorized to access this page"})
-
-""" Edit an attendant given the Id"""
-@bp.route('<attendant_id>', methods=['PUT'])
-def edit_attendant(attendant_id):
-    pass

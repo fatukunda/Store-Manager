@@ -15,22 +15,9 @@ def create_user(first_name, last_name, username, email, password, role):
 def get_all_users():
     """ Get all the users in the users table"""
     sql = """ SELECT * FROM users;"""
-    conn = connect('store_manager_db')
     cursor = execute(sql)
     users = cursor.fetchall()
-    user_list = []
-    for user in users:
-        user_details = {
-            'user_id': user['user_id'],
-            'first_name': user['first_name'],
-            'last_name': user['last_name'],
-            'username': user['username'],
-            'email': user['email'],
-            'role': user['user_type']
-        }
-        user_list.append(user_details)
-    commit_to_db(conn, cursor)
-    return user_list
+    return users
 
 
 def get_user_details(user_id):
@@ -43,9 +30,10 @@ def get_user_details(user_id):
 
 def give_admin_rights(user_id, role):
     sql = "SELECT * FROM users WHERE user_id = '{}'".format(user_id)
-    sql2 = "UPDATE users SET user_type = '{}'".format(role)
+    sql2 = "UPDATE users SET user_type = '{0}' WHERE user_id = {1}".format(role, user_id)
     conn = connect('store_manager_db')
-    cursor = execute(sql)
+    cursor = conn.cursor()
+    cursor.execute(sql)
     user = cursor.fetchone()
     if user[6] != role:
         cursor.execute(sql2)
