@@ -1,6 +1,5 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token
-from app.models.auth import Auth
 from app.controllers import auth_controller
 
 bp = Blueprint('auth_view', __name__, url_prefix='/api/v1/auth')
@@ -18,9 +17,8 @@ def login():
         return jsonify({"message": "Specify the Username"}), 400
     if not password:
         return jsonify({"message": "Specify the Password"}), 400
-    auth = Auth(username, password)
+    user = auth_controller.login(username, password)
     # auth.pw_hash
-    user = auth_controller.login(auth.username, auth.password)
     if not user:
         return jsonify({"message": "User not found"}), 404  
     access_token = ''
