@@ -1,5 +1,6 @@
 import psycopg2
 from app.db.config_db import connect, commit_to_db
+import psycopg2.extras
 
 """ Create json-like output from the database data"""
 def make_json(products):
@@ -21,8 +22,8 @@ def search_single_product(product_id):
         return searched_product
 
 def execute(sql):
-        conn = connect('store-manager-db')
-        cursor = conn.cursor()
+        conn = connect('store_manager_db')
+        cursor = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
         cursor.execute(sql)
         conn.commit()
         return cursor
