@@ -29,7 +29,6 @@ def test_get_attendants_returns_all_attendants(client):
         res = client.get('/api/v1/attendants', headers = headers)
         assert res.status_code == 200
         assert json_response(res)
-
    
 def test_get_single_attendant_returns_an_attendant(client):
     # Test GET/api/v1/attendants/<id> 
