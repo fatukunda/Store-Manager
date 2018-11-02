@@ -47,7 +47,7 @@ def make_sale():
     quantity_sold = request_data['quantity_sold']
     sales_person = get_jwt_identity()
     seller = search_sales_person(sales_person)
-    if quantity_sold == 0:
+    if quantity_sold <= 0:
         return jsonify({"message": "Please enter a number above zero"})
     if seller['user_type'] == 'admin':
         return jsonify({"message": "Only sale attendants can make sales"})
