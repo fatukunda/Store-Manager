@@ -7,7 +7,6 @@ from flask import abort, jsonify, Response
 def create_product(name, category, quantity, price):
     """ insert a new product into the products table """
     product = Product(category, name, quantity, price)
-    product.in_stock = True
     sql = """INSERT INTO products(name, category, quantity, unit_price, in_stock)
                  VALUES(%s, %s, %s, %s, %s) RETURNING product_id, name, quantity, unit_price, in_stock;"""
     conn = connect('store_manager_db')
