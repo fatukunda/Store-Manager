@@ -15,7 +15,8 @@ bp = Blueprint('users_view', __name__, url_prefix='/api/v1/attendants')
 def register_attendant():
     """ Register an attendant"""
     current_user = get_jwt_identity()
-    if current_user == 'admin':
+    current_user_role = search_sales_person(current_user)
+    if current_user_role['user_type'] == 'admin':
         request_data = request.get_json()
         first_name = request_data['first_name']
         last_name = request_data['last_name']
