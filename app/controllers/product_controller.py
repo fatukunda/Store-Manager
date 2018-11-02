@@ -13,7 +13,7 @@ def create_product(name, category, quantity, price):
     conn = connect('store_manager_db')
     cursor = conn.cursor()
     try:
-        cursor.execute(sql, (product.name, product.category, product.quantity, product.price, product.in_stock))
+        cursor.execute(sql, (product.name, product.category, product.quantity, product.unit_price, product.in_stock))
     except psycopg2.IntegrityError:
         abort(Response("Product name {} already exists".format(name), status =400))
     product = cursor.fetchone()

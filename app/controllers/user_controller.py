@@ -1,13 +1,17 @@
 from app.db.config_db import commit_to_db, connect
 from app.models import execute
+from app.models.user import User
 
-def create_user(first_name, last_name, username, email, password, role):
+def create_user(first_name, last_name, username, email, password):
+        user = User(username, email, password)
+        user.first_name = first_name
+        user.last_name = last_name
         """ insert a new user into the user table """
         sql = """INSERT INTO users(first_name, last_name, username, email, password, user_type)
                  VALUES(%s, %s, %s, %s, %s, %s) RETURNING user_id, first_name, last_name, username, email, password, user_type;"""
         conn = connect('store_manager_db')
         cursor = conn.cursor()
-        cursor.execute(sql, (first_name, last_name, username, email, password, role))
+        cursor.execute(sql, (first_name, last_name, username, email, password, user.role))
         user = cursor.fetchone()
         commit_to_db(conn, cursor)
         return user
