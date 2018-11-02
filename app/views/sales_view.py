@@ -3,6 +3,7 @@ from app.models.product import Product
 from app.models.sale import Sale
 from app.controllers import sale_controller
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from app.models import search_sales_person
 
 bp = Blueprint('sales_view', __name__, url_prefix='/api/v1')
 
@@ -20,6 +21,7 @@ def get_sales():
 @jwt_required
 def get_a_single_sale(sale_id):
         """ Get sale details"""
+        current_user = get_jwt_identity()
         if sale_controller.get_sale_details(sale_id):
                 return jsonify(sale_controller.get_sale_details(sale_id))
         else:
@@ -29,6 +31,7 @@ def get_a_single_sale(sale_id):
 @jwt_required
 def get_attendant_sales(attendant_id):
         # Get all sales made by a particular store attendant
+
         return jsonify(sale_controller.get_all_sales(attendant_id))
 
 
@@ -39,13 +42,15 @@ def make_sale():
     request_data = request.get_json()
     sold_item = request_data['sold_item']
     quantity_sold = request_data['quantity_sold']
-    sales_person = request_data['sales_person']
-#     sales_person = get_jwt_identity()
+    sales_person = get_jwt_identity()
+    seller = search_sales_person(sales_person)
+    print(seller['user_type'])
     if quantity_sold == 0:
-            return jsonify({"message": "Please enter a number above zero"})
+        return jsonify({"message": "Please enter a number above zero"})
+    if seller['user_type'] == 'admin':
+        return jsonify({"message": "Only sale attendants can make sales"})
     if sale_controller.make_a_sale(sold_item, sales_person, quantity_sold):
+        return jsonify({"message" : "Sale successfully completed"}), 201
+    
 
-            return jsonify({"message" : "Sale successfully completed"}), 201
-    else:
-            return jsonify({"message": "There are no sales made yet"})    
 

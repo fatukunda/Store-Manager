@@ -25,11 +25,8 @@ def login():
     if not user:
         return jsonify({"message": "User not found"}), 404  
     access_token = ''
-    if user['user_type'] == 'admin':
-        access_token = create_access_token(identity='admin', expires_delta= timedelta(hours=2))
-    else:
-        access_token = create_access_token(identity= username, expires_delta=timedelta(hours=2))
-        
+    user_id = user['user_id']
+    access_token = create_access_token(identity= user_id, expires_delta= timedelta(hours=2))
     return jsonify(access_token=access_token), 200
 
 
