@@ -1,5 +1,4 @@
 import psycopg2
-from config import app_config
 
 TEST_DATABASE_CONFIG = {
     'host': 'localhost',
