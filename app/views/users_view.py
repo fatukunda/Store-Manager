@@ -3,6 +3,7 @@ from flask import Blueprint, request, jsonify
 from app.models.user import User
 from app.controllers import user_controller
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from app.models import search_sales_person
 
 bp = Blueprint('users_view', __name__, url_prefix='/api/v1/attendants')
 
@@ -32,9 +33,9 @@ def register_attendant():
 @jwt_required
 def get_attendants():
     """ Get a list of attendants in the store"""
- 
     current_user = get_jwt_identity()
-    if current_user == 'admin':
+    user_role = search_sales_person(current_user)
+    if user_role['user_type'] == 'admin':
        return jsonify(user_controller.get_all_users())
     else:
        return jsonify({"message": "Not allowed to access this page"}), 401
@@ -44,7 +45,8 @@ def get_attendants():
 def get_attendant_details(attendant_id):
     """ Get details of a single attendant"""
     current_user = get_jwt_identity()
-    if current_user:
+    user_role = search_sales_person(current_user)
+    if user_role['user_type'] == 'admin':
         user = user_controller.get_user_details(attendant_id)
         if user:
             return jsonify(user_controller.get_user_details(attendant_id)), 200
@@ -58,7 +60,8 @@ def get_attendant_details(attendant_id):
 def make_attendant_admin(attendant_id):
     """ Give administrator rights"""
     current_user = get_jwt_identity()
-    if current_user == 'admin':
+    user_role = search_sales_person(current_user)
+    if user_role['user_type'] == 'admin':
         if not request.is_json:
             return jsonify({"message": "Missing JSON in request"}), 400
         role = request.json.get('role')
@@ -75,7 +78,8 @@ def make_attendant_admin(attendant_id):
 def delete_attendant(attendant_id):
     """ Delete an attendant given the Id"""
     current_user = get_jwt_identity()
-    if current_user == 'admin':
+    user_role = search_sales_person(current_user)
+    if user_role['user_type'] == 'admin':
         rows_deleted = user_controller.delete_attendant(attendant_id)
         if not rows_deleted:
             return  jsonify({"message": "Unable to find user"})

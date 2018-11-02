@@ -1,6 +1,7 @@
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask import Blueprint, request, Response, jsonify
 from app.controllers import product_controller
+from app.models import search_sales_person
 
 
 bp = Blueprint('products_view', __name__, url_prefix='/api/v1/products')
@@ -11,16 +12,19 @@ bp = Blueprint('products_view', __name__, url_prefix='/api/v1/products')
 @jwt_required
 def add_product():
         current_user = get_jwt_identity()
-        if current_user == 'admin':
+        user_role = search_sales_person(current_user)
+        if user_role['user_type'] == 'admin':
                 if not request.is_json:
                         return jsonify({"message": "Request is missing json"}), 400 
                 request_data = request.get_json()
                 if not isinstance(request_data['name'], str):
-                        return jsonify({"message": "Product name should be a string"})
+                        return jsonify({"message": "Product name should be a string"}), 400
                 if not isinstance(request_data['category'], str):
-                        return jsonify({"message": "Product name should be a string"})
+                        return jsonify({"message": "Product name should be a string"}), 400
                 if not isinstance(request_data['quantity'], int):
-                        return jsonify({"message": "Quantity should be a number"})
+                        return jsonify({"message": "Quantity should be a number"}), 400
+                if not isinstance(request_data['unit_price'], int):
+                        return jsonify({"message": "The price should be a number"}), 400
         
                 name = request_data['name']
                 category = request_data['category']
@@ -37,7 +41,8 @@ def add_product():
 @jwt_required
 def delete_product(product_id):
         current_user = get_jwt_identity()
-        if current_user == 'admin':
+        user_role = search_sales_person(current_user)
+        if user_role['user_type'] == 'admin':
                 rows_deleted = product_controller.delete_product(product_id)    
                 if rows_deleted != -1:
                         return 'Product deleted successfully'
@@ -49,7 +54,8 @@ def delete_product(product_id):
 @jwt_required
 def edit_product(product_id):
         current_user = get_jwt_identity()
-        if current_user == 'admin':
+        user_role = search_sales_person(current_user)
+        if user_role['user_type'] == 'admin':
                 request_data = request.get_json()
                 quantity = request_data['quantity']
                 price = request_data['unit_price']
