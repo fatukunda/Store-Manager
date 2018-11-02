@@ -22,14 +22,13 @@ def json_response(response):
 def test_add_attendant_adds_an_attendant(client): 
     # Test POST/api/v1/attendants   
     with app.app_context():
-            access_token = create_access_token('admin')
+            access_token = create_access_token(100)
             headers = {
                     'Authorization': 'Bearer {}'.format(access_token)
             }
-            attendant = User('luke', 'lukam@app.com', '45635')
-            attendant.first_name = 'Luka'
-            attendant.last_name = "Modric"
-            attendant.role = 'user'
+            attendant = User('Mike', 'mike@app.com', '45635')
+            attendant.first_name = 'Mike'
+            attendant.last_name = "Larson"
             number_of_attendants_before = len(user_controller.get_all_users())
             res = client.post('/api/v1/attendants', data =json.dumps(dict(
                     first_name = attendant.first_name,
@@ -48,29 +47,29 @@ def test_add_attendant_adds_an_attendant(client):
 def test_get_single_attendant_returns_an_attendant(client):
     # Test GET/api/v1/attendants/<id> 
     with app.app_context():
-        access_token = create_access_token('admin')
+        access_token = create_access_token(100)
         headers = {
                 'Authorization': 'Bearer {}'.format(access_token)
         }
-        attendant_id = 1
+        attendant_id = 5
         res = client.get('/api/v1/attendants/{}'.format(attendant_id), headers = headers)
         assert res.status_code == 200
         assert json_response(res)
 
-def test_get_attendants_returns_all_attendants(client):
-# Test GET/api/v1/attendants
-    with app.app_context():
-        access_token = create_access_token('admin')
-        headers = {
-                'Authorization': 'Bearer {}'.format(access_token)
-        }
-        res = client.get('/api/v1/attendants', headers = headers)
-        assert res.status_code == 200
-        assert json_response(res)
+# def test_get_attendants_returns_all_attendants(client):
+# # Test GET/api/v1/attendants
+#     with app.app_context():
+#         access_token = create_access_token(100)
+#         headers = {
+#                 'Authorization': 'Bearer {}'.format(access_token)
+#         }
+#         res = client.get('/api/v1/attendants', headers = headers)
+#         assert res.status_code == 200
+#         assert json_response(res)
 
 def test_admin_can_grant_attendant_admin_rights(client):
         with app.app_context():
-                access_token = create_access_token('admin')
+                access_token = create_access_token(100)
                 headers = {
                     'Authorization': 'Bearer {}'.format(access_token)
                 }
@@ -85,11 +84,11 @@ def test_admin_can_grant_attendant_admin_rights(client):
 
 def test_delete_attendant_deletes_an_attendant(client):
         with app.app_context():
-                access_token = create_access_token('admin')
+                access_token = create_access_token(100)
                 headers = {
                     'Authorization': 'Bearer {}'.format(access_token)
                 }
-        attendant_id = 4
+        attendant_id = 200
         res = client.delete('/api/v1/attendants/{}'.format(attendant_id), headers = headers)
         assert res.status_code == 200
         attendant = user_controller.get_user_details(attendant_id)

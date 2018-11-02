@@ -12,8 +12,8 @@ def client():
 
 def test_login_returns_access_for_registered_users(client):
     with app.app_context():
-        user = 'kamau'
-        user_pass = 'kamau1'
+        user = 'fatukunda'
+        user_pass = 'admin123'
         auth = Auth(user, user_pass)
         res = client.post('/api/v1/auth/login', data = json.dumps(dict(
             username = auth.username,

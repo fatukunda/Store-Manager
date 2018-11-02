@@ -17,20 +17,20 @@ def json_response(response):
     res =  json.loads(response.data.decode('utf8'))
     return [res]
 
-# Test GET/api/v1/sales
+
 def test_make_sale(client):
+        # Test GET/api/v1/sales
     with app.app_context():
-            username = 'luke'
-            sales_person_id = 10
-            item_to_sale = 1
-            access_token = create_access_token(username)
+            sales_person_id = 7
+            item_to_sale = 26
+            access_token = create_access_token(sales_person_id)
             headers = {
                     'Authorization': 'Bearer {}'.format(access_token)
             }
             sale = Sale(sales_person_id, item_to_sale, 2)
             number_of_sales_before = len(sale_controller.get_all_sales())
             res = client.post('/api/v1/sales', data =json.dumps(dict(
-                    sales_person_id = sale.sales_person,
+                #     sales_person_id = sale.sales_person,
                     sale_date = sale.date,
                     quantity_sold = sale.quantity_sold,
                     sold_item = sale.sold_item
@@ -43,10 +43,10 @@ def test_make_sale(client):
 # Test GET/api/v1/sales/<sale_id>    
 def test_get_single_sale_returns_a_sale(client):
     with app.app_context():
-        access_token = create_access_token('user')
+        access_token = create_access_token(7)
         headers = {
                 'Authorization': 'Bearer {}'.format(access_token)
         }
-        sale_id = 1
-        res = client.get('/api/v1/products/{}'.format(sale_id), headers = headers)
+        sale_id = 18
+        res = client.get('/api/v1/sales/{}'.format(sale_id), headers = headers)
         assert res.status_code == 200
