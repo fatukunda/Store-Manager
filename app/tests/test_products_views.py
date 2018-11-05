@@ -85,15 +85,15 @@ def test_admin_can_edit_a_product(client):
                 assert product['unit_price'] == unit_price
                 assert product['quantity'] == quantity
 
-# def test_admin_can_delete_a_product(client):
-#         with app.app_context():
-#                 access_token = create_access_token(100)
-#                 headers = {
-#                     'Authorization': 'Bearer {}'.format(access_token)
-#                 }   
-#                 product_id = 30
-#                 res = client.delete('/api/v1/products/{}'.format(product_id), headers = headers)
-#                 assert res.status_code == 200
-#                 product = product_controller.search_a_product(product_id)
-#                 assert not product
+def test_admin_can_delete_a_product(client):
+        with app.app_context():
+                access_token = create_access_token(100)
+                headers = {
+                    'Authorization': 'Bearer {}'.format(access_token)
+                }   
+                product_id = 30
+                res = client.delete('/api/v1/products/{}'.format(product_id), headers = headers)
+                assert res.status_code == 200
+                product = product_controller.search_a_product(product_id)
+                assert not product
 

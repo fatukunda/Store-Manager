@@ -73,7 +73,7 @@ def test_admin_can_grant_attendant_admin_rights(client):
                 headers = {
                     'Authorization': 'Bearer {}'.format(access_token)
                 }
-                attendant_id = 2
+                attendant_id = 4
                 role = 'admin'
                 res = client.put('/api/v1/attendants/{}'.format(attendant_id), data = json.dumps (dict(
                         role = role
