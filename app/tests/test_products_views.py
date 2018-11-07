@@ -3,8 +3,9 @@ from flask import json
 from flask_jwt_extended import create_access_token
 from app.models.product import Product
 from app.controllers import product_controller
-from app import app
-from app.db.config_db import connect
+from app import create_app
+
+app = create_app('test')
 
 @pytest.fixture
 def client(request):
@@ -21,7 +22,6 @@ def json_response(response):
 
 
 def test_add_product_adds_a_product(client):
-        # Test POST/api/v1/products    
     with app.app_context():
             access_token = create_access_token(100)
             headers = {
@@ -34,7 +34,6 @@ def test_add_product_adds_a_product(client):
                     category = product.category,
                     quantity = product.quantity,
                     unit_price = product.price,
-                #     in_stock = product.in_stock
                     
             )), content_type='application/json', headers = headers)
             number_of_products_after = len(product_controller.get_all_products())
@@ -56,16 +55,16 @@ def test_get_single_product_returns_a_product(client):
         assert json_response(res)
 
 
-# def test_get_products_returns_all_products(client):
-#         # Test GET/api/v1/products
-#     with app.app_context():
-#         access_token = create_access_token('user')
-#         headers = {
-#                 'Authorization': 'Bearer {}'.format(access_token)
-#         }
-#         res = client.get('/api/v1/products', headers = headers)
-#         assert res.status_code == 200
-#         assert json_response(res)
+def test_get_products_returns_all_products(client):
+        # Test GET/api/v1/products
+    with app.app_context():
+        access_token = create_access_token('user')
+        headers = {
+                'Authorization': 'Bearer {}'.format(access_token)
+        }
+        res = client.get('/api/v1/products/', headers = headers)
+        assert res.status_code == 200
+        assert json_response(res)
 
 def test_admin_can_edit_a_product(client):
         with app.app_context():

@@ -2,9 +2,11 @@ from flask import json
 from flask_jwt_extended import create_access_token
 import pytest
 from app.controllers import sale_controller
-from app import app
+from app import create_app
 from app.models.sale import Sale
 """ SALES TESTS"""
+
+app = create_app('test')
 
 @pytest.fixture
 def client(request):

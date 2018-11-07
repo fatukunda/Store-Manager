@@ -2,8 +2,10 @@ from flask import json
 from flask_jwt_extended import create_access_token
 import pytest
 from app.controllers import user_controller
-from app import app
+from app import create_app
 from app.models.user import User
+
+app = create_app('test')
 
 @pytest.fixture
 def client(request):
@@ -56,16 +58,16 @@ def test_get_single_attendant_returns_an_attendant(client):
         assert res.status_code == 200
         assert json_response(res)
 
-# def test_get_attendants_returns_all_attendants(client):
-# # Test GET/api/v1/attendants
-#     with app.app_context():
-#         access_token = create_access_token(100)
-#         headers = {
-#                 'Authorization': 'Bearer {}'.format(access_token)
-#         }
-#         res = client.get('/api/v1/attendants', headers = headers)
-#         assert res.status_code == 200
-#         assert json_response(res)
+def test_get_attendants_returns_all_attendants(client):
+# Test GET/api/v1/attendants
+    with app.app_context():
+        access_token = create_access_token(100)
+        headers = {
+                'Authorization': 'Bearer {}'.format(access_token)
+        }
+        res = client.get('/api/v1/attendants/', headers = headers)
+        assert res.status_code == 200
+        assert json_response(res)
 
 def test_admin_can_grant_attendant_admin_rights(client):
         with app.app_context():

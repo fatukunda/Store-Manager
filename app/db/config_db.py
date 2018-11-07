@@ -1,27 +1,14 @@
 import psycopg2
+import os
+# from app import create_app
 
-TEST_DATABASE_CONFIG = {
-    'host': 'localhost',
-    'db_name': 'store_manager_test_db',
-    'user': 'postgres',
-    'password': 'admin',
-    'port': 5432
-}
-DATABASE_CONFIG = {
-    'host': 'localhost',
-    'db_name': 'store_manager_db',
-    'user': 'postgres',
-    'password': 'admin',
-    'port': 5432
-}
+def connect():
+    conn = None
+    if os.getenv('test'):
+        conn = psycopg2.connect(database = 'store_manager_test_db', user ='postgres', password='admin')
+    else:
+        conn = psycopg2.connect(database = 'store_manager_db', user ='postgres', password='admin')
 
-def connect(db_name):
-    if db_name != DATABASE_CONFIG['db_name']:
-        raise ValueError("Couldn't not find DB with given name")
-    conn = psycopg2.connect(database=DATABASE_CONFIG['db_name'], 
-    user=DATABASE_CONFIG['user'],
-     password=DATABASE_CONFIG['password'])
-  
     return conn
 
 def commit_to_db(conn, cursor):
@@ -72,7 +59,7 @@ def create_tables():
                     ON UPDATE CASCADE ON DELETE CASCADE
         )
         """)
-    connection = connect('store_manager_db')
+    connection = connect()
     cursor = connection.cursor()
     for command in commands:
         cursor.execute(command)

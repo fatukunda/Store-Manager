@@ -20,7 +20,7 @@ def make_a_sale(sale_item_id, sales_person_id, quantity_sold):
     if product['quantity'] == 0:
         product['in_stock'] = False
     else:
-        conn = connect('store_manager_db')
+        conn = connect()
         cursor = conn.cursor()
 
         cursor.execute(sql, (sale.sales_person,sale.date, sale.quantity_sold, sale.sold_item, total_price))
@@ -37,7 +37,7 @@ def get_all_sales(user_id = None):
         sql = "SELECT * FROM sales WHERE sales_person_id = {};".format(user_id)   
     else:
         sql = """SELECT * FROM sales;"""
-    conn = connect('store_manager_db')
+    conn = connect()
     cursor = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
     cursor.execute(sql)
     sales = cursor.fetchall()
