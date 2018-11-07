@@ -18,7 +18,7 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
-
+    DATABASE_URI ='postgres://akhgvtysmhhqdx:d712e55fb1572068657cca43da19638b5676f338ef2313c1fdcb880b37e51c13@ec2-54-225-98-131.compute-1.amazonaws.com:5432/d1bp4lvbptrsc4'
 
 set_config = dict(
     dev=DevelopmentConfig,

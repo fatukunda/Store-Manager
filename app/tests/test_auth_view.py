@@ -2,6 +2,7 @@ from flask import json
 import pytest
 from app import create_app
 from app.models.auth import Auth
+from flask import current_app
 
 app = create_app('test')
 
