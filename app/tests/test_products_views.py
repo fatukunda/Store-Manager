@@ -6,10 +6,10 @@ from app.controllers import product_controller
 from app import create_app
 
 app = create_app('test')
+app.testing = True
 
 @pytest.fixture
 def client(request):
-    app.config['TESTING'] = True
     client = app.test_client()
     yield client
 
@@ -27,7 +27,7 @@ def test_add_product_adds_a_product(client):
             headers = {
                     'Authorization': 'Bearer {}'.format(access_token)
             }
-            product = Product('Laptops', 'Toshiba laptop', 6, 2000000)
+            product = Product('Phones', 'Infinix 7', 10, 2100000)
             number_of_products_before = len(product_controller.get_all_products())
             res = client.post('/api/v1/products', data =json.dumps(dict(
                     name = product.name,
@@ -49,7 +49,7 @@ def test_get_single_product_returns_a_product(client):
         headers = {
                 'Authorization': 'Bearer {}'.format(access_token)
         }
-        product_id = 4
+        product_id = 1
         res = client.get('/api/v1/products/{}'.format(product_id), headers = headers)
         assert res.status_code == 200
         assert json_response(res)
@@ -72,7 +72,7 @@ def test_admin_can_edit_a_product(client):
                 headers = {
                     'Authorization': 'Bearer {}'.format(access_token)
                 }
-                product_id = 3
+                product_id = 1
                 quantity = 20
                 unit_price = 24000000
                 res = client.put('/api/v1/products/{}'.format(product_id), data = json.dumps (dict(
@@ -90,7 +90,7 @@ def test_admin_can_delete_a_product(client):
                 headers = {
                     'Authorization': 'Bearer {}'.format(access_token)
                 }   
-                product_id = 30
+                product_id = 100
                 res = client.delete('/api/v1/products/{}'.format(product_id), headers = headers)
                 assert res.status_code == 200
                 product = product_controller.search_a_product(product_id)

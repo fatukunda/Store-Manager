@@ -7,10 +7,10 @@ from app.models.sale import Sale
 """ SALES TESTS"""
 
 app = create_app('test')
+app.testing = True
 
 @pytest.fixture
 def client(request):
-    app.config['TESTING'] = True
     client = app.test_client()
     yield client
 
@@ -23,8 +23,8 @@ def json_response(response):
 def test_make_sale(client):
         # Test GET/api/v1/sales
     with app.app_context():
-            sales_person_id = 7
-            item_to_sale = 26
+            sales_person_id = 1
+            item_to_sale = 1
             access_token = create_access_token(sales_person_id)
             headers = {
                     'Authorization': 'Bearer {}'.format(access_token)
@@ -49,6 +49,6 @@ def test_get_single_sale_returns_a_sale(client):
         headers = {
                 'Authorization': 'Bearer {}'.format(access_token)
         }
-        sale_id = 18
+        sale_id = 100
         res = client.get('/api/v1/sales/{}'.format(sale_id), headers = headers)
         assert res.status_code == 200

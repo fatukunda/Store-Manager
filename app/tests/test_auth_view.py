@@ -5,6 +5,7 @@ from app.models.auth import Auth
 from flask import current_app
 
 app = create_app('test')
+app.testing = True
 
 @pytest.fixture
 def client():

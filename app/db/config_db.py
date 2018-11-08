@@ -1,11 +1,14 @@
 import psycopg2
 import os
+from app.config import set_config
 # from app import create_app
 
 def connect():
     conn = None
-    if os.getenv('test'):
+    if set_config['test']:
         conn = psycopg2.connect(database = 'store_manager_test_db', user ='postgres', password='admin')
+    elif set_config['prod']:
+        conn = psycopg2.connect(host = 'ec2-54-225-98-131.compute-1.amazonaws.com', database='d1bp4lvbptrsc4', user='akhgvtysmhhqdx', password='d712e55fb1572068657cca43da19638b5676f338ef2313c1fdcb880b37e51c13')
     else:
         conn = psycopg2.connect(database = 'store_manager_db', user ='postgres', password='admin')
 
