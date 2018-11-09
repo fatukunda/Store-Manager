@@ -9,7 +9,7 @@ def connect():
         conn = psycopg2.connect(database = 'store_manager_test_db', user ='postgres', password='admin')
         
     elif set_config['prod']:
-        conn = psycopg2.connect(host = 'ec2-54-225-98-131.compute-1.amazonaws.com', database='d1bp4lvbptrsc4', user='akhgvtysmhhqdx', password='d712e55fb1572068657cca43da19638b5676f338ef2313c1fdcb880b37e51c13', sslmode='require')
+        conn = psycopg2.connect(host = 'ec2-54-243-46-32.compute-1.amazonaws.com', database='d1vovshe1c015l', user='kwsvqqvzgewslg', password='e586e13369a06b8256476ebd8975311ae987237cf9459fdcf5c6cb52be29d035', sslmode='require')
     else:
         conn = psycopg2.connect(database = 'store_manager_db', user ='postgres', password='admin')
 
