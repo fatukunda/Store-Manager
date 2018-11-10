@@ -5,6 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'This-is-a-very-secret-key')
     DEBUG = False
+    JWT_SECRET_KEY = 'Code-Benders'
 
 
 class DevelopmentConfig(Config):

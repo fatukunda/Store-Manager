@@ -11,7 +11,7 @@ from app.config import set_config
 
 def create_app(config_name):
     app = Flask(__name__)
-    app.config.from_object(set_config['prod'])
+    app.config.from_object(set_config[config_name])
      # Register the products_view bluprint
     app.register_blueprint(sales_view.bp)
     #Register the sales_view blueprint
@@ -20,10 +20,9 @@ def create_app(config_name):
     app.register_blueprint(products_view.bp)
     """ Register authentication view"""
     app.register_blueprint(auth_view.bp)
-
-    app.config['JWT_SECRET_KEY'] = 'Code-Benders'
+    # app.config['JWT_SECRET_KEY'] = 'Code-Benders'
     jwt = JWTManager(app)
     create_tables()
-    print(config_name)
+
 
     return app

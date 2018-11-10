@@ -1,15 +1,24 @@
 import psycopg2
 import os
 from app.config import set_config
+import urllib.parse as urlparse
 # from app import create_app
+
+
+# db = "database= {0}, user={1}, password={2}, host={3}".format(url.path[1:], 'plwlxtobexznlo', '752178d58b5ffaebe1e11a9000136b77d76035f5dea0d2c82926236f2dcd2385','ec2-184-73-199-189.compute-1.amazonaws.com' )
+# db = "dbname=%s user=%s password=%s host=%s " % (url.path[1:], url.username, url.password, url.hostname)
+# schema = "schema.sql"
+# conn = psycopg2.connect(db)
+# cur = conn.cursor()
 
 def connect():
     conn = None
+    url = urlparse.urlparse(os.environ.get('DATABASE_URL'))
     if set_config['test']:
         conn = psycopg2.connect(database = 'store_manager_test_db', user ='postgres', password='admin')
         
     elif set_config['prod']:
-        conn = psycopg2.connect(database='dektsfu001hn6g', user='plwlxtobexznlo', password='752178d58b5ffaebe1e11a9000136b77d76035f5dea0d2c82926236f2dcd2385', host = 'ec2-184-73-199-189.compute-1.amazonaws.com', port=5432)
+        conn = psycopg2.connect(url.path[1:], user='plwlxtobexznlo', password='752178d58b5ffaebe1e11a9000136b77d76035f5dea0d2c82926236f2dcd2385', host = 'ec2-184-73-199-189.compute-1.amazonaws.com')
     else:
         conn = psycopg2.connect(database = 'store_manager_db', user ='postgres', password='admin')
 
