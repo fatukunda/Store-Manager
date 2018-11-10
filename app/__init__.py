@@ -24,5 +24,6 @@ def create_app(config_name):
     app.config['JWT_SECRET_KEY'] = 'Code-Benders'
     jwt = JWTManager(app)
     create_tables()
+    print(config_name)
 
     return app
