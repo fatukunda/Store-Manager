@@ -1,4 +1,5 @@
 # app/__init__.py
+import psycopg2
 from flask import Flask
 from flask_jwt_extended import JWTManager
 from app.views import sales_view
@@ -22,7 +23,14 @@ def create_app(config_name):
     app.register_blueprint(auth_view.bp)
     # app.config['JWT_SECRET_KEY'] = 'Code-Benders'
     jwt = JWTManager(app)
-    create_tables()
-
+    conn = None
+    if config_name == 'prod':
+        conn = psycopg2.connect(host = 'ec2-184-73-199-189.compute-1.amazonaws.com', database='dektsfu001hn6g', user='plwlxtobexznlo', password='752178d58b5ffaebe1e11a9000136b77d76035f5dea0d2c82926236f2dcd2385')
+    elif config_name == 'test':
+        conn = psycopg2.connect(database = 'store_manager_test_db', user ='postgres', password='admin')
+    else:
+        conn = psycopg2.connect(database = 'store_manager_db', user ='postgres', password='admin')
+    
+    create_tables(conn)
 
     return app

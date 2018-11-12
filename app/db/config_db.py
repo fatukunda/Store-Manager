@@ -1,24 +1,15 @@
 import psycopg2
 import os
 from app.config import set_config
-import urllib.parse as urlparse
 # from app import create_app
-
-
-# db = "database= {0}, user={1}, password={2}, host={3}".format(url.path[1:], 'plwlxtobexznlo', '752178d58b5ffaebe1e11a9000136b77d76035f5dea0d2c82926236f2dcd2385','ec2-184-73-199-189.compute-1.amazonaws.com' )
-# db = "dbname=%s user=%s password=%s host=%s " % (url.path[1:], url.username, url.password, url.hostname)
-# schema = "schema.sql"
-# conn = psycopg2.connect(db)
-# cur = conn.cursor()
 
 def connect():
     conn = None
-    url = urlparse.urlparse(os.environ.get('DATABASE_URL'))
     if set_config['test']:
         conn = psycopg2.connect(database = 'store_manager_test_db', user ='postgres', password='admin')
         
     elif set_config['prod']:
-        conn = psycopg2.connect(url.path[1:], user='plwlxtobexznlo', password='752178d58b5ffaebe1e11a9000136b77d76035f5dea0d2c82926236f2dcd2385', host = 'ec2-184-73-199-189.compute-1.amazonaws.com')
+        conn = psycopg2.connect(host = 'ec2-54-225-98-131.compute-1.amazonaws.com', database='d1bp4lvbptrsc4', user='akhgvtysmhhqdx', password='d712e55fb1572068657cca43da19638b5676f338ef2313c1fdcb880b37e51c13')
     else:
         conn = psycopg2.connect(database = 'store_manager_db', user ='postgres', password='admin')
 
@@ -31,7 +22,7 @@ def commit_to_db(conn, cursor):
     if conn is not None:
         conn.close()
 
-def create_tables():
+def create_tables(conn):
     """ create tables in the store_manager_db"""
     
     commands = (
@@ -72,9 +63,9 @@ def create_tables():
                     ON UPDATE CASCADE ON DELETE CASCADE
         )
         """)
-    connection = connect()
-    cursor = connection.cursor()
+    # connection = connect()
+    cursor = conn.cursor()
     for command in commands:
         cursor.execute(command)
-    commit_to_db(connection, cursor)
+    commit_to_db(conn, cursor)
   
