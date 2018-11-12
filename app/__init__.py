@@ -33,4 +33,5 @@ def create_app(config_name):
     
     create_tables(conn)
 
+
     return app
