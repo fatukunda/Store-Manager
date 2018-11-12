@@ -7,11 +7,6 @@ from datetime import timedelta
 bp = Blueprint('auth_view', __name__, url_prefix='/api/v1/auth')
 
 """ AUTHENTICATION ROUTES"""
-
-@bp.route('/test')
-def index():
-    return 'hello'
-
 @bp.route('/login', methods = ['POST'])
 def login():
     if not request.is_json:
