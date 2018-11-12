@@ -16,11 +16,11 @@ def connect():
 
     # return conn
 
-def create_admin_user(conn):
-    sql = """INSERT INTO users(first_name, last_name, username, email, password, user_type)
-                 VALUES(%s, %s, %s, %s, %s, %s) RETURNING user_id, first_name, last_name, username, email, password, user_type;"""
-    cursor = conn.cursor()
-    cursor.execute(sql, ('Frank', 'Atukunda', 'fatukunda', 'admin@app.com', 'admin123', 'admin'))
+# def create_admin_user(conn):
+#     sql = """INSERT INTO users(first_name, last_name, username, email, password, user_type)
+#                  VALUES('Frank', 'Atukunda', 'fatukunda', 'admin@app.com', 'admin123', 'admin');"""
+#     cursor = conn.cursor()
+#     cursor.execute(sql)
 
 def commit_to_db(conn, cursor):
     """commit changes to the database and close connection"""
@@ -74,6 +74,5 @@ def create_tables(conn):
     cursor = conn.cursor()
     for command in commands:
         cursor.execute(command)
-    create_admin_user(conn)
     commit_to_db(conn, cursor)
   
