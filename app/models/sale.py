@@ -1,8 +1,4 @@
-import uuid
 from time import ctime
-from app.db.config_db import connect, commit_to_db
-from app.models import search_sales_person, search_single_product
-from flask import jsonify
 
 class Sale:
     total_price = 0.00

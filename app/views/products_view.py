@@ -1,5 +1,5 @@
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from flask import Blueprint, request, Response, jsonify
+from flask import Blueprint, request, jsonify
 from app.controllers import product_controller
 from app.models import search_sales_person
 

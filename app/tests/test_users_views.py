@@ -2,15 +2,16 @@ from flask import json
 from flask_jwt_extended import create_access_token
 import pytest
 from app.controllers import user_controller
-from app import app
+from app import create_app
 from app.models.user import User
+
+app = create_app('test')
+app.testing =True
 
 @pytest.fixture
 def client(request):
-    app.config['TESTING'] = True
     client = app.test_client()
     yield client
-
 
 # Helper methods
 
@@ -26,9 +27,9 @@ def test_add_attendant_adds_an_attendant(client):
             headers = {
                     'Authorization': 'Bearer {}'.format(access_token)
             }
-            attendant = User('Mike', 'mike@app.com', '45635')
-            attendant.first_name = 'Mike'
-            attendant.last_name = "Larson"
+            attendant = User('Luka', 'luka@app.com', 'hjhjdy')
+            attendant.first_name = 'Luka'
+            attendant.last_name = "Modric"
             number_of_attendants_before = len(user_controller.get_all_users())
             res = client.post('/api/v1/attendants', data =json.dumps(dict(
                     first_name = attendant.first_name,
@@ -51,21 +52,21 @@ def test_get_single_attendant_returns_an_attendant(client):
         headers = {
                 'Authorization': 'Bearer {}'.format(access_token)
         }
-        attendant_id = 5
+        attendant_id = 1
         res = client.get('/api/v1/attendants/{}'.format(attendant_id), headers = headers)
         assert res.status_code == 200
         assert json_response(res)
 
-# def test_get_attendants_returns_all_attendants(client):
-# # Test GET/api/v1/attendants
-#     with app.app_context():
-#         access_token = create_access_token(100)
-#         headers = {
-#                 'Authorization': 'Bearer {}'.format(access_token)
-#         }
-#         res = client.get('/api/v1/attendants', headers = headers)
-#         assert res.status_code == 200
-#         assert json_response(res)
+def test_get_attendants_returns_all_attendants(client):
+# Test GET/api/v1/attendants
+    with app.app_context():
+        access_token = create_access_token(100)
+        headers = {
+                'Authorization': 'Bearer {}'.format(access_token)
+        }
+        res = client.get('/api/v1/attendants/', headers = headers)
+        assert res.status_code == 200
+        assert json_response(res)
 
 def test_admin_can_grant_attendant_admin_rights(client):
         with app.app_context():
@@ -73,7 +74,7 @@ def test_admin_can_grant_attendant_admin_rights(client):
                 headers = {
                     'Authorization': 'Bearer {}'.format(access_token)
                 }
-                attendant_id = 4
+                attendant_id = 150
                 role = 'admin'
                 res = client.put('/api/v1/attendants/{}'.format(attendant_id), data = json.dumps (dict(
                         role = role

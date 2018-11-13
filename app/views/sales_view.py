@@ -1,5 +1,4 @@
-from flask import Blueprint, request, Response, jsonify
-from app.models.product import Product
+from flask import Blueprint, request, jsonify
 from app.models.sale import Sale
 from app.controllers import sale_controller
 from flask_jwt_extended import jwt_required, get_jwt_identity
