@@ -8,10 +8,12 @@ from app.views import products_view
 from app.views import auth_view
 from app.db.config_db import create_tables
 from app.config import set_config
+from flask_cors import CORS
 
 
 def create_app(config_name):
     app = Flask(__name__)
+    CORS(app)
     app.config.from_object(set_config[config_name])
      # Register the products_view bluprint
     app.register_blueprint(sales_view.bp)
