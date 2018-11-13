@@ -6,11 +6,11 @@ from app.views import users_view
 from app.views import products_view
 from app.views import auth_view
 from app.db.config_db import create_tables
-from configparser import ConfigParser
-import yaml
+from flask_cors import CORS
 
 
 app = Flask(__name__, instance_relative_config=True)
+CORS(app)
  # Register the products_view bluprint
 app.register_blueprint(sales_view.bp)
 #Register the sales_view blueprint
