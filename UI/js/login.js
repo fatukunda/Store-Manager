@@ -4,17 +4,21 @@ const login = () => {
     const password = document.getElementById('password');
     const url = 'https://store-manager-api-heroku.herokuapp.com/api/v1/auth/login';
     const data = {
-        username: username,
-        password: password
+        username: username.value,
+        password: password.value
     }
     let fetchData = {
         method: 'POST',
-        body: data,
-        headers: new Headers()
+        body: JSON.stringify(data),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
     }
-    fetch(url, fetchData).then((res) => {
-        console.log(res)
-    })
+    fetch(url, fetchData)
+        .then((res) => res.json())
+        .then((data) => console.log(JSON.stringify(data.access_token)))
+        .catch((err) => console.log(err))
 }
 
 form.addEventListener('submit', (event) => {
