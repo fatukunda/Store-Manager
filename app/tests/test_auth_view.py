@@ -1,12 +1,14 @@
 from flask import json
-from flask_jwt_extended import create_access_token
 import pytest
-from app import app
+from app import create_app
 from app.models.auth import Auth
+from flask import current_app
+
+app = create_app('test')
+app.testing = True
 
 @pytest.fixture
 def client():
-    app.config['TESTING'] = True
     client = app.test_client()
     yield client
 

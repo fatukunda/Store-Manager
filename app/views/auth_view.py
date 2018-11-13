@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from flask_jwt_extended import create_access_token
 from app.models.auth import Auth
 from app.controllers import auth_controller
@@ -7,7 +7,6 @@ from datetime import timedelta
 bp = Blueprint('auth_view', __name__, url_prefix='/api/v1/auth')
 
 """ AUTHENTICATION ROUTES"""
-
 @bp.route('/login', methods = ['POST'])
 def login():
     if not request.is_json:
@@ -27,7 +26,7 @@ def login():
     access_token = ''
     user_id = user['user_id']
     access_token = create_access_token(identity= user_id, expires_delta= timedelta(hours=2))
-    return jsonify(access_token=access_token), 200
+    return jsonify(access_token=access_token), 201
 
 
     

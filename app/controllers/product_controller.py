@@ -10,7 +10,7 @@ def create_product(name, category, quantity, price):
     product.in_stock = True
     sql = """INSERT INTO products(name, category, quantity, unit_price, in_stock)
                  VALUES(%s, %s, %s, %s, %s) RETURNING product_id, name, quantity, unit_price, in_stock;"""
-    conn = connect('store_manager_db')
+    conn = connect()
     cursor = conn.cursor()
     try:
         cursor.execute(sql, (product.name, product.category, product.quantity, product.price, product.in_stock))
