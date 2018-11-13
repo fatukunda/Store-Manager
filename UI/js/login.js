@@ -17,34 +17,21 @@ const login = () => {
     }
     fetch(url, fetchData)
         .then((res) => res.json())
-        .then((data) => console.log(JSON.stringify(data.access_token)))
+        .then((data) => {
+            // console.log(data.access_token)
+            user_type = data.user_type
+            if(user_type === 'admin'){
+                window.location = './admin.html'
+            }
+            else if(user_type === 'user'){
+                window.location ='./attendant.html'
+            }
+        })
         .catch((err) => console.log(err))
 }
+
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     login()
 });
-
-   
-
-// //LOGIN
-// const form = document.getElementById('form-login');
-// const username = document.getElementById('username');
-// const password = document.getElementById('password');
-// //Add a submit event on the login form
-// form.addEventListener('submit', (event) => {
-//     event.preventDefault();
-//     //Check if user is admin and redirect them to admin panel
-//     if(username.value === 'admin' && password.value ==='admin'){
-//         window.location = './admin.html';
-//     //Redirect a store attendant to the attendant profile
-//     }else if(username.value === 'user' && password.value === 'user'){
-//         window.location = './attendant.html';
-//     }else{
-//         window.location = './admin.html';
-//         // alert('Invalid username or password');
-//         // username.value ='';
-//         // password.value ='';
-//     }
-// });
