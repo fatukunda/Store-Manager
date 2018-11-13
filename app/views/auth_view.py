@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify, render_template
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, get_jwt_identity
 from app.models.auth import Auth
 from app.controllers import auth_controller
 from datetime import timedelta
@@ -25,8 +25,9 @@ def login():
         return jsonify({"message": "User not found"}), 404  
     access_token = ''
     user_id = user['user_id']
+    user_type = user['user_type']
     access_token = create_access_token(identity= user_id, expires_delta= timedelta(hours=2))
-    return jsonify(access_token=access_token), 201
+    return jsonify(access_token=access_token, user_type = user_type), 201
 
 
     
