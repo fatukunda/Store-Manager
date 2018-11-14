@@ -16,22 +16,38 @@ const hide = (elem) => {
 //     show(elem);
 // }
 
-const createProduct = (name, category, price, quantity) => {
+const createProduct = (number, name, category, price, quantity) => {
+    tableBody = document.getElementById('prod-details')
     tr = document.createElement('tr')
+
+    idTd = document.createElement('td')
     nameTd = document.createElement('td')
     categoryTd = document.createElement('td')
     quantityTd = document.createElement('td')
     priceTd = document.createElement('td')
+    detailsTd = document.createElement('td')
     
-    nameTd.innerText = name
-    categoryTd.innerText = category
-    quantityTd.innerText = quantity
-    priceTd.innerText = price
+    viewDetailsBtn = document.createElement('button')
+    viewDetailsBtn.classList.add('view-product-details-btn')
+    viewDetailsBtn.innerHTML = 'View Product Details'
+    
+    idTd.innerHTML = number
+    nameTd.innerHTML = name
+    categoryTd.innerHTML = category
+    quantityTd.innerHTML = quantity
+    priceTd.innerHTML = price
 
+    detailsTd.appendChild(viewDetailsBtn)
+
+    tr.appendChild(idTd)
     tr.appendChild(nameTd)
     tr.appendChild(quantityTd)
     tr.appendChild(priceTd)
-    tr.appendChild(category)
+    tr.appendChild(categoryTd)
+    tr.appendChild(detailsTd)
+    
+
+    tableBody.appendChild(tr)
 }
 
 const getAllProducts = () => {
@@ -40,21 +56,20 @@ const getAllProducts = () => {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Token ' + window.sessionStorage.getItem('token')
+            'Authorization': 'Bearer ' + window.sessionStorage.getItem('token')
         }
     }
     fetch(url, config)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data)
-            // products = JSON.stringify(data)
-            // products.forEach((product) => {
-            //     console.log(product)
-            // })
+            products = data
+            products.forEach((product, index) => {
+                createProduct(index+1, product.name, product.category, product.unit_price, product.quantity)
+            })
         })
         .catch((err) => console.log(err))
 }
-getAllProducts()
+
 
 const productsCard = document.getElementById('products-card');
 const salesCard = document.getElementById('sales-card');
@@ -94,6 +109,7 @@ const modifyDiv = (divToModify) => {
 
 //Hide admin products list when the page loads
 window.addEventListener('load', () => {
+    getAllProducts()
     modifyDiv(adminProductsList)
 
 });
