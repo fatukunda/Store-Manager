@@ -171,6 +171,9 @@ form button:hover{
   .nav > #nav-check {
     display: none;
   }
+  #user-role{
+      color: #ddd
+  }
   
   @media (max-width:600px) {
     .nav > .nav-btn {

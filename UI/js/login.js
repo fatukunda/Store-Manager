@@ -18,7 +18,6 @@ const login = () => {
     fetch(url, fetchData)
         .then((res) => res.json())
         .then((data) => {
-            // console.log(data.access_token)
             setCookie(data.access_token)
             user_type = data.user_type
             if(user_type === 'admin'){

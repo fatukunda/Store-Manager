@@ -27,7 +27,8 @@
                 </div>
                 <input type="checkbox" id="nav-check">
                 <div class="nav-links">
-                    <a href="#">Role: Admin</a><span> | </span>
+                    <a href="#">Role:</a><span id="user-role">Admin</span>
+                    <span> | </span>
                     <a href="./index.html">Logout</a>
                 </div>
             </div>
@@ -158,16 +159,16 @@
                 </form>
             </div>
             <div id="add-product">
-                <form>
+                <form action="submit" id="add-product-form">
                     <h4>Add Product</h4>
-                    <input type="text" placeholder="Product name"/>
-                    <select name="product-categories">
+                    <input type="text" placeholder="Product name" id="prod-name"/>
+                    <select name="product-categories" id="prod-category">
                         <option>Electronics</option>
                         <option>Food</option>
                         <option>Plastics</option>
                     </select>
-                    <input type="number" placeholder="Quantity"/>
-                    <input type="number" placeholder="Price"/>
+                    <input type="number" placeholder="Quantity" id = "prod-quantity"/>
+                    <input type="number" placeholder="Price" id="prod-price"/>
                     <button>Save</button>
                 </form>
             </div>

@@ -15,6 +15,7 @@ const hide = (elem) => {
 //     }
 //     show(elem);
 // }
+const addProductForm = document.getElementById('add-product-form');
 
 const createProduct = (number, name, category, price, quantity) => {
     tableBody = document.getElementById('prod-details')
@@ -69,6 +70,56 @@ const getAllProducts = () => {
         })
         .catch((err) => console.log(err))
 }
+const saveProduct = () => {
+    // Get the user input from the form and save the product details into the database
+    name = document.getElementById('prod-name').value;
+    category = document.getElementById('prod-category');
+    category = category.options[category.selectedIndex].text;
+    quantity = parseInt(document.getElementById('prod-quantity').value);
+    unit_price = parseFloat(document.getElementById('prod-price').value);
+
+    addNewProduct(name, category, unit_price, quantity)
+}
+
+const addNewProduct = (name, category, unit_price, quantity) => {
+    // Post the product details to the products endpoint
+    const url = 'https://store-manager-api-heroku.herokuapp.com/api/v1/products'
+    const data = {
+        name: name,
+        category: category,
+        quantity: quantity,
+        unit_price: unit_price
+    }
+    const config = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + window.sessionStorage.getItem('token')
+        }
+    }
+    fetch(url, config)
+        .then((res) => res.json())
+        .then((data) => JSON.stringify(data))
+        .catch((err) => console.log(err))
+}
+
+const clearTextFields = () => {
+    document.getElementById('prod-name').value = ''
+    document.getElementById('prod-quantity').value = ''
+    document.getElementById('prod-price').value = '';
+}
+
+
+addProductForm.addEventListener('submit', (event) => {
+    // When the form is submitted, Save the product to the database
+    event.preventDefault()
+    saveProduct();
+    alert('Product saved')
+    clearTextFields()
+
+})
 
 
 const productsCard = document.getElementById('products-card');
@@ -93,6 +144,7 @@ const backProductDetailBtn = document.getElementById('back-product-detail');
 const attendantsList = document.getElementById('attendants-list');
 const attendantsCard = document.getElementById('attendants-card')
 const viewProductDetails = document.getElementsByClassName('view-product-details-btn');
+
 
 const elements = [adminProductsList, addCategory, addProduct,viewSales, addSalesPerson,
      productDetailsView,editProductDetailsView, attendantsList, viewProductDetails ]
