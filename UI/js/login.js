@@ -19,6 +19,7 @@ const login = () => {
         .then((res) => res.json())
         .then((data) => {
             // console.log(data.access_token)
+            setCookie(data.access_token)
             user_type = data.user_type
             if(user_type === 'admin'){
                 window.location = './admin.html'
@@ -28,6 +29,10 @@ const login = () => {
             }
         })
         .catch((err) => console.log(err))
+}
+
+const setCookie = (token) => {
+    window.sessionStorage.setItem('token', token)
 }
 
 

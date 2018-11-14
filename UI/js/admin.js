@@ -15,6 +15,46 @@ const hide = (elem) => {
 //     }
 //     show(elem);
 // }
+
+const createProduct = (name, category, price, quantity) => {
+    tr = document.createElement('tr')
+    nameTd = document.createElement('td')
+    categoryTd = document.createElement('td')
+    quantityTd = document.createElement('td')
+    priceTd = document.createElement('td')
+    
+    nameTd.innerText = name
+    categoryTd.innerText = category
+    quantityTd.innerText = quantity
+    priceTd.innerText = price
+
+    tr.appendChild(nameTd)
+    tr.appendChild(quantityTd)
+    tr.appendChild(priceTd)
+    tr.appendChild(category)
+}
+
+const getAllProducts = () => {
+    const url = 'https://store-manager-api-heroku.herokuapp.com/api/v1/products'
+    const config = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Token ' + window.sessionStorage.getItem('token')
+        }
+    }
+    fetch(url, config)
+        .then((res) => res.json())
+        .then((data) => {
+            products = JSON.stringify(data)
+            products.forEach((product) => {
+                console.log(product)
+            })
+        })
+        .catch((err) => console.log(err))
+}
+getAllProducts()
+
 const productsCard = document.getElementById('products-card');
 const salesCard = document.getElementById('sales-card');
 const adminProductsList = document.getElementsByClassName('admin-products-list')[0];
