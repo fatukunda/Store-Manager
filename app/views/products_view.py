@@ -2,9 +2,11 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask import Blueprint, request, jsonify
 from app.controllers import product_controller
 from app.models import search_sales_person
+from flask_cors import CORS
 
 
 bp = Blueprint('products_view', __name__, url_prefix='/api/v1/products')
+CORS(bp)
 
 """ PRODUCT ROUTES"""
 # Add a product to the inventory
