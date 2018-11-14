@@ -46,10 +46,11 @@ const getAllProducts = () => {
     fetch(url, config)
         .then((res) => res.json())
         .then((data) => {
-            products = JSON.stringify(data)
-            products.forEach((product) => {
-                console.log(product)
-            })
+            console.log(data)
+            // products = JSON.stringify(data)
+            // products.forEach((product) => {
+            //     console.log(product)
+            // })
         })
         .catch((err) => console.log(err))
 }
