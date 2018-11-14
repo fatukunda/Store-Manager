@@ -3,9 +3,10 @@ from app.models.sale import Sale
 from app.controllers import sale_controller
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.models import search_sales_person
+from flask_cors import CORS
 
 bp = Blueprint('sales_view', __name__, url_prefix='/api/v1')
-
+CORS(bp)
 
 """ SALE ROUTES"""
 

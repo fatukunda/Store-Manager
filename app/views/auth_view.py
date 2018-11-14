@@ -3,8 +3,10 @@ from flask_jwt_extended import create_access_token, get_jwt_identity
 from app.models.auth import Auth
 from app.controllers import auth_controller
 from datetime import timedelta
+from flask_cors import CORS
 
 bp = Blueprint('auth_view', __name__, url_prefix='/api/v1/auth')
+CORS(bp)
 
 """ AUTHENTICATION ROUTES"""
 @bp.route('/login', methods = ['POST'])
