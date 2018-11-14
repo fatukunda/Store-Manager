@@ -25,6 +25,8 @@ def create_app(config_name):
     app.register_blueprint(auth_view.bp)
     # app.config['JWT_SECRET_KEY'] = 'Code-Benders'
     jwt = JWTManager(app)
+    CORS(products_view.bp)
+
     
     conn = None
     if config_name == 'prod':
