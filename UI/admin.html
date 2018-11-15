@@ -79,7 +79,8 @@
                 <table>
                     <thead>
                         <th>#</th>
-                        <th>Item</th>
+                        <th>ID</th>
+                        <th>Product</th>
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Category</th>
@@ -127,21 +128,20 @@
                 <div class="details-left-column">
                     <img src="./img/tv.png" alt="product image"/>
                 </div>
-                <div class="details-right-column">
-                    
-                </div>
+
             </div>
             <div id="edit-product-details-view">
-                <form>
+                <form action="submit" id="edit-product-form">
                     <h4>Edit Product</h4>
-                    <input type="text" placeholder="Samsung 32 inch TV"/>
-                    <select name="product-categories">
+                    <input type="number", id="id-field" disabled/>
+                    <input type="text" id="name-field" disabled/>
+                    <select name="product-categories" id="select-category" disabled>
                         <option>Electronics</option>
                         <option>Food</option>
                         <option>Plastics</option>
                     </select>
-                    <input type="number" placeholder="Quantity" value= 10/>
-                    <input type="number" placeholder="Price" value="1,600,000"/>
+                    <input type="number" placeholder="Quantity" id="quantity-field"/>
+                    <input type="number" placeholder="Price" id="price-field"/>
                     <button id="back-product-detail"><< Back</button>
                     <button id="save-edited-product">Save</button>
                 </form>

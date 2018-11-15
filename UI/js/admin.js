@@ -7,21 +7,15 @@ const show = (elem) => {
 const hide = (elem) => {
     elem.style.display = 'none';
 }
-//Toggle element visibility
-// const toggle = (elem) => {
-//     if(window.getComputedStyle(elem).display === 'block'){
-//         hide(elem);
-//         return;
-//     }
-//     show(elem);
-// }
+
 const addProductForm = document.getElementById('add-product-form');
 
-const createProduct = (number, name, category, price, quantity) => {
+const createProduct = (number, product_id, name, category, price, quantity) => {
     tableBody = document.getElementById('prod-details')
     tr = document.createElement('tr')
 
     idTd = document.createElement('td')
+    prodIdTd = document.createElement('td')
     nameTd = document.createElement('td')
     categoryTd = document.createElement('td')
     quantityTd = document.createElement('td')
@@ -33,11 +27,12 @@ const createProduct = (number, name, category, price, quantity) => {
     viewDetailsBtn.innerHTML = 'View Product Details'
     viewDetailsBtn.addEventListener('click', (event) => {
         event.preventDefault();
-        createProductDetailsView(name,category, quantity, price);
+        createProductDetailsView(name, product_id, category, quantity, price);
         modifyDiv(productDetailsView);
     })
     
     idTd.innerHTML = number
+    prodIdTd.innerHTML = product_id
     nameTd.innerHTML = name
     categoryTd.innerHTML = category
     quantityTd.innerHTML = quantity
@@ -46,6 +41,7 @@ const createProduct = (number, name, category, price, quantity) => {
     detailsTd.appendChild(viewDetailsBtn)
 
     tr.appendChild(idTd)
+    tr.appendChild(prodIdTd)
     tr.appendChild(nameTd)
     tr.appendChild(quantityTd)
     tr.appendChild(priceTd)
@@ -54,6 +50,58 @@ const createProduct = (number, name, category, price, quantity) => {
     
 
     tableBody.appendChild(tr)
+}
+editForm = document.getElementById('edit-product-form');
+editForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    getFormData()
+})
+
+const getFormData = () => {
+    idField = document.getElementById('id-field')
+    id = parseInt(idField.value);
+    quantityField = document.getElementById('quantity-field')
+    quantity = parseInt(quantityField.value);
+    priceField =document.getElementById('price-field')
+    price = parseFloat(priceField.value);
+    updateSingleProduct(id, quantity, price);
+
+}
+const fillProductForm = (productId, name, category, quantity, price) => {
+    idField = document.getElementById('id-field');
+    idField.value = productId
+    nameField = document.getElementById('name-field');
+    nameField.value = name
+    categoryField = document.getElementById('select-category');
+    categoryField = categoryField.options[categoryField.selectedIndex];
+    categoryField.text = category
+    quantityField = document.getElementById('quantity-field')
+    quantityField.value = quantity
+    priceField =document.getElementById('price-field')
+    priceField.value = price
+}
+
+
+const updateSingleProduct = (productId, quantity, unitPrice) => {
+    const url = 'https://store-manager-api-heroku.herokuapp.com/api/v1/products/'+ productId;
+    const data = {
+        quantity: quantity,
+        unit_price: unitPrice
+    }
+    const config = {
+        method: 'PUT',
+        body: JSON.stringify(data),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + window.sessionStorage.getItem('token')
+        }
+
+    }
+    fetch(url, config)
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error))
 }
 
 const getAllProducts = () => {
@@ -70,7 +118,7 @@ const getAllProducts = () => {
         .then((data) => {
             products = data
             products.forEach((product, index) => {
-                createProduct(index+1, product.name, product.category, product.unit_price, product.quantity)
+                createProduct(index+1, product.product_id, product.name, product.category, product.unit_price, product.quantity)
             })
         })
         .catch((err) => console.log(err))
@@ -116,7 +164,7 @@ const clearTextFields = () => {
     document.getElementById('prod-price').value = '';
 }
 
-const createProductDetailsView = (productName, category, quantity, unitPrice) => {
+const createProductDetailsView = (productName, product_id, category, quantity, unitPrice) => {
     // Get the product details div
     const mainView = document.getElementById('product-details-view')
     const title = document.createElement('h4');
@@ -124,6 +172,10 @@ const createProductDetailsView = (productName, category, quantity, unitPrice) =>
     mainView.appendChild(title)
     const detailsColumn = document.createElement('div');
     detailsColumn.classList.add('details-right-column')
+
+    const prodIdElement = document.createElement('h3');
+    prodIdElement.innerHTML = 'Product ID: ' + product_id;
+    detailsColumn.appendChild(prodIdElement)
 
     const categoryElement = document.createElement('h3');
     categoryElement.innerHTML = 'Category: ' + category;
@@ -154,6 +206,7 @@ const createProductDetailsView = (productName, category, quantity, unitPrice) =>
     editBtn.addEventListener('click', (event) => {
         event.preventDefault()
         modifyDiv(editProductDetailsView)
+        fillProductForm(product_id, productName, category, quantity, unitPrice)
     });
     buttonsDiv.appendChild(editBtn)
 
@@ -197,7 +250,7 @@ const addSalesPersonLink = document.getElementById('add-sales-person-link');
 const addSalesPerson = document.getElementById('add-sales-person');
 const productDetailsView = document.getElementById('product-details-view');
 const editProductDetailsView = document.getElementById('edit-product-details-view');
-const saveEditBtn = document.getElementById('save-edited-product');
+// const saveEditBtn = document.getElementById('save-edited-product');
 const backProductDetailBtn = document.getElementById('back-product-detail');
 const attendantsList = document.getElementById('attendants-list');
 const attendantsCard = document.getElementById('attendants-card')
@@ -247,10 +300,10 @@ addSalesPersonLink.addEventListener('click', () => {
     modifyDiv(addSalesPerson)
 });
 
-saveEditBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-    modifyDiv(productDetailsView)
-});
+// saveEditBtn.addEventListener('click', (event) => {
+//     event.preventDefault();
+//     modifyDiv(productDetailsView)
+// });
 backProductDetailBtn.addEventListener('click', (event) => {
     event.preventDefault();
     modifyDiv(productDetailsView)
