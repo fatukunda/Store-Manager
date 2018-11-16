@@ -65,7 +65,7 @@ const getFormData = () => {
     priceField =document.getElementById('price-field')
     price = parseFloat(priceField.value);
     updateSingleProduct(id, quantity, price);
-    modifyDiv(adminProductsList)
+    modifyDiv(adminProductsList);
 
 }
 const fillProductForm = (productId, name, category, quantity, price) => {
