@@ -81,7 +81,21 @@ const fillProductForm = (productId, name, category, quantity, price) => {
     priceField =document.getElementById('price-field')
     priceField.value = price
 }
-
+const deleteSingleProduct = (productId) => {
+    const url = 'https://store-manager-api-heroku.herokuapp.com/api/v1/products/'+ productId;
+    const config = {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + window.sessionStorage.getItem('token')
+        }
+    }
+    fetch(url, config)
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error))
+}
 
 const updateSingleProduct = (productId, quantity, unitPrice) => {
     const url = 'https://store-manager-api-heroku.herokuapp.com/api/v1/products/'+ productId;
@@ -218,6 +232,8 @@ const createProductDetailsView = (productName, product_id, category, quantity, u
         event.preventDefault();
         response = confirm('Are you sure you want to delete this Item?');
         if (response){
+            deleteSingleProduct(product_id);
+            getAllProducts()
             modifyDiv(adminProductsList);
         }
     });
