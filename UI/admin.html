@@ -95,32 +95,15 @@
                     <table>
                         <thead>
                             <th>#</th>
+                            <th>attendant ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Email</th>
                             <th>Username</th>
-                            <th>Permissions</th>
-                            <th>Status</th>
+                            <th>Role</th>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Rita</td>
-                                <td>Ora</td>
-                                <td>Orar@store.com</td>
-                                <td>orarita</td>
-                                <td>user</td>
-                                <td><button id="make-admin">Make Admin</button></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Simon</td>
-                                <td>Leon</td>
-                                <td>simonl@store.com</td>
-                                <td>simonlee</td>
-                                <td>user</td>
-                                <td><button id="make-admin">Make Admin</button></td>
-                            </tr>
+                        <tbody id="attendants-body">
+                    
                         </tbody>
                     </table>
                 </div>
@@ -168,17 +151,13 @@
                 </form>
             </div>
             <div id="add-sales-person">
-                <form>
+                <form id="add-attendant-form" action="submit">
                     <h4>Add Sales Attendant</h4>
-                    <input type="text" placeholder="First name"/>
-                    <input type="text" placeholder="Last name"/>
-                    <input type="email" placeholder="user@store.com"/>
-                    <input type="text" placeholder="Username"/>
-                    <input type="password" placeholder="Password"/>
-                    <select name="permissions">
-                        <option>user</option>
-                        <option>admin</option>
-                    </select>
+                    <input type="text" placeholder="First name" id="userFirstName"/>
+                    <input type="text" placeholder="Last name" id="userLastName"/>
+                    <input type="email" placeholder="user@store.com" id="userEmail"/>
+                    <input type="text" placeholder="Username" id="userUsername"/>
+                    <input type="password" placeholder="Password" id="userPassword"/>
                     <button>Save</button>
                 </form>
             </div>
@@ -226,7 +205,8 @@
                 </div>
         </div>
     </div>
-    <script src="./js/admin.js"></script>
+    <script type="module" src="./js/products.js"></script>
+    <script type="module" src="./js/attendants.js"></script>
 
 </body>
 </html>
