@@ -25,8 +25,7 @@ def register_attendant():
         email = request_data['email']
         username = request_data['username']
         password = request_data['password']
-        role = request_data['role']
-        user_controller.create_user(first_name, last_name, username, email, password, role)
+        user_controller.create_user(first_name, last_name, username, email, password)
         return jsonify('User %s created successfully' % first_name), 201
     else:
         return jsonify({"message": "Not authorized to access this page"}), 401

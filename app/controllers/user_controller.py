@@ -2,15 +2,19 @@ from app.db.config_db import commit_to_db, connect
 from app.models import execute
 import psycopg2
 from flask import abort, Response
+from app.models.user import User
 
-def create_user(first_name, last_name, username, email, password, role):
+def create_user(first_name, last_name, username, email, password):
         """ insert a new user into the user table """
+        attendant = User(username, email, password)
+        attendant.first_name = first_name
+        attendant.last_name = last_name
         sql = """INSERT INTO users(first_name, last_name, username, email, password, user_type)
                  VALUES(%s, %s, %s, %s, %s, %s) RETURNING user_id, first_name, last_name, username, email, password, user_type;"""
         conn = connect()
         cursor = conn.cursor()
         try:
-                cursor.execute(sql, (first_name, last_name, username, email, password, role))
+                cursor.execute(sql, (attendant.first_name, attendant.last_name, attendant.username, attendant.email, attendant.password, attendant.role))
         except psycopg2.IntegrityError:
                 abort(Response("Username {} already exists".format(username), status =400))
         user = cursor.fetchone()
