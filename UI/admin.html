@@ -49,7 +49,7 @@
                     <i class="material-icons">group</i>
                 <div class="main-description">
                     <h3>Attendants Info</h3>
-                    <p>Attendants: <em>20</em></p>
+                    <p>Attendants: <em id="attendants-number"></em></p>
                 </div>
                 </div>
             </div>
@@ -69,6 +69,87 @@
             </div>
         </div>
         <div class="details">
+
+            <div id="view-sales">
+                    <div class="sort-sales">
+                        <form id = "sort-sales-form">
+                            <h4>sort by sales attendant: </h5>
+                        </form>
+                    </div>
+                    <h4>All Store Sales</h4>
+                    <table>
+                        <thead>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Sales Person</th>
+                            <th>Item sold</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                        </thead>
+                        <tbody id ="sales-body">
+                            
+                        </tbody>
+                    </table>
+            </div>
+
+            <div id="add-sales-person">
+                <form id="add-attendant-form" action="submit">
+                    <h4>Add Sales Attendant</h4>
+                    <input type="text" placeholder="First name" id="userFirstName"/>
+                    <input type="text" placeholder="Last name" id="userLastName"/>
+                    <input type="email" placeholder="user@store.com" id="userEmail"/>
+                    <input type="text" placeholder="Username" id="userUsername"/>
+                    <input type="password" placeholder="Password" id="userPassword"/>
+                    <button>Save</button>
+                </form>
+            </div>
+
+            <div id="add-category">
+                <form>
+                    <h4>Add Category</h4>
+                    <input type="text" placeholder="Category"/>
+                    <button>Save</button>
+                </form>
+            </div>
+
+            <div id="add-product">
+                <form action="submit" id="add-product-form">
+                    <h4>Add Product</h4>
+                    <input type="text" placeholder="Product name" id="prod-name"/>
+                    <select name="product-categories" id="prod-category">
+                        <option>Electronics</option>
+                        <option>Food</option>
+                        <option>Plastics</option>
+                    </select>
+                    <input type="number" placeholder="Quantity" id = "prod-quantity"/>
+                    <input type="number" placeholder="Price" id="prod-price"/>
+                    <button>Save</button>
+                </form>
+            </div>
+
+            <div id="product-details-view">
+                <div class="details-left-column">
+                    <img src="./img/tv.png" alt="product image"/>
+                </div>
+            </div>
+
+            <div id="edit-product-details-view">
+                <form action="submit" id="edit-product-form">
+                    <h4>Edit Product</h4>
+                    <input type="number", id="id-field" disabled/>
+                    <input type="text" id="name-field" disabled/>
+                    <select name="product-categories" id="select-category" disabled>
+                        <option>Electronics</option>
+                        <option>Food</option>
+                        <option>Plastics</option>
+                    </select>
+                    <input type="number" placeholder="Quantity" id="quantity-field"/>
+                    <input type="number" placeholder="Price" id="price-field"/>
+                    <button id="back-product-detail"><< Back</button>
+                    <button id="save-edited-product">Save</button>
+                </form>
+            </div>
+
             <div class="product-list", id="admin-products-list">
                 <div class="search-item">
                     <form>
@@ -87,146 +168,34 @@
                         <th>Details</th>
                     </thead>
                     <tbody id="prod-details">
+                        
                     </tbody>
                 </table>
             </div>
             <div id="attendants-list">
                     <h4>Store Attendants</h4>
-                    <table>
-                        <thead>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Username</th>
-                            <th>Permissions</th>
-                            <th>Status</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Rita</td>
-                                <td>Ora</td>
-                                <td>Orar@store.com</td>
-                                <td>orarita</td>
-                                <td>user</td>
-                                <td><button id="make-admin">Make Admin</button></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Simon</td>
-                                <td>Leon</td>
-                                <td>simonl@store.com</td>
-                                <td>simonlee</td>
-                                <td>user</td>
-                                <td><button id="make-admin">Make Admin</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            <div id="product-details-view">
-                <div class="details-left-column">
-                    <img src="./img/tv.png" alt="product image"/>
-                </div>
-
             </div>
-            <div id="edit-product-details-view">
-                <form action="submit" id="edit-product-form">
-                    <h4>Edit Product</h4>
-                    <input type="number", id="id-field" disabled/>
-                    <input type="text" id="name-field" disabled/>
-                    <select name="product-categories" id="select-category" disabled>
-                        <option>Electronics</option>
-                        <option>Food</option>
-                        <option>Plastics</option>
-                    </select>
-                    <input type="number" placeholder="Quantity" id="quantity-field"/>
-                    <input type="number" placeholder="Price" id="price-field"/>
-                    <button id="back-product-detail"><< Back</button>
-                    <button id="save-edited-product">Save</button>
-                </form>
-            </div>
-            <div id="add-product">
-                <form action="submit" id="add-product-form">
-                    <h4>Add Product</h4>
-                    <input type="text" placeholder="Product name" id="prod-name"/>
-                    <select name="product-categories" id="prod-category">
-                        <option>Electronics</option>
-                        <option>Food</option>
-                        <option>Plastics</option>
-                    </select>
-                    <input type="number" placeholder="Quantity" id = "prod-quantity"/>
-                    <input type="number" placeholder="Price" id="prod-price"/>
-                    <button>Save</button>
-                </form>
-            </div>
-            <div id="add-category">
-                <form>
-                    <h4>Add Category</h4>
-                    <input type="text" placeholder="Category"/>
-                    <button>Save</button>
-                </form>
-            </div>
-            <div id="add-sales-person">
-                <form>
-                    <h4>Add Sales Attendant</h4>
-                    <input type="text" placeholder="First name"/>
-                    <input type="text" placeholder="Last name"/>
-                    <input type="email" placeholder="user@store.com"/>
-                    <input type="text" placeholder="Username"/>
-                    <input type="password" placeholder="Password"/>
-                    <select name="permissions">
-                        <option>user</option>
-                        <option>admin</option>
-                    </select>
-                    <button>Save</button>
-                </form>
-            </div>
-            <div id="view-sales">
-                    <div class="sort-sales">
-                        <form>
-                            <h4>sort by sales attendant: </h5>
-                            <select name="sort-by-attendant">
-                                <option>Rita</option>
-                                <option>Simon</option>
-                                <option>Sara</option>
-                            </select>
-                            <button>Sort</button>
-                        </form>
+            <div id="attendant-details">
+                <h4>Welcome</h4>
+                <div class="row">
+                    <div class="column">
+                        <div class="card">
+                            <a href="https://placeholder.com"><img src="https://via.placeholder.com/200"/></a>
+                            <div class="container">
+                              <h2>Jane Doe</h2>
+                              <p class="title">User</p>
+                              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                              <p>example@example.com</p>
+                              <p><button class="button">View sales</button></p>
+                        </div>
                     </div>
-                    <h4>All Store Sales</h4>
-                    <table>
-                        <thead>
-                            <th>#</th>
-                            <th>Date</th>
-                            <th>Sales Person</th>
-                            <th>Item sold</th>
-                            <th>Quantity</th>
-                            <th>Total Price</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>30th. Oct.2018</td>
-                                <td>Sara</td>
-                                <td>Samsung 32 inch TV</td>
-                                <td>1</td>
-                                <td>UGX.1,600,000</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>30th. Oct.2018</td>
-                                <td>Simon</td>
-                                <td>Sugar</td>
-                                <td>2 Kgs</td>
-                                <td>UGX.8000</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
+            </div>
+  
         </div>
     </div>
-    <script src="./js/admin.js"></script>
-
+    <script type="module" src="./js/products.js"></script>
+    <script type="module" src="./js/attendants.js"></script>
+    <script type="module" src="./js/sales.js"></script>
 </body>
 </html>
