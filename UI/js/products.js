@@ -1,19 +1,15 @@
 import { modifyDiv, createItem, getSingleItem, editItem, deleteItem, fetchAllItems} from './helpers.js'
+import {getNumberOfAttendants} from './attendants.js'
 
 let url = 'https://store-manager-api-heroku.herokuapp.com/api/v1/products'
 
 const productsCard = document.getElementById('products-card');
-const salesCard = document.getElementById('sales-card');
 const adminProductsList = document.getElementById('admin-products-list');
 const addCategory = document.getElementById('add-category');
 const addProduct = document.getElementById('add-product');
 const addProductLink = document.getElementById('add-product-link');
 const addCategoryLink = document.getElementById('add-category-link');
 const viewProducts = document.getElementById('view-products');
-const viewSales = document.getElementById('view-sales');
-const viewSalesLink = document.getElementById('view-sales-link')
-const addSalesPersonLink = document.getElementById('add-sales-person-link');
-const addSalesPerson = document.getElementById('add-sales-person');
 const productDetailsView = document.getElementById('product-details-view');
 const editProductDetailsView = document.getElementById('edit-product-details-view');
 const backProductDetailBtn = document.getElementById('back-product-detail');
@@ -223,22 +219,21 @@ addProductForm.addEventListener('submit', (event) => {
 
 });
 
+
 //Show admin products list when the page loads
 window.addEventListener('load', () => {
     getAllProducts()
+    getNumberOfAttendants()
     modifyDiv(adminProductsList)
 });
 
 productsCard.addEventListener('click', () => {
     modifyDiv(adminProductsList)
 });
-salesCard.addEventListener('click', () => {
-    modifyDiv(viewSales)
 
-})
-addProductLink.addEventListener('click', () => {
+addProductLink.addEventListener('click', (event) => {
+    event.preventDefault();
     modifyDiv(addProduct)
-
 });
 addCategoryLink.addEventListener('click', () => {
     modifyDiv(addCategory);
@@ -247,12 +242,7 @@ viewProducts.addEventListener('click', () => {
     modifyDiv(adminProductsList)
 
 });
-viewSalesLink.addEventListener('click', () => {
-    modifyDiv(viewSales)
-});
-addSalesPersonLink.addEventListener('click', () => {
-    modifyDiv(addSalesPerson)
-});
+
 backProductDetailBtn.addEventListener('click', (event) => {
     event.preventDefault();
     modifyDiv(productDetailsView)

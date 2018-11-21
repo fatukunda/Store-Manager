@@ -4,64 +4,70 @@ import { modifyDiv, createItem, editItem, fetchAllItems } from './helpers.js'
 const attendantsList = document.getElementById('attendants-list');
 const attendantsCard = document.getElementById('attendants-card');
 const attendantsForm = document.getElementById('add-attendant-form');
+const attendantsNumber = document.getElementById('attendants-number');
+const attendantDetails = document.getElementById('attendant-details');
+const addSalesPersonLink = document.getElementById('add-sales-person-link');
+const addSalesPerson = document.getElementById('add-sales-person');
+
 
 const url = 'https://store-manager-api-heroku.herokuapp.com/api/v1/attendants';
 
-// Create attendants table structure........................................
-const createAttendantsListStructure = (number, attendantId, firstName, lastName, email, username, role) => {
+const attendantsLayout = (firstName, email, role) => {
+    const card = document.createElement('div');
+    card.classList.add('card')
+    card.style.width = '230px'
+    card.style.float = 'left'
+    card.style.margin = '5px'
 
-    const attendantsTableBody = document.getElementById('attendants-body');
-    const attendantRow = document.createElement('tr');
+    const cardHeader = document.createElement('div')
+    cardHeader.classList.add('card-header')
 
-    // create attendants columns
-    const NumberTd = document.createElement('td');
-    NumberTd.innerHTML = number;
-    const IdTd = document.createElement('td');
-    IdTd.innerHTML = attendantId;
-    const firstNameTd = document.createElement('td');
-    firstNameTd.innerHTML = firstName;
-    const lastNameTd = document.createElement('td');
-    lastNameTd.innerHTML = lastName
-    const emailTd = document.createElement('td');
-    emailTd.innerHTML = email
-    const usernameTd = document.createElement('td');
-    usernameTd.innerHTML = username
-    const roleTd = document.createElement('td');
-    roleTd.innerHTML = role
+    const cardMain = document.createElement('div')
+    cardMain.classList.add('card-main')
+    cardMain.style.color = '#00787a'
 
-    const makeAdminTd = document.createElement('td');
-    const makeAdminBtn = document.createElement('button')
-    makeAdminBtn.innerHTML = 'Make Admin';
-    makeAdminBtn.id = 'make-admin';
-    makeAdminBtn.addEventListener('click', (event) => {
+    const mainDescription = document.createElement('div')
+    mainDescription.classList.add('main-description')
+
+    const detailsButton = document.createElement('button');
+    detailsButton.style.marginBottom = '10px';
+    detailsButton.addEventListener('click', (event) => {
         event.preventDefault();
-        makeAdmin(attendantId);
-        alert(`${firstName} ${lastName} is now an administrator`)
+
+        modifyDiv(attendantDetails)
     })
+    detailsButton.innerHTML = 'View Details';
 
-    makeAdminTd.appendChild(makeAdminBtn)
+    mainDescription.appendChild(detailsButton)
+    const image = document.createElement('img');
+    image.setAttribute('src', 'https://via.placeholder.com/200');
+    cardHeader.appendChild(image)
 
-    attendantRow.appendChild(NumberTd)
-    attendantRow.appendChild(IdTd)
-    attendantRow.appendChild(firstNameTd)
-    attendantRow.appendChild(lastNameTd)
-    attendantRow.appendChild(emailTd)
-    attendantRow.appendChild(usernameTd)
-    attendantRow.appendChild(roleTd)
+    const name = document.createElement('h2');
+    name.innerHTML = firstName
+    const emailP = document.createElement('p');
+    emailP.innerHTML = email;
+    const userType = document.createElement('p');
+    userType.innerHTML = role;
 
-    attendantsTableBody.appendChild(attendantRow)
+    cardMain.appendChild(name)
+    cardMain.appendChild(emailP)
+    cardMain.appendChild(userType)
+
+    card.appendChild(cardHeader)
+    card.appendChild(cardMain)
+    card.appendChild(mainDescription)
+    attendantsList.appendChild(card)
 
 }
-
 // Get all attendants from the api
 
 const getAllAttendants = () => {
     fetchAllItems(url)
         .then((data) => {
             const attendants = data
-            attendants.forEach((attendant, index) => {
-                createAttendantsListStructure(index + 1, attendant.user_id, attendant.first_name, attendant.last_name,
-                    attendant.email, attendant.username, attendant.user_type) 
+            attendants.forEach((attendant) => {
+                attendantsLayout(attendant.first_name, attendant.email, attendant.user_type)
             })
         })
         .catch(error => console.log(error))
@@ -118,4 +124,19 @@ attendantsForm.addEventListener('submit', (event) => {
     getFormUserData();
     clearFormData();
 })
+
+const getNumberOfAttendants = () => {
+    fetchAllItems(url)
+        .then((data) => {
+            attendantsNumber.innerHTML = data.length;
+        })
+        .catch(error => console.log(error))
+}
+
+addSalesPersonLink.addEventListener('click', () => {
+    modifyDiv(addSalesPerson)
+});
+
+
+export { getNumberOfAttendants }
 

@@ -6,6 +6,7 @@ const addSalesPerson = document.getElementById('add-sales-person');
 const productDetailsView = document.getElementById('product-details-view');
 const editProductDetailsView = document.getElementById('edit-product-details-view');
 const attendantsList = document.getElementById('attendants-list');
+const attendantDetails = document.getElementById('attendant-details');
 
 //Show element
 const show = (elem) => {
@@ -17,7 +18,7 @@ const hide = (elem) => {
     elem.style.display = 'none';
 }
 
-const elements = [adminProductsList, addCategory, addProduct,viewSales, addSalesPerson,
+const elements = [adminProductsList, attendantDetails, addCategory, addProduct,viewSales, addSalesPerson,
     productDetailsView,editProductDetailsView, attendantsList]
 
 const modifyDiv = (divToModify) => {
@@ -81,7 +82,6 @@ async function createItem(url, data) {
     const config = postConfig(data)
     let response = await fetch(url, config)
     let returnData = response.json();
-    print(returnData)
     return returnData
 }
 
