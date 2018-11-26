@@ -19,6 +19,7 @@ app/views/__pycache__/*.pyc
 .Python
 .vscode/
 build/
+node_modules/
 develop-eggs/
 dist/
 downloads/

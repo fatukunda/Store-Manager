@@ -50,12 +50,12 @@ def get_attendant_details(attendant_id):
     user_role = search_sales_person(current_user)
     if user_role['user_type'] == 'admin' or user_role['user_type'] == 'user':
         user = user_controller.get_user_details(attendant_id)
-            if user:
-                return jsonify(user_controller.get_user_details(attendant_id)), 200
-            else:
-                return jsonify({"message": "No such user was found"}), 404
+        if user:
+            return jsonify(user_controller.get_user_details(attendant_id)), 200
+        else:
+            return jsonify({"message": "No such user was found"}), 404
     else:
-        return jsonify("message" : "Not allowed to access this page"), 401
+        return jsonify({"message" : "Not allowed to access this page"}), 401
 
 @bp.route('/<attendant_id>', methods=['PUT'])
 @jwt_required
