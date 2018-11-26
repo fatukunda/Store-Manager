@@ -48,14 +48,11 @@ def get_attendant_details(attendant_id):
     """ Get details of a single attendant"""
     current_user = get_jwt_identity()
     user_role = search_sales_person(current_user)
-    if user_role['user_type'] == 'admin':
-        user = user_controller.get_user_details(attendant_id)
+    user = user_controller.get_user_details(attendant_id)
         if user:
             return jsonify(user_controller.get_user_details(attendant_id)), 200
         else:
             return jsonify({"message": "No such user was found"}), 404
-    else:
-        return jsonify({"message": "Not authorized to access this page"})
 
 @bp.route('/<attendant_id>', methods=['PUT'])
 @jwt_required
