@@ -48,7 +48,7 @@ def get_attendant_details(attendant_id):
     """ Get details of a single attendant"""
     current_user = get_jwt_identity()
     user_role = search_sales_person(current_user)
-    if user_role['user_type'] == 'admin' or user_role['user_type'] == 'user':
+    if user_role['user_type'] == 'admin' or user_role['user_id'] == current_user:
         user = user_controller.get_user_details(attendant_id)
         if user:
             return jsonify(user_controller.get_user_details(attendant_id)), 200
