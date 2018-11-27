@@ -14,7 +14,14 @@ CORS(bp)
 @jwt_required
 def get_sales():
         # Get all sales by the admin
-        return jsonify(sale_controller.get_all_sales())
+        current_user = get_jwt_identity()
+        sales_person = search_sales_person(current_user)
+        if sales_person['user_type'] == 'admin':
+                return jsonify(sale_controller.get_all_sales()), 200
+        elif sales_person['user_id'] == current_user:
+                return jsonify(sale_controller.get_all_sales(current_user)), 200
+        else:
+                return jsonify({"message": "Not authorized to access this route"}), 401
 
 
 @bp.route('/sales/<sale_id>')
