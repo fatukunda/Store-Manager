@@ -24,7 +24,7 @@ def login():
     # auth.pw_hash
     user = auth_controller.login(auth.username, auth.password)
     if not user:
-        return Response({'message':'User not found'}), 403  
+        return Response(jsonify({"message": "User not found"})), 403  
     access_token = ''
     user_id = user['user_id']
     user_type = user['user_type']
