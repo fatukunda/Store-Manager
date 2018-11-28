@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, render_template
+from flask import Blueprint, request, jsonify, render_template, Response
 from flask_jwt_extended import create_access_token, get_jwt_identity
 from app.models.auth import Auth
 from app.controllers import auth_controller
@@ -24,7 +24,7 @@ def login():
     # auth.pw_hash
     user = auth_controller.login(auth.username, auth.password)
     if not user:
-        return jsonify({"message": "User not found"}), 403  
+        return Response('User not found'), 403  
     access_token = ''
     user_id = user['user_id']
     user_type = user['user_type']
