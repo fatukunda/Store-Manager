@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\Frank Atukunda\\envs\\store-manager-env\\Scripts\\python.exe",
+    "python.pythonPath": "flask-env/bin/python",
     "python.unitTest.pyTestArgs": [
         "app"
     ],
