@@ -31,6 +31,3 @@ def login():
     username = user['username']
     access_token = create_access_token(identity= user_id, expires_delta= timedelta(hours=2))
     return jsonify(access_token=access_token, user_type = user_type, user_id = user_id), 201
-
-
-    
